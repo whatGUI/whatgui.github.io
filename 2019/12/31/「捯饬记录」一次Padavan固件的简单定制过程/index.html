@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="whatGUI">
   <meta name="keywords" content="">
-  <title>「捯饬记录」一次Padavan固件的简单定制过程 ~ Hexo</title>
+  <title>「捯饬记录」一次Padavan固件的简单定制过程 ~ whatGUI</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -43,7 +43,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Hexo</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>whatGUI</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -73,12 +73,6 @@
         
           
           
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分类</a>
-          </li>
-        
           
           
           
@@ -131,7 +125,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    945 字
+                    959 字
                   </span>&nbsp;
                 
 
@@ -172,7 +166,7 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="记录时间：2019-年-12-月-31-日"><a href="#记录时间：2019-年-12-月-31-日" class="headerlink" title="记录时间：2019 年 12 月 31 日"></a>记录时间：2019 年 12 月 31 日</h1><h2 id="关键词：K2-Padavan-老毛子-固件编译-定制"><a href="#关键词：K2-Padavan-老毛子-固件编译-定制" class="headerlink" title="关键词：K2 Padavan 老毛子 固件编译 定制"></a>关键词：K2 Padavan 老毛子 固件编译 定制</h2><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>手里的 K2 一直以来使用的都是某恪的固件，确实稳定好用，但是直到现在都没有加入 IPV6 的相关功能。怀着想要体验 IPV6 的心情，一番折腾之后诞生了这一系列记录。那为什么不使用强大的 openwrt 呢？稳定性和无线性能是我首要考虑的问题，因此选择了捯饬 Padavan。最后几经搜索选择了 hanwckf 的开源固件，模板多教程也多，方便进行简单的定制。</p>
+            <h1 id="记录时间：2019-年-12-月-31-日"><a href="#记录时间：2019-年-12-月-31-日" class="headerlink" title="记录时间：2019 年 12 月 31 日"></a>记录时间：2019 年 12 月 31 日</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>手里的 K2 一直以来使用的都是某恪的固件，确实稳定好用，但是直到现在都没有加入 IPV6 的相关功能。怀着想要体验 IPV6 的心情，一番折腾之后诞生了这一系列记录。那为什么不使用强大的 openwrt 呢？稳定性和无线性能是我首要考虑的问题，因此选择了捯饬 Padavan。最后几经搜索选择了 hanwckf 的开源固件，模板多教程也多，方便进行简单的定制。</p>
 <h2 id="1-准备-Linux-系统环境"><a href="#1-准备-Linux-系统环境" class="headerlink" title="1. 准备 Linux 系统环境"></a>1. 准备 Linux 系统环境</h2><blockquote>
 <p>根据 libgcc 的 <a href="https://www.jianshu.com/p/6b8403cdea46" target="_blank" rel="noopener">Padavan固件编译办法</a> ，推荐没有安装或者不想安装 Linux 系统的使用 Windows10 系统的 wsl 功能。</p>
 </blockquote>
@@ -214,7 +208,7 @@ pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl
 </tr>
 </tbody></table>
 <p>这次针对 K2 的定制过程修改的是 PSG1218_nano.config 和 defaults.h 这两个文件。主要是在/opt/rt-n56u/trunk/configs/templates/目录下发现了 PSG1218_nano.config 的配置模板文件，这个配置文件本身是 K2 的精简配置，出于对精简的谜之信仰选了这个。</p>
-<h3 id="2-1-修改-PSG1218-nano-config"><a href="#2-1-修改-PSG1218-nano-config" class="headerlink" title="2.1 修改 PSG1218_nano.config"></a>2.1 修改 PSG1218_nano.config</h3><p>需要启用或关闭一个功能则将该行的末尾改为 y 或 n，至于功能是什么文件里有详细的描述注释</p>
+<h3 id="2-1-修改-PSG1218-nano-config"><a href="#2-1-修改-PSG1218-nano-config" class="headerlink" title="2.1 修改 PSG1218_nano.config"></a>2.1 修改 PSG1218_nano.config</h3><p>需要启用或关闭一个功能则将该行的末尾改为 y 或 n，至于功能是什么文件里有描述和注释</p>
 <p>举个栗子：</p>
 <pre><code>### Enable IPv6 support #是否启用 IPv6 支持
 CONFIG_FIRMWARE_ENABLE_IPV6=y #表示启用
@@ -226,7 +220,7 @@ CONFIG_FIRMWARE_INCLUDE_DOGCOM=n #去除用于 Drcom 的工具
 CONFIG_FIRMWARE_INCLUDE_MINIEAP=n #去除可用于锐捷的 eap 客户端
 CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n #去除南工网络客户端
 CONFIG_FIRMWARE_INCLUDE_VLMCSD=n #去除用于 KMS 的工具</code></pre><h3 id="2-2-修改-defaults-h"><a href="#2-2-修改-defaults-h" class="headerlink" title="2.2 修改 defaults.h"></a>2.2 修改 defaults.h</h3><p>修改备用 NTP 服务器地址为 time.nist.gov</p>
-<pre><code>#define DEF_NTP_SERVER1     &quot;time.nist.gov&quot;</code></pre><p>修改完毕，保存</p>
+<pre><code>#define DEF_NTP_SERVER1     &quot;time.nist.gov&quot;</code></pre><p>是的，编译完之后才发现这个更改没有任何意义，就是想找点什么改一下(￣▽￣)”<br>修改完毕，保存</p>
 <h2 id="3-清理代码树并开始编译"><a href="#3-清理代码树并开始编译" class="headerlink" title="3. 清理代码树并开始编译"></a>3. 清理代码树并开始编译</h2><pre><code>cd /opt/rt-n56u/trunk
 sudo ./clear_tree
 sudo ./build_firmware_modify PSG1218_nano</code></pre><h2 id="4-编译完成保存固件"><a href="#4-编译完成保存固件" class="headerlink" title="4. 编译完成保存固件"></a>4. 编译完成保存固件</h2><p>固件编译耗时约为 10min，完成后的.trx 文件在/opt/rt-n56u/trunk/images 路径下找到，然后复制到其他地方保存，因为下次编译会覆盖。</p>
@@ -237,6 +231,19 @@ sudo ./build_firmware_modify PSG1218_nano</code></pre><h2 id="4-编译完成保�
           <div>
             <p>
             
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/K2">K2</a>
+                
+                  <a class="hover-with-bg" href="/tags/Padavan">Padavan</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91">固件编译</a>
+                
+                  <a class="hover-with-bg" href="/tags/%E5%AE%9A%E5%88%B6">定制</a>
+                
+              </span>
             
             </p>
             
@@ -263,6 +270,33 @@ sudo ./build_firmware_modify PSG1218_nano</code></pre><h2 id="4-编译完成保�
 <!-- Comments -->
 <div class="col-lg-7 mx-auto nopadding-md">
   <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.11.1/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '13663f6971ccd0bf3261',
+      clientSecret: 'b6d1fd74a3779d567e9d3fe56b479d4781875f45',
+      repo: 'whatgui.github.io',
+      owner: 'whatGUI',
+      admin: 'whatGUI',
+      id: md5(location.pathname),
+      language: 'zh-CN',
+      perPage: 15,
+      pagerDirection: 'last',
+      createIssueManually: 'true',
+      distractionFreeMode: 'false'
+    });
+
+    gitalk.render('gitalk-container')
+  </script>
+
+
     
   </div>
 </div>
@@ -452,51 +486,52 @@ sudo ./build_firmware_modify PSG1218_nano</code></pre><h2 id="4-编译完成保�
 
   
   
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
           }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
     </script>
   
 

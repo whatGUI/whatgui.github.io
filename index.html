@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="whatGUI">
   <meta name="keywords" content="">
-  <title>Hexo</title>
+  <title>whatGUI</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -43,7 +43,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Hexo</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>whatGUI</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -73,12 +73,6 @@
         
           
           
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/categories/">分类</a>
-          </li>
-        
           
           
           
@@ -145,6 +139,72 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/06/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E6%8A%8A%20Ubuntu%2019.10%20%E8%A3%85%E8%BF%9B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/">
+        <p class="h4 index-header">「捯饬记录」把 Ubuntu 19.10 装进移动硬盘</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">记录时间：2020 年 1 月 6 日前情提要定制编译Padavan固件 必须要用到 Linux 环境，考虑到 win10 wsl 较弱的 io 性能以及虚拟机性能，最后还是选择在物理机上安装一个 Ubuntu。但是又不想把电脑仅剩的一点硬盘空间分割出来献给 Ubuntu，于是打起了移动硬盘的主意。
+对于 win10，当你想要尝试通过 iso 直接安装到移动硬盘时只会得到：
+
+windows 无法安装到这个磁盘，安装程序不支持配置或安装通过 USB 或 IEEE1394 端口连接的磁盘
+
+这样的错误提示，因此只能借助 win to go 或者使用 VHD 的方法来安装。而对于 Ubuntu 好像没有这样的问题，可以直接安装。
+现场情况1 台 win10 笔记本电脑（内置一块 SSD），一块 500G 移动硬盘（HDD），一个 16G U 盘以及 Ubuntu19.10 的 iso 文件（从 这里 下载的）
+直接硬盘安装（失败）
+确定电脑 bios 和移动硬盘为 UEFI+GPT 模式
+给移动硬盘分出一个 3GB 的 FAT32 分区
+把 iso 包含的安装文件复制进这个分区
+重启，成功识别移动硬盘的安装文件并从中启动
+安装，分区完成点击现在安装，弹出错误提示：卸载/cdrom 分区失败，点击继续
+卡死在“正在探测文件系统…”
+
+经过反复试验了几次都不行，搜到的解决方法中
+sudo umount -l /isodevice
+sudo umount -l /cdrom都不起作用，而且手动卸载/cdrom 还会导致安装程序崩溃。
+所以只能得到一个推测性的结论：Ubuntu19.10 不能支持安装文件与进行安装的分区在同一个磁盘，即硬盘安装的方法行不通。当然也不排除移动硬盘的兼容性问题，因为没有更多的设备来做测试。
+推荐常规安装方法（成功）
+确定电脑 bios 和移动硬盘分别为 UEFI+GPT 模式，空 U 盘格式化为 FAT32
+在 win10 下，双击打开 Ubuntu 的 iso 文件，复制其中的所有文件到 U 盘
+同时接上 U 盘与移动硬盘，重启，在 bios 启动选项中选择 U 盘
+根据安装向导完成安装（在安装选项选择其他选项，手动分区）
+
+这里如果手头没有 U 盘，也可以在电脑硬盘上临时分出一个 FAT32 分区来充当安装 U 盘的角色，大小要能装下 Ubuntu 的安装文件（Ubuntu19.10 分配 3GB 空间足够了），然后在重启时选择该分区的 efi 启动即可。
+另外，在安装分区时建议在移动硬盘上建立单独的ESP分区（EFI）存放启动信息，开机时使用 bios 来切换选择系统即可。也可以在 bios 中将移动硬盘的启动顺序设为第一位，这样可以做到插上移动硬盘开机自动进入 Ubuntu，拔掉硬盘开机自动进入原 win10 系统。
+关于 UEFI 安装UEFI 会主动搜索 FAT32 分区中的 efi 文件来确定启动项，所以利用这种特性来安装系统，简单快捷还不需要安装其他工具。但是受 FAT32 单个文件最大 4GB 的限制，对于 iso 文件接近 5GB 的 win10 来说这个方法就不适用了，这种情况更加推荐 win10 的官方工具或者 Rufus。（貌似也有小部分主板的 UEFI 能支持 NTFS）
+END整个过程还被迫学会了一个强强操作：按住Alt+PrintScreen 再依次按 r、e、i、s、u、b，可以安全地强制 Ubuntu 系统重启。
+写到最后忍不住吐槽一下，总有一部分过时的教程占据了搜索结果的前排，一边搜还要一边验证它的有效性，唉，或者只是不会搜索吧。
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-06&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Ubuntu%2019-10">Ubuntu 19.10</a>&nbsp;
+          
+            <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98">移动硬盘</a>&nbsp;
+          
+            <a href="/tags/Ubuntu%E5%AE%89%E8%A3%85">Ubuntu安装</a>&nbsp;
+          
+            <a href="/tags/UEFI+GPT">UEFI+GPT</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/">
         <p class="h4 index-header">「捯饬记录」一次Padavan固件的简单定制过程</p>
         
@@ -152,12 +212,65 @@
           
         
         <div class="index-excerpt" >
-          <div class="index-text mb-1">记录时间：2019 年 12 月 31 日关键词：K2 Padavan 老毛子 固件编译 定制写在前面手里的 K2 一直以来使用的都是某恪的固件，确实稳定好用，但是直到现在都没有加入 IPV6 的相关功能。怀着想要体验 IPV6 的心情，一番折腾之后诞生了这一系列记录。那为什么不使用强大的 openwrt 呢？稳定性和无线性能是我首要考虑的问题，因此选择了捯饬 Padavan。最后几经搜索选择了 hanwckf 的开源固件，模板多教程也多，方便进行简单的定制。
+          <div class="index-text mb-1">记录时间：2019 年 12 月 31 日写在前面手里的 K2 一直以来使用的都是某恪的固件，确实稳定好用，但是直到现在都没有加入 IPV6 的相关功能。怀着想要体验 IPV6 的心情，一番折腾之后诞生了这一系列记录。那为什么不使用强大的 openwrt 呢？稳定性和无线性能是我首要考虑的问题，因此选择了捯饬 Padavan。最后几经搜索选择了 hanwckf 的开源固件，模板多教程也多，方便进行简单的定制。
 1. 准备 Linux 系统环境
 根据 libgcc 的 Padavan固件编译办法 ，推荐没有安装或者不想安装 Linux 系统的使用 Windows10 系统的 wsl 功能。
 
 首先安装了 Ubuntu 19.10，安装过程略显曲折，因为安装到了移动硬盘。关于这部分内容将在下一篇细说。
-1.1 更换国内源并更新了所有软件包，同时修改了/opt 目录权限为 777sudo sed -i &#39;s#http://archive.ubuntu.com#https://mirrors.huaweicloud.com#&#39;</div>
+1.1 更换国内源并更新了所有软件包，同时修改了/opt 目录权限为 777sudo sed -i &#39;s#http://archive.ubuntu.com#https://mirrors.huaweicloud.com#&#39; /etc/apt/sources.list
+sudo sed -i &#39;s#http://security.ubuntu.com#https://mirrors.huaweicloud.com#&#39; /etc/apt/sources.list
+sudo apt update
+sudo apt upgrade
+sudo chmod 777 /opt1.2 安装必要的软件包sudo apt update
+sudo apt install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd \
+cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \
+pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev1.3 下载源码到本地git clone --depth=1 https://gitee.com/hanwckf/rt-n56u.git /opt/rt-n56u这里没有用 GitHub，因为速度实在不给力。
+1.4 准备并编译工具链cd /opt/rt-n56u/toolchain-mipsel
+./clean_toolchain
+./build_toolchain这一步使用的笔记本电脑，编译花了 30+min。如果工具链的源码没有变化，下一次编译固件不用再重新编译工具链，可以直接使用。
+2. 修改配置文件进行简单的定制为了修改文件更方便，先去下载了 VS Code ，然后修改各配置文件。根据下表
+
+
+
+配置文件路径
+主要的可配置功能
+
+
+
+/opt/rt-n56u/trunk/configs/templates/PSG1218.config
+包含软件包、功能
+
+
+/opt/rt-n56u/trunk/configs/boards/PSG1218/board.h
+指示灯、复位键等
+
+
+/opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config
+WAN、LAN、内存
+
+
+/opt/rt-n56u/trunk/user/shared/defaults.h
+路由器配置(默认网关、无线密码等)
+
+
+这次针对 K2 的定制过程修改的是 PSG1218_nano.config 和 defaults.h 这两个文件。主要是在/opt/rt-n56u/trunk/configs/templates/目录下发现了 PSG1218_nano.config 的配置模板文件，这个配置文件本身是 K2 的精简配置，出于对精简的谜之信仰选了这个。
+2.1 修改 PSG1218_nano.config需要启用或关闭一个功能则将该行的末尾改为 y 或 n，至于功能是什么文件里有描述和注释
+举个栗子：
+### Enable IPv6 support #是否启用 IPv6 支持
+CONFIG_FIRMWARE_ENABLE_IPV6=y #表示启用
+
+### Enable USB support  #是否启用 USB 支持
+CONFIG_FIRMWARE_ENABLE_USB=n #表示不启用（没有 usb 口）这次编译固件做出的修改如下
+CONFIG_FIRMWARE_INCLUDE_XUPNPD=n #去除用于 IPTV 的 XUPNP
+CONFIG_FIRMWARE_INCLUDE_DOGCOM=n #去除用于 Drcom 的工具
+CONFIG_FIRMWARE_INCLUDE_MINIEAP=n #去除可用于锐捷的 eap 客户端
+CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n #去除南工网络客户端
+CONFIG_FIRMWARE_INCLUDE_VLMCSD=n #去除用于 KMS 的工具2.2 修改 defaults.h修改备用 NTP 服务器地址为 time.nist.gov
+#define DEF_NTP_SERVER1     &quot;time.nist.gov&quot;是的，编译完之后才发现这个更改没有任何意义，就是想找点什么改一下(￣▽￣)”修改完毕，保存
+3. 清理代码树并开始编译cd /opt/rt-n56u/trunk
+sudo ./clear_tree
+sudo ./build_firmware_modify PSG1218_nano4. 编译完成保存固件固件编译耗时约为 10min，完成后的.trx 文件在/opt/rt-n56u/trunk/images 路径下找到，然后复制到其他地方保存，因为下次编译会覆盖。
+</div>
         </div>
       </a>
 
@@ -166,6 +279,17 @@
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-31&nbsp;&nbsp;
         
         
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/K2">K2</a>&nbsp;
+          
+            <a href="/tags/Padavan">Padavan</a>&nbsp;
+          
+            <a href="/tags/%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91">固件编译</a>&nbsp;
+          
+            <a href="/tags/%E5%AE%9A%E5%88%B6">定制</a>&nbsp;
+          
         
       </div>
     </div>
@@ -332,7 +456,7 @@ More info: Deployment
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "test Code 781&nbsp;",
+        "理性支配&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -394,51 +518,52 @@ More info: Deployment
 
   
   
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
           }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
     </script>
   
 
