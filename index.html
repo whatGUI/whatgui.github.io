@@ -133,6 +133,37 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%BF%98%E8%AE%B0%E5%AF%BC%E5%87%BAChrome%E4%B9%A6%E7%AD%BE%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/">
+        <p class="h4 index-header">「捯饬记录」忘记导出Chrome书签该怎么办？</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">记录时间：2020 年 1 月 7 日关键词：chrome 书签 路径 备份 导出 切换系统 系统崩了新安装的 win10+Ubuntu 双系统，切换进 Ubuntu 之后发现没有备份 Chrome 的书签，无法导入，但是又不想重启的情况下该怎么办？
+导出书签假如 win10 安装在 C 盘，则直接找到 win10 系统下 Chrome 的个人资料文件夹，C:\Users\[你的账户名]\AppData\Local\Google\Chrome\User Data\Default，在里面找到一个名为Bookmarks的文件，这个就是书签，复制并保存好。
+使用 Bookmarks 文件恢复书签很简单，直接复制到对应的个人资料文件夹即可，对于 Ubuntu 中的 Chrome 来说，其个人资料路径在/home/[你的账户名]/.config/google-chrome/Default。注意这里.config 文件夹是隐藏的，在文件管理器中按Ctrl+H即可显示隐藏文件。
+相似问题：系统崩溃后怎么导出书签？进不了系统可以找个 U 盘做一个 PE 系统（网上有很多教程），按路径进去手动提取 Bookmarks 文件即可，恢复也是直接复制到对应的个人资料文件夹就行。
+附上查看 Chrome 个人资料文件夹路径的方法以防万一，可以在直接在浏览器地址栏输入chrome://version/，会显示路径信息的。
+其实，登录账户使用云同步才是最方便的，如果登录 Chrome 不方便的话，那 Firefox 它不香么？
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-01-08&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/01/06/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E6%8A%8A%20Ubuntu%2019.10%20%E8%A3%85%E8%BF%9B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/">
         <p class="h4 index-header">「捯饬记录」把 Ubuntu 19.10 装进移动硬盘</p>
         
@@ -157,7 +188,7 @@ windows 无法安装到这个磁盘，安装程序不支持配置或安装通过
 
 经过反复试验了几次都不行，搜到的解决方法中
 sudo umount -l /isodevice
-sudo umount -l /cdrom都不起作用，而且手动卸载/cdrom 还会导致安装程序崩溃。所以只能得到一个推测性的结论：Ubuntu19.10 不能支持安装文件与进行安装的分区在同一个磁盘，即硬盘安装的方法行不通。当然也不排除移动硬盘的兼容性问题，因为没有更多的设备来做测试。
+sudo umount -l /cdrom都不起作用，而且手动卸载/cdrom 还会导致安装程序崩溃。)所以只能得到一个推测性的结论：Ubuntu19.10 不能支持安装文件与进行安装的分区在同一个磁盘，即硬盘安装的方法行不通。当然也不排除移动硬盘的兼容性问题，因为没有更多的设备来做测试。
 推荐常规安装方法（成功）
 确定电脑 bios 和移动硬盘分别为 UEFI+GPT 模式，空 U 盘格式化为 FAT32
 在 win10 下，双击打开 Ubuntu 的 iso 文件，复制其中的所有文件到 U 盘
@@ -168,7 +199,6 @@ sudo umount -l /cdrom都不起作用，而且手动卸载/cdrom 还会导致安�
 另外，在安装分区时建议在移动硬盘上建立单独的ESP分区（EFI）存放启动信息，开机时使用 bios 来切换选择系统即可。也可以在 bios 中将移动硬盘的启动顺序设为第一位，这样可以做到插上移动硬盘开机自动进入 Ubuntu，拔掉硬盘开机自动进入原 win10 系统。
 关于 UEFI 安装UEFI 会主动搜索 FAT32 分区中的 efi 文件来确定启动项，所以利用这种特性来安装系统，简单快捷还不需要安装其他工具。但是受 FAT32 单个文件最大 4GB 的限制，对于 iso 文件接近 5GB 的 win10 来说这个方法就不适用了，这种情况更加推荐 win10 的官方工具或者 Rufus。（貌似也有小部分主板的 UEFI 能支持 NTFS）
 END整个过程还被迫学会了一个强强操作：按住Alt+PrintScreen 再依次按 r、e、i、s、u、b，可以安全地强制 Ubuntu 系统重启。
-写到最后忍不住吐槽一下，总有一部分过时的教程占据了搜索结果的前排，一边搜还要一边验证它的有效性，唉，或者只是不会搜索吧。
 </div>
         </div>
       </a>
