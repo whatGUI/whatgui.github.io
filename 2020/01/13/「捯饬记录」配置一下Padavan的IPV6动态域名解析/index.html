@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="whatGUI">
   <meta name="keywords" content="">
-  <title>「捯饬记录」把 Ubuntu 19.10 装进移动硬盘 ~ whatGUI</title>
+  <title>「捯饬记录」配置一下Padavan的IPV6动态域名解析 ~ whatGUI</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -110,7 +110,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 一月 6日 2020, 6:39 晚上
+                  星期一, 一月 13日 2020, 8:05 晚上
                 </p>
               
 
@@ -119,7 +119,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    951 字
+                    2.1k 字
                   </span>&nbsp;
                 
 
@@ -127,7 +127,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      8 分钟
                   </span>&nbsp;
                 
 
@@ -160,35 +160,63 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="记录时间：2020-年-1-月-6-日"><a href="#记录时间：2020-年-1-月-6-日" class="headerlink" title="记录时间：2020 年 1 月 6 日"></a>记录时间：2020 年 1 月 6 日</h1><h2 id="关键词：Ubuntu-19-10-移动硬盘-Ubuntu安装-UEFI-GPT"><a href="#关键词：Ubuntu-19-10-移动硬盘-Ubuntu安装-UEFI-GPT" class="headerlink" title="关键词：Ubuntu 19.10 移动硬盘 Ubuntu安装 UEFI+GPT"></a>关键词：Ubuntu 19.10 移动硬盘 Ubuntu安装 UEFI+GPT</h2><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="https://whatgui.github.io/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/" target="_blank" rel="noopener">定制编译Padavan固件</a> 必须要用到 Linux 环境，考虑到 win10 wsl 较弱的 io 性能以及虚拟机性能，最后还是选择在物理机上安装一个 Ubuntu。但是又不想把电脑仅剩的一点硬盘空间分割出来献给 Ubuntu，于是打起了移动硬盘的主意。</p>
-<p>对于 win10，当你想要尝试通过 iso 直接安装到移动硬盘时只会得到：</p>
-<blockquote>
-<p>windows 无法安装到这个磁盘，安装程序不支持配置或安装通过 USB 或 IEEE1394 端口连接的磁盘</p>
-</blockquote>
-<p>这样的错误提示，因此只能借助 win to go 或者使用 VHD 的方法来安装。而对于 Ubuntu 好像没有这样的问题，可以直接安装。</p>
-<h2 id="现场情况"><a href="#现场情况" class="headerlink" title="现场情况"></a>现场情况</h2><p>1 台 win10 笔记本电脑（内置一块 SSD），一块 500G 移动硬盘（HDD），一个 16G U 盘以及 Ubuntu19.10 的 iso 文件（从 <a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener">这里</a> 下载的）</p>
-<h2 id="直接硬盘安装（失败）"><a href="#直接硬盘安装（失败）" class="headerlink" title="直接硬盘安装（失败）"></a>直接硬盘安装（失败）</h2><ol>
-<li>确定电脑 bios 和移动硬盘为 UEFI+GPT 模式</li>
-<li>给移动硬盘分出一个 3GB 的 FAT32 分区</li>
-<li>把 iso 包含的安装文件复制进这个分区</li>
-<li>重启，成功识别移动硬盘的安装文件并从中启动</li>
-<li>安装，分区完成点击现在安装，弹出错误提示：卸载/cdrom 分区失败，点击继续</li>
-<li>卡死在“正在探测文件系统…”</li>
+            <h1 id="记录时间：2020-年-1-月-8-日"><a href="#记录时间：2020-年-1-月-8-日" class="headerlink" title="记录时间：2020 年 1 月 8 日"></a>记录时间：2020 年 1 月 8 日</h1><h2 id="关键词：Padavan-IPV6-DDNS-邮件-脚本-stateless"><a href="#关键词：Padavan-IPV6-DDNS-邮件-脚本-stateless" class="headerlink" title="关键词：Padavan IPV6 DDNS 邮件 脚本 stateless"></a>关键词：Padavan IPV6 DDNS 邮件 脚本 stateless</h2><h2 id="START"><a href="#START" class="headerlink" title="START"></a>START</h2><p>想要体验一下拥有公网 IPV6 的便捷，无奈家庭宽带的 IP 都是动态分配的，为了方便使用只好找个 DDNS，本文采用的是 <a href="https://dynv6.com/" target="_blank" rel="noopener">dynv6</a> 提供的免费 DDNS 和二级域名。顺便说一下，Padavan 内置的 DDNS 貌似无法使用，那就只好用脚本来解决了。</p>
+<h2 id="使用脚本配置-DDNS"><a href="#使用脚本配置-DDNS" class="headerlink" title="使用脚本配置 DDNS"></a>使用脚本配置 DDNS</h2><h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><p>本文使用到的脚本适用于下图中的这种情况，WAN IP 与 LAN IP 都为无状态分配(stateless)，并且 pppoe 也在此路由器上进行，其他的路由配置情况没有测试，待测试后再来更新。</p>
+<p><img src="https://uploader.shimo.im/f/4BR4laYLTwUwowJu.png!thumbnail" srcset="/img/loading.gif" alt="图片"></p>
+<h3 id="路由器和下级设备的-DDNS"><a href="#路由器和下级设备的-DDNS" class="headerlink" title="路由器和下级设备的 DDNS"></a>路由器和下级设备的 DDNS</h3><p>脚本文件已经上传到了我的 GitHub， <a href="https://github.com/whatGUI/Padavan-DDNS-Solution" target="_blank" rel="noopener">可以点这里查看</a> 。注意！该脚本仅更新<code>临时地址</code>，不支持其他类型地址。</p>
+<ol>
+<li>首先通过 ssh 连接到路由器，然后执行以下命令来下载脚本到指定位置<pre><code>cd /etc/storage
+curl -Lk &quot;https://raw.githubusercontent.com/whatGUI/Padavan-DDNS-Solution/master/dynv6.sh&quot; &gt; dynv6.sh</code></pre></li>
+<li>写入 dynv6 账户信息：将下面命令中的<code>令牌</code>改为你注册 dynv6 得到的 token 信息，然后执行命令<pre><code>sed -i &quot;s/TOKEN/令牌/g&quot; dynv6.sh</code></pre></li>
+<li>添加可执行权限，保存已有的计划任务<pre><code>chmod +x dynv6.sh
+crontab -l &gt; dynv6cron</code></pre></li>
+<li>添加需要进行 DDNS 的设备，每 10 分钟自动执行一次检查。注意！把命令中的<code>域名</code>改为你的域名，比如 xxxx.dynv6.net，<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><pre><code>#参数格式说明：./dynv6.sh [模式] [域名] [设备名] [MAC 地址]
+</code></pre></li>
 </ol>
-<p>经过反复试验了几次都不行，搜到的解决方法中</p>
-<pre><code>sudo umount -l /isodevice
-sudo umount -l /cdrom</code></pre><p>都不起作用，而且手动卸载/cdrom 还会导致安装程序崩溃。<br><img src="https://uploader.shimo.im/f/R4MYfn9kmhc3oNrQ.jpg!thumbnail" srcset="/img/loading.gif" alt="图片"><br><img src="https://uploader.shimo.im/f/b8bHxKSFgG4Ad4Br.jpg!thumbnail" srcset="/img/loading.gif" alt="图片"><br>所以只能得到一个推测性的结论：Ubuntu19.10 不能支持安装文件与进行安装的分区在同一个磁盘，即硬盘安装的方法行不通。当然也不排除移动硬盘的兼容性问题，因为没有更多的设备来做测试。</p>
-<h2 id="推荐常规安装方法（成功）"><a href="#推荐常规安装方法（成功）" class="headerlink" title="推荐常规安装方法（成功）"></a>推荐常规安装方法（成功）</h2><ol>
-<li>确定电脑 bios 和移动硬盘分别为 UEFI+GPT 模式，空 U 盘格式化为 FAT32</li>
-<li>在 win10 下，双击打开 Ubuntu 的 iso 文件，复制其中的所有文件到 U 盘</li>
-<li>同时接上 U 盘与移动硬盘，重启，在 bios 启动选项中选择 U 盘</li>
-<li>根据安装向导完成安装（在安装选项选择<code>其他选项</code>，手动分区）</li>
-</ol>
-<p>这里如果手头没有 U 盘，也可以在电脑硬盘上临时分出一个 FAT32 分区来充当安装 U 盘的角色，大小要能装下 Ubuntu 的安装文件（Ubuntu19.10 分配 3GB 空间足够了），然后在重启时选择该分区的 efi 启动即可。</p>
-<p>另外，在安装分区时建议在移动硬盘上建立单独的<code>ESP分区</code>（EFI）存放启动信息，开机时使用 bios 来切换选择系统即可。也可以在 bios 中将移动硬盘的启动顺序设为第一位，这样可以做到插上移动硬盘开机自动进入 Ubuntu，拔掉硬盘开机自动进入原 win10 系统。</p>
-<h2 id="关于-UEFI-安装"><a href="#关于-UEFI-安装" class="headerlink" title="关于 UEFI 安装"></a>关于 UEFI 安装</h2><p>UEFI 会主动搜索 FAT32 分区中的 efi 文件来确定启动项，所以利用这种特性来安装系统，简单快捷还不需要安装其他工具。但是受 FAT32 单个文件最大 4GB 的限制，对于 iso 文件接近 5GB 的 win10 来说这个方法就不适用了，这种情况更加推荐 win10 的官方工具或者 Rufus。（貌似也有小部分主板的 UEFI 能支持 NTFS）</p>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>整个过程还被迫学会了一个强强操作：按住<code>Alt</code>+<code>PrintScreen</code> 再依次按 <code>r</code>、<code>e</code>、<code>i</code>、<code>s</code>、<code>u</code>、<code>b</code>，可以安全地强制 Ubuntu 系统重启。</p>
+<p>cat &gt;&gt; dynv6cron &lt;&lt;EOF<br>#添加路由器的 DDNS<br>*/10 * * * * /etc/storage/dynv6.sh router 域名<br>#添加下级设备的 DDNS<br>*/10 * * * * /etc/storage/dynv6.sh neigh 域名 设备名 MAC 地址</p>
+<h1 id="……"><a href="#……" class="headerlink" title="……"></a>……</h1><p>EOF</p>
+<p>#可以添加多个设备，每一行对应一个设备<br>#举例如下<br>#<em>/10 * * * * /etc/storage/dynv6.sh router xxx.dynv6.net<br>#</em>/10 * * * * /etc/storage/dynv6.sh neigh xxxx.dynv6.net phone 11:22:33:aa:bb:cc</p>
+<pre><code>5. 启动计划任务</code></pre><p>crontab dynv6cron</p>
+<pre><code>6. 在 Padavan 的后台管理页找到`高级设置`-&gt;`自定义设置`-&gt;`脚本`-&gt;`在 WAN 上行/下行启动后执行`中添加以下命令，就可以在重启路由后立即更新地址。</code></pre><p>#对于路由器<br>/etc/storage/dynv6.sh router 域名<br>#或者是下级设备<br>/etc/storage/dynv6.sh neigh 域名 设备名 MAC 地址</p>
+<pre><code>## 使用邮件的方式获得当前 IPV6 地址
+在搜集相关问题时，看到了这篇 [《IPV6网络下建立安全的家庭服务器[NAS]》](https://zhuanlan.zhihu.com/p/75247811) ，其中
 
+&gt;在 ipv6 下，由于不再只分配一个 ip 地址，而是一下子给了你海量的 ipv6 地址，这就形成了天然的安全屏障。大家都知道，要尝试对某个家庭服务器发起攻击尝试，首要的条件就是知道对方的服务器地址。
+&gt;最大的安全是什么，你的服务器 ipv6 地址只有你自己知道，如果你不对家庭服务器捆绑 DDNS(动态域名)，那么有心人即使知道了你家宽带今天 ipv6 的 64 位前缀，为了尝试获得服务器的真实 ipv6 地址，它需要对 16 亿亿个 ipv6 地址进行扫描，再牛的黑客，没有几年的时间是无法完成的。而你的 ipv6 地址一般每 3 天更换一次前缀，意味着黑客必须在 3 天内完成 16 亿亿个有效扫描，这是无法完成的任务。
+&gt;而如果你捆绑了动态域名，这就好比直接打开了你家 ipv6 网络的一道门，任何人只要知道你的动态域名，根本不需要扫描，就可以直接知道你服务器的 ipv6 地址，然后进行攻击尝试。
+&gt;由于家庭服务器，一般只为有限的家庭成员提供服务，因此服务器地址只需要家人能够解析就可以，因此通过服务器端发送邮件，用户直接在软件里自动通过电子邮件进行解析的方式，可以极大的保护建立在动态 ipv6 地址上的家庭服务器不被泄漏。
+&gt;使用这种方式，黑客要获取服务器 ipv6 地址，就必须尝试获取邮件，而电子邮箱由于是需要用户名和口令才能登录，而破解大公司的邮箱服务器口令和用户名是非常非常的困难。也就是通过电子邮件解析服务器地址的方法，对比使用动态域名，多了一道由电子邮箱提供的安全防火门，让你家的服务器 ip 地址真正大隐隐于市了。
+
+总结一下就是，使用 DDNS 域名一旦泄露被公布在互联网上，受到精准攻击的风险就会上升，因此直接使用动态变化的 IP 会安全一些。当然这只是针对自家家用用途，如果要对外提供服务还得上 DDNS。（下级设备可以使用 DHCPv6 stateful 有状态分配 ip，不推荐 EUI64 地址）
+
+### 自动发送新的 IP 到指定邮箱
+1. 下载脚本</code></pre><p>cd /etc/storage<br>curl -Lk “<a href="https://raw.githubusercontent.com/whatGUI/Padavan-DDNS-Solution/master/mailuip.sh&quot;" target="_blank" rel="noopener">https://raw.githubusercontent.com/whatGUI/Padavan-DDNS-Solution/master/mailuip.sh&quot;</a> &gt; mailuip.sh</p>
+<pre><code>2.  填写 SMTP 邮箱配置，把下面命令中的`SMTP 服务器地址``邮箱账号``邮箱密码``收件地址`，分别改为对应的项，然后执行命令</code></pre><p>sed -i “s/SERVER/SMTP 服务器地址/g” mailuip.sh<br>sed -i “s/ACCOUNT/邮箱账号/g” mailuip.sh<br>sed -i “s/PWD/邮箱密码/g” mailuip.sh<br>sed -i “s/TOWHO/收件地址/g” mailuip.sh</p>
+<pre><code>举例如下：</code></pre><p>#例子<br>#sed -i “s/SERVER/smtp.163.com/g” mailuip.sh<br>#sed -i “s/ACCOUNT/666666@163.com/g” mailuip.sh<br>#sed -i “s/PWD/123456/g” mailuip.sh<br>#sed -i “s/TOWHO/666@qq.com,<a href="mailto:555@qq.com">555@qq.com</a>/g” mailuip.sh  #若有多个收件人用英文逗号分开</p>
+<pre><code>3. 添加可执行权限，保存之前的计划任务</code></pre><p>chmod +x mailuip.sh<br>crontab -l &gt; mailcron</p>
+<pre><code>4. 添加需要发送 ip 的设备，每 10 分钟自动执行一次检查。注意！`设备名`自定但必须是英文否则会出错，`MAC 地址`要求按照带有冒号分隔符的格式，例如`xx:xx:xx:xx:xx:xx`</code></pre><p>#参数格式说明：./mailuip.sh [模式] [设备名] [MAC 地址]</p>
+<p>cat &gt;&gt; mailcron &lt;&lt;EOF<br>#添加路由器<br>*/10 * * * * /etc/storage/mailuip.sh router<br>#添加下级设备<br>#可以添加多个设备，每一行对应一个设备<br>*/10 * * * * /etc/storage/mailuip.sh neigh 设备名 MAC 地址</p>
+<h1 id="……-1"><a href="#……-1" class="headerlink" title="……"></a>……</h1><p>EOF</p>
+<p>#对于下级设备举例如下，注意空格不能丢<br>#<em>/10 * * * * /etc/storage/mailuip.sh neigh iphone 11:22:33:aa:bb:cc<br>#</em>/10 * * * * /etc/storage/mailuip.sh neigh mypc ee:ff:gg:11:22:33</p>
+<pre><code>5. 启动计划任务</code></pre><p>crontab mailcron</p>
+<pre><code>6. 在 Padavan 的后台管理页找到`高级设置`-&gt;`自定义设置`-&gt;`脚本`-&gt;`在 WAN 上行/下行启动后执行`中添加以下命令，就可以在重启路由后立即发送最新 IP 地址。</code></pre><p>#对于路由器<br>/etc/storage/mailuip.sh router<br>#或者是下级设备<br>/etc/storage/mailuip.sh neigh 设备名 MAC 地址</p>
+<pre><code>## END
+如果有问题欢迎来 [GitHub](https://github.com/whatGUI/Padavan-DDNS-Solution) 提交你的 issue。
+
+## 记一下编辑脚本时遇到的问题
+在 windows 下的换行与 Linux 的换行不同，互不兼容，这就导致在 windows 记事本中编辑过的 shell 脚本，放在 Linux 下无法运行。最后处理方法是用 VS Code 打开，点击右下角`CRLF`，选择行尾序列，改为`LF`保存即可。
+
+## 参考
+家用宽带的 IPv6 配置： [https://lwz322.github.io/2019/07/25/IPv6_Home.html](https://lwz322.github.io/2019/07/25/IPv6_Home.html)
+
+V2EX › 宽带症候群 如何远程找到家里设备的 IPV6 地址？： [https://www.v2ex.com/t/592571](https://www.v2ex.com/t/592571)
+
+知乎-IPV6 网络下建立安全的家庭服务器[NAS]： [https://zhuanlan.zhihu.com/p/75247811](https://zhuanlan.zhihu.com/p/75247811)
+
+老毛子华硕 Padavan 外网 IP 变化自动发送邮件脚本 Padavan 添加 shell 脚本： [https://aisoa.cn/post-2506.html](https://aisoa.cn/post-2506.html)
+
+ dynv6.com official update script: [https://gist.github.com/corny/7a07f5ac901844bd20c9](https://gist.github.com/corny/7a07f5ac901844bd20c9)
+</code></pre>
             <hr>
           </div>
           <br>
@@ -348,7 +376,7 @@ sudo umount -l /cdrom</code></pre><p>都不起作用，而且手动卸载/cdrom 
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "「捯饬记录」把 Ubuntu 19.10 装进移动硬盘&nbsp;",
+        "「捯饬记录」配置一下Padavan的IPV6动态域名解析&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
