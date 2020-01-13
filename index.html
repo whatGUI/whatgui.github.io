@@ -152,8 +152,7 @@ curl -Lk &quot;https://raw.githubusercontent.com/whatGUI/Padavan-DDNS-Solution/m
 crontab -l &gt; dynv6cron
 添加需要进行 DDNS 的设备，每 10 分钟自动执行一次检查。注意！把命令中的域名改为你的域名，比如 xxxx.dynv6.net，设备名自定但必须是英文否则会出错，MAC 地址要求按照带有冒号分隔符的格式，例如xx:xx:xx:xx:xx:xx```#参数格式说明：./dynv6.sh [模式] [域名] [设备名] [MAC 地址]cat &gt;&gt; dynv6cron &lt;&lt;EOF#添加路由器的 DDNS
 
-*/10 * * * * /etc/storage/dynv6.sh router 域名#添加下级设备的 DDNS*/10 * * * * /etc/storage/dynv6.sh neigh 域名 设备名 MAC 地址
-……EOF#可以添加多个设备，每一行对应一个设备#举例如下#/10 * * * * /etc/storage/dynv6.sh router xxx.dynv6.net#/10 * * * * /etc/storage/dynv6.sh neigh xxxx.dynv6.net phone 11:22:33:aa:bb:cc
+/10 * * * * /etc/storage/dynv6.sh router 域名#添加下级设备的 DDNS*/10 * * * * /etc/storage/dynv6.sh neigh 域名 设备名 MAC 地址EOF#可以添加多个设备，每一行对应一个设备#举例如下#/10 * * * * /etc/storage/dynv6.sh router xxx.dynv6.net#*/10 * * * * /etc/storage/dynv6.sh neigh xxxx.dynv6.net phone 11:22:33:aa:bb:cc
 5. 启动计划任务crontab dynv6cron
 6. 在 Padavan 的后台管理页找到`高级设置`-&gt;`自定义设置`-&gt;`脚本`-&gt;`在 WAN 上行/下行启动后执行`中添加以下命令，就可以在重启路由后立即更新地址。#对于路由器/etc/storage/dynv6.sh router 域名#或者是下级设备/etc/storage/dynv6.sh neigh 域名 设备名 MAC 地址
 ## 使用邮件的方式获得当前 IPV6 地址
@@ -172,8 +171,7 @@ crontab -l &gt; dynv6cron
 2.  填写 SMTP 邮箱配置，把下面命令中的`SMTP 服务器地址``邮箱账号``邮箱密码``收件地址`，分别改为对应的项，然后执行命令sed -i “s/SERVER/SMTP 服务器地址/g” mailuip.shsed -i “s/ACCOUNT/邮箱账号/g” mailuip.shsed -i “s/PWD/邮箱密码/g” mailuip.shsed -i “s/TOWHO/收件地址/g” mailuip.sh
 举例如下：#例子#sed -i “s/SERVER/smtp.163.com/g” mailuip.sh#sed -i “s/ACCOUNT/666666@163.com/g” mailuip.sh#sed -i “s/PWD/123456/g” mailuip.sh#sed -i “s/TOWHO/666@qq.com,555@qq.com/g” mailuip.sh  #若有多个收件人用英文逗号分开
 3. 添加可执行权限，保存之前的计划任务chmod +x mailuip.shcrontab -l &gt; mailcron
-4. 添加需要发送 ip 的设备，每 10 分钟自动执行一次检查。注意！`设备名`自定但必须是英文否则会出错，`MAC 地址`要求按照带有冒号分隔符的格式，例如`xx:xx:xx:xx:xx:xx`#参数格式说明：./mailuip.sh [模式] [设备名] [MAC 地址]cat &gt;&gt; mailcron &lt;&lt;EOF#添加路由器*/10 * * * * /etc/storage/mailuip.sh router#添加下级设备#可以添加多个设备，每一行对应一个设备*/10 * * * * /etc/storage/mailuip.sh neigh 设备名 MAC 地址
-……EOF#对于下级设备举例如下，注意空格不能丢#/10 * * * * /etc/storage/mailuip.sh neigh iphone 11:22:33:aa:bb:cc#/10 * * * * /etc/storage/mailuip.sh neigh mypc ee:ff:gg:11:22:33
+4. 添加需要发送 ip 的设备，每 10 分钟自动执行一次检查。注意！`设备名`自定但必须是英文否则会出错，`MAC 地址`要求按照带有冒号分隔符的格式，例如`xx:xx:xx:xx:xx:xx`#参数格式说明：./mailuip.sh [模式] [设备名] [MAC 地址]cat &gt;&gt; mailcron &lt;&lt;EOF#添加路由器/10 * * * * /etc/storage/mailuip.sh router#添加下级设备#可以添加多个设备，每一行对应一个设备*/10 * * * * /etc/storage/mailuip.sh neigh 设备名 MAC 地址EOF#对于下级设备举例如下，注意空格不能丢#/10 * * * * /etc/storage/mailuip.sh neigh iphone 11:22:33:aa:bb:cc#*/10 * * * * /etc/storage/mailuip.sh neigh mypc ee:ff:gg:11:22:33
 5. 启动计划任务crontab mailcron
 6. 在 Padavan 的后台管理页找到`高级设置`-&gt;`自定义设置`-&gt;`脚本`-&gt;`在 WAN 上行/下行启动后执行`中添加以下命令，就可以在重启路由后立即发送最新 IP 地址。#对于路由器/etc/storage/mailuip.sh router#或者是下级设备/etc/storage/mailuip.sh neigh 设备名 MAC 地址
 ## END
