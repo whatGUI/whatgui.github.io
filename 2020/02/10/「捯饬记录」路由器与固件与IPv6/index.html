@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="记录时间：2020 年 2 月 10 日关键词：……记录一下捯饬的这段时间，遇到的东西，一些想法。 源起太长不看版：一句话，就是为了和朋友联机游戏 那时候NAT还是我和朋友一起联机游戏的最大障碍，傻傻的在百度上寻找如何联机，网上的教程还是清一色的端口映射、DMZ以及hamachi。挨个试了一遍，无奈转去了网游。之后再没有了解过这些。 直到后来，一番盲目从众之后，手里就有了台免费的斐讯K2，开始刷起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「捯饬记录」路由器与固件与IPv6">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E5%9B%BA%E4%BB%B6%E4%B8%8EIPv6/index.html">
+<meta property="og:site_name" content="whatGUI">
+<meta property="og:description" content="记录时间：2020 年 2 月 10 日关键词：……记录一下捯饬的这段时间，遇到的东西，一些想法。 源起太长不看版：一句话，就是为了和朋友联机游戏 那时候NAT还是我和朋友一起联机游戏的最大障碍，傻傻的在百度上寻找如何联机，网上的教程还是清一色的端口映射、DMZ以及hamachi。挨个试了一遍，无奈转去了网游。之后再没有了解过这些。 直到后来，一番盲目从众之后，手里就有了台免费的斐讯K2，开始刷起">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-10T15:33:03.000Z">
+<meta property="article:modified_time" content="2020-02-12T14:53:42.238Z">
+<meta property="article:author" content="whatGUI">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/10/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E5%9B%BA%E4%BB%B6%E4%B8%8EIPv6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>「捯饬记录」路由器与固件与IPv6 | whatGUI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">whatGUI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E5%9B%BA%E4%BB%B6%E4%B8%8EIPv6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「捯饬记录」路由器与固件与IPv6
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-10T23:33:03+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="记录时间：2020-年-2-月-10-日"><a href="#记录时间：2020-年-2-月-10-日" class="headerlink" title="记录时间：2020 年 2 月 10 日"></a>记录时间：2020 年 2 月 10 日</h1><h2 id="关键词：……"><a href="#关键词：……" class="headerlink" title="关键词：……"></a>关键词：……</h2><p>记录一下捯饬的这段时间，遇到的东西，一些想法。</p>
+<h2 id="源起"><a href="#源起" class="headerlink" title="源起"></a>源起</h2><p>太长不看版：一句话，就是为了和朋友联机游戏</p>
+<p>那时候NAT还是我和朋友一起联机游戏的最大障碍，傻傻的在百度上寻找如何联机，网上的教程还是清一色的端口映射、DMZ以及hamachi。挨个试了一遍，无奈转去了网游。之后再没有了解过这些。</p>
+<p>直到后来，一番盲目从众之后，手里就有了台免费的斐讯K2，开始刷起了固件。当时疯传官方固件有后门，跟着教程刷上了老毛子，功能多但是基本不用，网络卡倒是家常便饭。之后又换了高恪的固件，当作普通路由用了很久不过现在也已经停更了。</p>
+<p>再之后国家开始大力推广ipv6，IT之家一篇科普ipv6的文章吸引了我的注意，当时就想，这不就表示每个人都有一个公网ip吗？简直就是联机游戏玩家的福音啊！正好朋友们回来联机，再考虑到移动和电信之间的网络状况，正是测试和利用一下ipv6的好时机。于是翻出了吃灰的K2，开始捯饬。</p>
+<h2 id="ssh与putty"><a href="#ssh与putty" class="headerlink" title="ssh与putty"></a>ssh与putty</h2><p>大多数教程都提到了客户端putty或者xshell。最后还是选择了putty，简单好用。在捯饬的过程中，有时候会频繁地连接ssh，每次都输用户名root和密码就很烦。于是找到了一个解决方法，这样ssh连接后会自动输入账户和密码：</p>
+<ol>
+<li>打开putty，填写好ip地址，在<code>Saved Sessions</code>里填一个名称，点击<code>Save</code>按钮保存并退出。</li>
+<li>右键putty.exe创建快捷方式，然后右键打开这个快捷方式的属性，在<code>目标</code>一栏最后添加如下字段并确定。名称即第一步填写的名称，注意-load前有一个空格。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> -load &quot;名称&quot; -l &quot;账户名(root)&quot; -pw &quot;ssh登录密码&quot;</span><br></pre></td></tr></table></figure>
+这样就可以做到打开快捷方式自动连接到路由器ssh，并且自动输入密码登录，是真的方便啊。<br>我火星了，最后经朋友的提醒，发现win10（目前是1909版）自带了ssh连接工具，使用的话也很方便。关于使用可以在powershell或者CMD都行，举个例子：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.1.1</span><br></pre></td></tr></table></figure>
+<h2 id="go语言与交叉编译"><a href="#go语言与交叉编译" class="headerlink" title="go语言与交叉编译"></a>go语言与交叉编译</h2><p>go作为一个现代编程语言，有其自身的优点，开发效率高且只有一个可执行文件。不过之前不了解交叉编译，在试用了go的交叉编译之后才发现，这个针对多平台适配是真的方便。</p>
+<h2 id="GitHub与github-actions"><a href="#GitHub与github-actions" class="headerlink" title="GitHub与github actions"></a>GitHub与github actions</h2><p>发现GitHub这个功能就是nb啊，处理器速度够快，下载一些软件包时网速也一度飙到了25MB/s。真的是极其方便的一个功能啊。关键是free，所以吹还是要吹一下的。</p>
+<h2 id="OpenWrt的WiFi驱动与内网传输速度"><a href="#OpenWrt的WiFi驱动与内网传输速度" class="headerlink" title="OpenWrt的WiFi驱动与内网传输速度"></a>OpenWrt的WiFi驱动与内网传输速度</h2><p>K2的OpenWrt固件（19.07.1 stable）内置的wifi驱动比起之前要好很多，但是在试用了一段时间之后发现还是有一些问题的。对外的上传和下载都很正常，但是利用wifi在局域网内传输文件（ftp、hfs）的速度却惨不忍睹，怎么解决呢？最后只好有线外接一个路由器做AP，这样传输速度就恢复正常了。暂时没什么办法只能等更新，不过在WiFi6都已经陆续登场的今天，这台老设备又还能坚持多久呢?</p>
+<h2 id="内网穿透与虚拟局域网"><a href="#内网穿透与虚拟局域网" class="headerlink" title="内网穿透与虚拟局域网"></a>内网穿透与虚拟局域网</h2><p>搜了一下，方法很多，只举几个试用过的：</p>
+<p>teamviewer vpn：pc端使用简单，但有人数限制，不过临时用用够用了。</p>
+<p>zerotier：对跨平台的支持好，配置也很简单。</p>
+<p>vpn：试用过wireguard，支持ipv6，体验佳，但是需要自己配置。</p>
+<p>其他还有frp之类的，需要vps</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>……</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%9C%A8OpenWrt%E4%B8%8A%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8Bwireguard%E6%9C%8D%E5%8A%A1%E7%AB%AF/" rel="prev" title="「捯饬记录」在OpenWrt上配置一下wireguard服务端">
+      <i class="fa fa-chevron-left"></i> 「捯饬记录」在OpenWrt上配置一下wireguard服务端
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/11/DLNA%E4%B8%8Ebubbleupnp%E7%9A%84%E5%87%A0%E7%A7%8D%E7%A5%9E%E5%A5%87%E7%94%A8%E9%80%94/" rel="next" title="DLNA与bubbleupnp的几种神奇用途">
+      DLNA与bubbleupnp的几种神奇用途 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录时间：2020-年-2-月-10-日"><span class="nav-number">1.</span> <span class="nav-text">记录时间：2020 年 2 月 10 日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词：……"><span class="nav-number">1.1.</span> <span class="nav-text">关键词：……</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源起"><span class="nav-number">1.2.</span> <span class="nav-text">源起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh与putty"><span class="nav-number">1.3.</span> <span class="nav-text">ssh与putty</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#go语言与交叉编译"><span class="nav-number">1.4.</span> <span class="nav-text">go语言与交叉编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub与github-actions"><span class="nav-number">1.5.</span> <span class="nav-text">GitHub与github actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenWrt的WiFi驱动与内网传输速度"><span class="nav-number">1.6.</span> <span class="nav-text">OpenWrt的WiFi驱动与内网传输速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内网穿透与虚拟局域网"><span class="nav-number">1.7.</span> <span class="nav-text">内网穿透与虚拟局域网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">1.8.</span> <span class="nav-text">END</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">whatGUI</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">whatGUI</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

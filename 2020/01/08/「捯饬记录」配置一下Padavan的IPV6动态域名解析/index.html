@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="记录时间：2020 年 1 月 8 日关键词：Padavan IPV6 DDNS 邮件 脚本 statelessSTART想要体验一下拥有公网 IPV6 的便捷，无奈家庭宽带的 IP 都是动态分配的，为了方便使用只好找个 DDNS，本文采用的是 dynv6 提供的免费 DDNS 和二级域名。顺便说一下，Padavan 内置的 DDNS 貌似无法使用，那就只好用脚本来解决了。 更新：不多赘述，具体查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「捯饬记录」配置一下Padavan的IPV6动态域名解析">
+<meta property="og:url" content="http://yoursite.com/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="whatGUI">
+<meta property="og:description" content="记录时间：2020 年 1 月 8 日关键词：Padavan IPV6 DDNS 邮件 脚本 statelessSTART想要体验一下拥有公网 IPV6 的便捷，无奈家庭宽带的 IP 都是动态分配的，为了方便使用只好找个 DDNS，本文采用的是 dynv6 提供的免费 DDNS 和二级域名。顺便说一下，Padavan 内置的 DDNS 貌似无法使用，那就只好用脚本来解决了。 更新：不多赘述，具体查">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploader.shimo.im/f/4BR4laYLTwUwowJu.png!thumbnail">
+<meta property="article:published_time" content="2020-01-08T15:33:03.000Z">
+<meta property="article:modified_time" content="2020-02-12T14:53:42.238Z">
+<meta property="article:author" content="whatGUI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploader.shimo.im/f/4BR4laYLTwUwowJu.png!thumbnail">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>「捯饬记录」配置一下Padavan的IPV6动态域名解析 | whatGUI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">whatGUI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「捯饬记录」配置一下Padavan的IPV6动态域名解析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-08 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-08T23:33:03+08:00">2020-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="记录时间：2020-年-1-月-8-日"><a href="#记录时间：2020-年-1-月-8-日" class="headerlink" title="记录时间：2020 年 1 月 8 日"></a>记录时间：2020 年 1 月 8 日</h1><h2 id="关键词：Padavan-IPV6-DDNS-邮件-脚本-stateless"><a href="#关键词：Padavan-IPV6-DDNS-邮件-脚本-stateless" class="headerlink" title="关键词：Padavan IPV6 DDNS 邮件 脚本 stateless"></a>关键词：Padavan IPV6 DDNS 邮件 脚本 stateless</h2><h2 id="START"><a href="#START" class="headerlink" title="START"></a>START</h2><p>想要体验一下拥有公网 IPV6 的便捷，无奈家庭宽带的 IP 都是动态分配的，为了方便使用只好找个 DDNS，本文采用的是 <a href="https://dynv6.com/" target="_blank" rel="noopener">dynv6</a> 提供的免费 DDNS 和二级域名。顺便说一下，Padavan 内置的 DDNS 貌似无法使用，那就只好用脚本来解决了。</p>
+<p>更新：不多赘述，具体查看这两个帖子 <a href="https://v2ex.com/t/608821?p=1" target="_blank" rel="noopener">家庭宽带 私设 web 被检测 魔都电信被停宽带</a> 和 <a href="https://v2ex.com/t/635028#reply63" target="_blank" rel="noopener">应对家宽 Web 的收紧，讨论一下在外网控制家庭设备的方案</a>，因此不再推荐自家家用用途采取DDNS的方法！推荐用邮件或其他方式获取ip，采用ip来访问，邮件脚本见下文。</p>
+<h2 id="使用脚本配置-DDNS"><a href="#使用脚本配置-DDNS" class="headerlink" title="使用脚本配置 DDNS"></a>使用脚本配置 DDNS</h2><h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><p>本文使用到的脚本适用于下图中的这种情况，WAN IP 与 LAN IP 都为无状态分配(stateless)，并且 pppoe 也在此路由器上进行，其他的路由配置情况没有测试，待测试后再来更新。</p>
+<p><img src="https://uploader.shimo.im/f/4BR4laYLTwUwowJu.png!thumbnail" alt="图片"></p>
+<h3 id="路由器和下级设备的-DDNS"><a href="#路由器和下级设备的-DDNS" class="headerlink" title="路由器和下级设备的 DDNS"></a>路由器和下级设备的 DDNS</h3><p>注意！该脚本仅更新<code>临时地址</code>，不支持其他类型地址。另外本脚本的IPV6地址直接使用ip命令和NDP获取，除了发送邮件外不会连接任何第三方服务器。</p>
+<ol>
+<li>什么方法都可以，只要把脚本文件放进路由器即可，这里以简单的winscp举例：用winscp连接到路由器，然后在/etc/storage目录下新建一个名为dynv6.sh的文本文件，复制以下脚本，并修改填写你的token信息。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash -e</span><br><span class="line">#脚本使用方法</span><br><span class="line">#.&#x2F;dynv6.sh [mode] [hostname] [name] [mac]    # mode: router or neigh</span><br><span class="line"></span><br><span class="line">########填写dynv6的token信息#######</span><br><span class="line">token&#x3D;xxxxxxxxxxxx</span><br><span class="line">#获取参数</span><br><span class="line">mode&#x3D;$1</span><br><span class="line">hostname&#x3D;$2</span><br><span class="line">name&#x3D;$&#123;3:-&#39;Router&#39;&#125;</span><br><span class="line">mac&#x3D;$4</span><br><span class="line">#有必要的话更改网络设备名</span><br><span class="line">device&#x3D;ppp0</span><br><span class="line"></span><br><span class="line">#模式选择错误处理</span><br><span class="line">if [ &quot;$mode&quot; !&#x3D; &quot;router&quot; -a &quot;$mode&quot; !&#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  echo &quot;please select router or neigh&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">#neigh模式处理下级设备IP</span><br><span class="line">if [ &quot;$mode&quot; &#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  if [ -z $mac ]; then</span><br><span class="line">    echo &quot;mac is empty&quot;</span><br><span class="line">    exit</span><br><span class="line">  fi</span><br><span class="line">  mac&#x3D;$( echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; )</span><br><span class="line">  file&#x3D;$HOME&#x2F;.dynv6.neigh.$name</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获得下级设备的ip</span><br><span class="line">  macinf&#x3D;$(echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; | awk  -F &#39;:&#39;  &#39;&#123;print $5$6&#125;&#39; )</span><br><span class="line">  ipaddress&#x3D;$(ip -6 neighbor | grep $mac | grep -v $macinf | grep -v &#39;fe80&#39; | awk &#39;&#123;print $1&#125;&#39;)</span><br><span class="line"></span><br><span class="line">  #router模式处理路由器IP</span><br><span class="line">  else</span><br><span class="line">  file&#x3D;$HOME&#x2F;.dynv6.router</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获取ip地址</span><br><span class="line">  ipaddress&#x3D;$(ip -6 addr list scope global $device | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#发送新的ipv6地址到dynv6</span><br><span class="line">curl -s -S -f -k &quot;https:&#x2F;&#x2F;dynv6.com&#x2F;api&#x2F;update?hostname&#x3D;$hostname&amp;ipv6&#x3D;$ipaddress&amp;token&#x3D;$token&quot;</span><br><span class="line"></span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br><span class="line"></span><br><span class="line">#打印系统日志</span><br><span class="line">logger 监测到设备 $name 的IPv6变更, dynv6 DDNS已完成同步</span><br></pre></td></tr></table></figure></li>
+<li>用ssh连接到路由器，对脚本文件添加可执行权限，保存已有的计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;storage</span><br><span class="line">chmod +x dynv6.sh</span><br><span class="line">crontab -l &gt; dynv6cron</span><br></pre></td></tr></table></figure></li>
+<li>添加需要进行 DDNS 的设备，每 10 分钟自动执行一次检查。注意！把命令中的<code>域名</code>改为你的域名，比如 xxxx.dynv6.net，<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#参数格式说明：.&#x2F;dynv6.sh [模式] [域名] [设备名] [MAC地址]</span><br><span class="line">cat &gt;&gt; dynv6cron &lt;&lt;EOF</span><br><span class="line">#添加路由器的DDNS</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh router 域名</span><br><span class="line">#添加下级设备的DDNS</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh 域名 设备名 MAC地址</span><br><span class="line">#                ......</span><br><span class="line">EOF</span><br><span class="line">#可以添加多个设备，每一行对应一个设备</span><br><span class="line">#举例如下</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh router xxx.dynv6.net</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh xxxx.dynv6.net phone 11:22:33:aa:bb:cc</span><br></pre></td></tr></table></figure></li>
+<li>启动计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab dynv6cron</span><br></pre></td></tr></table></figure></li>
+<li>在 Padavan 的后台管理页找到<code>高级设置</code>-&gt;<code>自定义设置</code>-&gt;<code>脚本</code>-&gt;<code>在 WAN 上行/下行启动后执行</code>中添加以下命令，就可以在重启路由后立即更新地址。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#对于路由器</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;dynv6.sh router 域名</span><br><span class="line">#或者是下级设备</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh 域名 设备名 MAC地址</span><br></pre></td></tr></table></figure>
+<h2 id="使用邮件的方式获得当前-IPV6-地址"><a href="#使用邮件的方式获得当前-IPV6-地址" class="headerlink" title="使用邮件的方式获得当前 IPV6 地址"></a>使用邮件的方式获得当前 IPV6 地址</h2>在搜集相关问题时，看到了这篇 <a href="https://zhuanlan.zhihu.com/p/75247811" target="_blank" rel="noopener">《IPV6网络下建立安全的家庭服务器[NAS]》</a> ，其中</li>
+</ol>
+<blockquote>
+<p>在 ipv6 下，由于不再只分配一个 ip 地址，而是一下子给了你海量的 ipv6 地址，这就形成了天然的安全屏障。大家都知道，要尝试对某个家庭服务器发起攻击尝试，首要的条件就是知道对方的服务器地址。</p>
+<blockquote>
+<p>最大的安全是什么，你的服务器 ipv6 地址只有你自己知道，如果你不对家庭服务器捆绑 DDNS(动态域名)，那么有心人即使知道了你家宽带今天 ipv6 的 64 位前缀，为了尝试获得服务器的真实 ipv6 地址，它需要对 16 亿亿个 ipv6 地址进行扫描，再牛的黑客，没有几年的时间是无法完成的。而你的 ipv6 地址一般每 3 天更换一次前缀，意味着黑客必须在 3 天内完成 16 亿亿个有效扫描，这是无法完成的任务。<br>而如果你捆绑了动态域名，这就好比直接打开了你家 ipv6 网络的一道门，任何人只要知道你的动态域名，根本不需要扫描，就可以直接知道你服务器的 ipv6 地址，然后进行攻击尝试。<br>由于家庭服务器，一般只为有限的家庭成员提供服务，因此服务器地址只需要家人能够解析就可以，因此通过服务器端发送邮件，用户直接在软件里自动通过电子邮件进行解析的方式，可以极大的保护建立在动态 ipv6 地址上的家庭服务器不被泄漏。<br>使用这种方式，黑客要获取服务器 ipv6 地址，就必须尝试获取邮件，而电子邮箱由于是需要用户名和口令才能登录，而破解大公司的邮箱服务器口令和用户名是非常非常的困难。也就是通过电子邮件解析服务器地址的方法，对比使用动态域名，多了一道由电子邮箱提供的安全防火门，让你家的服务器 ip 地址真正大隐隐于市了。</p>
+</blockquote>
+</blockquote>
+<p>总结一下就是，使用 DDNS 域名一旦泄露被公布在互联网上，受到精准攻击的风险就会上升，因此直接使用动态变化的 IP 会安全一些。当然这只是针对自家家用用途，如果要对外提供服务还得上 DDNS。（下级设备可以使用 DHCPv6 stateful 有状态分配 ip，不推荐 EUI64 地址）</p>
+<h3 id="自动发送新的-IP-到指定邮箱"><a href="#自动发送新的-IP-到指定邮箱" class="headerlink" title="自动发送新的 IP 到指定邮箱"></a>自动发送新的 IP 到指定邮箱</h3><ol>
+<li>用winscp在路由器中的/etc/storage目录下，新建一个文件名为mailuip.sh的文本文件，复制脚本内容如下，务必填写SMTP的配置信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash -e</span><br><span class="line">#脚本使用方法</span><br><span class="line">#.&#x2F;mailuip.sh [mode] [name] [mac]</span><br><span class="line"></span><br><span class="line">#SMTP配置   #（例子）</span><br><span class="line">#SMTP服务器#smtpserver&#x3D;smtp.126.com</span><br><span class="line">#邮箱账号#fromaddress&#x3D;xxxxxx@126.com</span><br><span class="line">#邮箱密码fromaddresspwd&#x3D;xxxxxxxxxxxxx</span><br><span class="line">#收件人信息#toaddress&#x3D;xxxxxx@qq.com 多个收件人用英文逗号分隔</span><br><span class="line"></span><br><span class="line">#SMTP配置</span><br><span class="line">smtpserver&#x3D;</span><br><span class="line">fromaddress&#x3D;</span><br><span class="line">fromaddresspwd&#x3D;</span><br><span class="line">toaddress&#x3D;</span><br><span class="line"></span><br><span class="line">#参数配置</span><br><span class="line">mode&#x3D;$1</span><br><span class="line">name&#x3D;$&#123;2:-&#39;Router&#39;&#125;</span><br><span class="line">mac&#x3D;$3</span><br><span class="line">#有必要的话更改网络设备名</span><br><span class="line">device&#x3D;ppp0</span><br><span class="line"></span><br><span class="line">#模式选择错误处理</span><br><span class="line">if [ &quot;$mode&quot; !&#x3D; &quot;router&quot; -a &quot;$mode&quot; !&#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  echo &quot;please select router or neigh mode&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">#neigh模式处理下级设备IP</span><br><span class="line">if [ &quot;$mode&quot; &#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  if [ -z $mac ]; then</span><br><span class="line">    echo &quot;mac is empty&quot;</span><br><span class="line">    exit</span><br><span class="line">  fi</span><br><span class="line">  mac&#x3D;$( echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; )</span><br><span class="line">  file&#x3D;$HOME&#x2F;.mailuip.neigh.$name</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获得下级设备的ip</span><br><span class="line">  macinf&#x3D;$(echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; | awk  -F &#39;:&#39;  &#39;&#123;print $5$6&#125;&#39; )</span><br><span class="line">  ipaddress&#x3D;$(ip -6 neighbor | grep $mac | grep -v $macinf | grep -v &#39;fe80&#39; | awk &#39;&#123;print $1&#125;&#39;)</span><br><span class="line"></span><br><span class="line">  #router模式处理路由器IP</span><br><span class="line">  else</span><br><span class="line">  file&#x3D;$HOME&#x2F;.mailuip.router</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获取ip地址</span><br><span class="line">  ipaddress&#x3D;$(ip -6 addr list scope global $device | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">mailtxt&#x3D;$HOME&#x2F;.mail.$name</span><br><span class="line">sdate&#x3D;&#96;date +%Y年%m月%d日%t%H:%M:%S&#96;</span><br><span class="line"></span><br><span class="line">#写好邮件</span><br><span class="line">cat &gt; $mailtxt &lt;&lt;EOF</span><br><span class="line">From:$&#123;fromaddress&#125;</span><br><span class="line">To:$&#123;toaddress&#125;</span><br><span class="line">Subject:IP发生变更，打开查看详情</span><br><span class="line">系统于 $&#123;sdate&#125; 检测到设备：$&#123;name&#125; 的IP已发生变更！</span><br><span class="line">新的IP为  $&#123;ipaddress&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#发送邮件</span><br><span class="line">sendmail -f $fromaddress -t $toaddress -S $smtpserver -au$fromaddress -ap$fromaddresspwd &lt; $mailtxt</span><br><span class="line"></span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br><span class="line"></span><br><span class="line">#打印系统日志</span><br><span class="line">logger 监测到设备 $name 的IPv6变更,已邮件通知 $toaddress</span><br></pre></td></tr></table></figure></li>
+<li>ssh连接到路由器，添加mailuip,sh的可执行权限，保存之前的计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;storage</span><br><span class="line">chmod +x mailuip.sh</span><br><span class="line">crontab -l &gt; mailcron</span><br></pre></td></tr></table></figure></li>
+<li>添加需要发送 ip 的设备，每 10 分钟自动执行一次检查。注意！<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#参数格式说明：.&#x2F;mailuip.sh [模式] [设备名] [MAC地址]</span><br><span class="line">cat &gt;&gt; mailcron &lt;&lt;EOF</span><br><span class="line">#添加路由器</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh router</span><br><span class="line">#添加下级设备</span><br><span class="line">#可以添加多个设备，每一行对应一个设备</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh 设备名 MAC地址</span><br><span class="line">#                ......</span><br><span class="line">EOF</span><br><span class="line">#对于下级设备举例如下，注意空格不能丢</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh iphone 11:22:33:aa:bb:cc</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh mypc ee:ff:gg:11:22:33</span><br></pre></td></tr></table></figure></li>
+<li>启动计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab mailcron</span><br></pre></td></tr></table></figure></li>
+<li>在 Padavan 的后台管理页找到<code>高级设置</code>-&gt;<code>自定义设置</code>-&gt;<code>脚本</code>-&gt;<code>在 WAN 上行/下行启动后执行</code>中添加以下命令，就可以在重启路由后立即发送最新 IP 地址。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#对于路由器</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;mailuip.sh router</span><br><span class="line">#或者是下级设备</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh 设备名 MAC地址</span><br></pre></td></tr></table></figure>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><h2 id="记一下编辑脚本时遇到的问题"><a href="#记一下编辑脚本时遇到的问题" class="headerlink" title="记一下编辑脚本时遇到的问题"></a>记一下编辑脚本时遇到的问题</h2>在 windows 下的换行与 Linux 的换行不同，互不兼容，这就导致在 windows 记事本中编辑过的 shell 脚本，放在 Linux 下无法运行。最后处理方法是用 VS Code 打开，点击右下角<code>CRLF</code>，选择行尾序列，改为<code>LF</code>保存即可。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>家用宽带的 IPv6 配置： <a href="https://lwz322.github.io/2019/07/25/IPv6_Home.html" target="_blank" rel="noopener">https://lwz322.github.io/2019/07/25/IPv6_Home.html</a></p>
+<p>V2EX › 宽带症候群 如何远程找到家里设备的 IPV6 地址？： <a href="https://www.v2ex.com/t/592571" target="_blank" rel="noopener">https://www.v2ex.com/t/592571</a></p>
+<p>知乎-IPV6 网络下建立安全的家庭服务器[NAS]： <a href="https://zhuanlan.zhihu.com/p/75247811" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/75247811</a></p>
+<p>老毛子华硕 Padavan 外网 IP 变化自动发送邮件脚本 Padavan 添加 shell 脚本： <a href="https://aisoa.cn/post-2506.html" target="_blank" rel="noopener">https://aisoa.cn/post-2506.html</a></p>
+<p> dynv6.com official update script: <a href="https://gist.github.com/corny/7a07f5ac901844bd20c9" target="_blank" rel="noopener">https://gist.github.com/corny/7a07f5ac901844bd20c9</a></p>
+<p>V2EX › 宽带症候群 家庭宽带 私设 web 被检测 魔都电信被停宽带: <a href="https://v2ex.com/t/608821?p=1" target="_blank" rel="noopener">https://v2ex.com/t/608821?p=1</a></p>
+<p> V2EX › 宽带症候群 应对家宽 Web 的收紧，讨论一下在外网控制家庭设备的方案: <a href="https://v2ex.com/t/635028#reply63" target="_blank" rel="noopener">https://v2ex.com/t/635028#reply63</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/07/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%BF%98%E8%AE%B0%E5%AF%BC%E5%87%BAChrome%E4%B9%A6%E7%AD%BE%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/" rel="prev" title="「捯饬记录」忘记导出Chrome书签该怎么办？">
+      <i class="fa fa-chevron-left"></i> 「捯饬记录」忘记导出Chrome书签该怎么办？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/16/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%93%E9%AA%8C%E4%B8%80%E4%B8%8BGitHub%E7%9A%84%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91/" rel="next" title="「捯饬记录」体验一下GitHub的自动编译">
+      「捯饬记录」体验一下GitHub的自动编译 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录时间：2020-年-1-月-8-日"><span class="nav-number">1.</span> <span class="nav-text">记录时间：2020 年 1 月 8 日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词：Padavan-IPV6-DDNS-邮件-脚本-stateless"><span class="nav-number">1.1.</span> <span class="nav-text">关键词：Padavan IPV6 DDNS 邮件 脚本 stateless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#START"><span class="nav-number">1.2.</span> <span class="nav-text">START</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用脚本配置-DDNS"><span class="nav-number">1.3.</span> <span class="nav-text">使用脚本配置 DDNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用前提"><span class="nav-number">1.3.1.</span> <span class="nav-text">使用前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由器和下级设备的-DDNS"><span class="nav-number">1.3.2.</span> <span class="nav-text">路由器和下级设备的 DDNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用邮件的方式获得当前-IPV6-地址"><span class="nav-number">1.4.</span> <span class="nav-text">使用邮件的方式获得当前 IPV6 地址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自动发送新的-IP-到指定邮箱"><span class="nav-number">1.4.1.</span> <span class="nav-text">自动发送新的 IP 到指定邮箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">1.5.</span> <span class="nav-text">END</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记一下编辑脚本时遇到的问题"><span class="nav-number">1.6.</span> <span class="nav-text">记一下编辑脚本时遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.7.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">whatGUI</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">whatGUI</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

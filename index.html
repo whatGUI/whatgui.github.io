@@ -165,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/14/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/DLNA%E4%B8%8Ebubbleupnp%E7%9A%84%E5%87%A0%E7%A7%8D%E7%A5%9E%E5%A5%87%E7%94%A8%E9%80%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -179,7 +179,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/01/14/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">「捯饬记录」配置一下Padavan的IPV6动态域名解析</a>
+            <a href="/2020/02/11/DLNA%E4%B8%8Ebubbleupnp%E7%9A%84%E5%87%A0%E7%A7%8D%E7%A5%9E%E5%A5%87%E7%94%A8%E9%80%94/" class="post-title-link" itemprop="url">DLNA与bubbleupnp的几种神奇用途</a>
         </h1>
 
         <div class="post-meta">
@@ -188,10 +188,641 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-14 11:43:06 / 修改时间：11:58:21" itemprop="dateCreated datePublished" datetime="2020-01-14T11:43:06+08:00">2020-01-14</time>
+              <time title="创建时间：2020-02-11 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-11T23:33:03+08:00">2020-02-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:49:46" itemprop="dateModified" datetime="2020-02-12T22:49:46+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-2-月-11-日"><a href="#记录时间：2020-年-2-月-11-日" class="headerlink" title="记录时间：2020 年 2 月 11 日"></a>记录时间：2020 年 2 月 11 日</h1><p>各种视频app基本都支持投屏功能（或者叫DLNA），这给用电视看视频带来了极大的方便。于是就比较好奇这个投屏能不能用在手机上，四处搜寻终于找到了办法，于是记录分享一下。</p>
+<h2 id="下载和一些必要的设置"><a href="#下载和一些必要的设置" class="headerlink" title="下载和一些必要的设置"></a>下载和一些必要的设置</h2><p>这个神奇的app叫<code>bubbleupnp</code>，在应用宝、豌豆荚、应用汇之类的都有，或者去下官方的最新版也可以 地址：<a href="https://bubblesoftapps.com/bubbleupnp/latest/" target="_blank" rel="noopener">https://bubblesoftapps.com/bubbleupnp/latest/</a></p>
+<p>下载并安装好app之后，还需要设置一下默认的视频播放器：</p>
+<p>在设置中找到<strong>Local Renderer</strong>，打开之后在最下方找到<strong>Video player - remote control</strong>，然后选择一个视频播放器。这里如果没有可以去下载一个VLC或者MX player再试。</p>
+<h2 id="几个具体用途的例子"><a href="#几个具体用途的例子" class="headerlink" title="几个具体用途的例子"></a>几个具体用途的例子</h2><p>大部分情况是作为接收端(DMR)来使用，除了最后一种是作为服务端(DMS)。</p>
+<ol>
+<li>间接实现百度网盘app原画播放和倍速播放：在当前手机或者同一个wifi连接下的其他手机上启动bubbleupnp，投屏到设备上就可以实现了，至于倍速播放则是大部分视频播放器都有的功能。</li>
+<li>可以临时把有线音箱改造成无线音箱：找一个旧手机装上bubbleupnp，用公对公的音频线连接到音箱，这样在同一个wifi下就可以用另一台手机来遥控播放音乐了，比如网易云音乐app，在设置中开启连接DLNA设备，播放到旧手机就ok了。</li>
+<li>白嫖舍友的视频会员：假设一个舍友开了会员，但是自己想看的电影却刚好没有会员，立刻装上这个app，连接同一个wifi，让舍友投屏过来就好了。只要视频投屏成功开始播放了，就可以放你的舍友走了，因为播放不需要投屏端(DMS)的任何控制。</li>
+<li>直播与弹幕分屏播放：直接把直播投屏到另一台手机，轻松实现了。当然你要是两台都装了播放器那忽略这条。。。</li>
+<li>作一个简单的本地DLNA服务器：在设置中找到Local and Cloud，启用Enable remote browsing即可。如果再搭配上aria2、ftp、zerotier这些app简直再好不过了。<h2 id="一些可能出现的失效问题"><a href="#一些可能出现的失效问题" class="headerlink" title="一些可能出现的失效问题"></a>一些可能出现的失效问题</h2>这个app在部分手机上可能会失效，手里的一台红米note5 miui10就总是投屏失败，╮(╯▽╰)╭ 不过在升级到miui10之前是可以的。另外现在新版免费版的有些限制，用30分钟之后可能需要重启一下app才能继续用，好用的话在play上入正也不错。最后还有一种情况，作为DLNA服务器时Android的省电机制时不时跳出来杀杀后台，也可能导致失效。</li>
+</ol>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>应该还有很多种用法，在这里抛砖引玉。</p>
+<p>现在感觉投屏功能是真的良心，且用且珍惜，毕竟真要哪天收费了也无可非议啊。当然了，有时候充个会员也能省事省心。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E5%9B%BA%E4%BB%B6%E4%B8%8EIPv6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/10/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B8%8E%E5%9B%BA%E4%BB%B6%E4%B8%8EIPv6/" class="post-title-link" itemprop="url">「捯饬记录」路由器与固件与IPv6</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-10T23:33:03+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-2-月-10-日"><a href="#记录时间：2020-年-2-月-10-日" class="headerlink" title="记录时间：2020 年 2 月 10 日"></a>记录时间：2020 年 2 月 10 日</h1><h2 id="关键词：……"><a href="#关键词：……" class="headerlink" title="关键词：……"></a>关键词：……</h2><p>记录一下捯饬的这段时间，遇到的东西，一些想法。</p>
+<h2 id="源起"><a href="#源起" class="headerlink" title="源起"></a>源起</h2><p>太长不看版：一句话，就是为了和朋友联机游戏</p>
+<p>那时候NAT还是我和朋友一起联机游戏的最大障碍，傻傻的在百度上寻找如何联机，网上的教程还是清一色的端口映射、DMZ以及hamachi。挨个试了一遍，无奈转去了网游。之后再没有了解过这些。</p>
+<p>直到后来，一番盲目从众之后，手里就有了台免费的斐讯K2，开始刷起了固件。当时疯传官方固件有后门，跟着教程刷上了老毛子，功能多但是基本不用，网络卡倒是家常便饭。之后又换了高恪的固件，当作普通路由用了很久不过现在也已经停更了。</p>
+<p>再之后国家开始大力推广ipv6，IT之家一篇科普ipv6的文章吸引了我的注意，当时就想，这不就表示每个人都有一个公网ip吗？简直就是联机游戏玩家的福音啊！正好朋友们回来联机，再考虑到移动和电信之间的网络状况，正是测试和利用一下ipv6的好时机。于是翻出了吃灰的K2，开始捯饬。</p>
+<h2 id="ssh与putty"><a href="#ssh与putty" class="headerlink" title="ssh与putty"></a>ssh与putty</h2><p>大多数教程都提到了客户端putty或者xshell。最后还是选择了putty，简单好用。在捯饬的过程中，有时候会频繁地连接ssh，每次都输用户名root和密码就很烦。于是找到了一个解决方法，这样ssh连接后会自动输入账户和密码：</p>
+<ol>
+<li>打开putty，填写好ip地址，在<code>Saved Sessions</code>里填一个名称，点击<code>Save</code>按钮保存并退出。</li>
+<li>右键putty.exe创建快捷方式，然后右键打开这个快捷方式的属性，在<code>目标</code>一栏最后添加如下字段并确定。名称即第一步填写的名称，注意-load前有一个空格。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> -load &quot;名称&quot; -l &quot;账户名(root)&quot; -pw &quot;ssh登录密码&quot;</span><br></pre></td></tr></table></figure>
+这样就可以做到打开快捷方式自动连接到路由器ssh，并且自动输入密码登录，是真的方便啊。<br>我火星了，最后经朋友的提醒，发现win10（目前是1909版）自带了ssh连接工具，使用的话也很方便。关于使用可以在powershell或者CMD都行，举个例子：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.1.1</span><br></pre></td></tr></table></figure>
+<h2 id="go语言与交叉编译"><a href="#go语言与交叉编译" class="headerlink" title="go语言与交叉编译"></a>go语言与交叉编译</h2><p>go作为一个现代编程语言，有其自身的优点，开发效率高且只有一个可执行文件。不过之前不了解交叉编译，在试用了go的交叉编译之后才发现，这个针对多平台适配是真的方便。</p>
+<h2 id="GitHub与github-actions"><a href="#GitHub与github-actions" class="headerlink" title="GitHub与github actions"></a>GitHub与github actions</h2><p>发现GitHub这个功能就是nb啊，处理器速度够快，下载一些软件包时网速也一度飙到了25MB/s。真的是极其方便的一个功能啊。关键是free，所以吹还是要吹一下的。</p>
+<h2 id="OpenWrt的WiFi驱动与内网传输速度"><a href="#OpenWrt的WiFi驱动与内网传输速度" class="headerlink" title="OpenWrt的WiFi驱动与内网传输速度"></a>OpenWrt的WiFi驱动与内网传输速度</h2><p>K2的OpenWrt固件（19.07.1 stable）内置的wifi驱动比起之前要好很多，但是在试用了一段时间之后发现还是有一些问题的。对外的上传和下载都很正常，但是利用wifi在局域网内传输文件（ftp、hfs）的速度却惨不忍睹，怎么解决呢？最后只好有线外接一个路由器做AP，这样传输速度就恢复正常了。暂时没什么办法只能等更新，不过在WiFi6都已经陆续登场的今天，这台老设备又还能坚持多久呢?</p>
+<h2 id="内网穿透与虚拟局域网"><a href="#内网穿透与虚拟局域网" class="headerlink" title="内网穿透与虚拟局域网"></a>内网穿透与虚拟局域网</h2><p>搜了一下，方法很多，只举几个试用过的：</p>
+<p>teamviewer vpn：pc端使用简单，但有人数限制，不过临时用用够用了。</p>
+<p>zerotier：对跨平台的支持好，配置也很简单。</p>
+<p>vpn：试用过wireguard，支持ipv6，体验佳，但是需要自己配置。</p>
+<p>其他还有frp之类的，需要vps</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>……</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%9C%A8OpenWrt%E4%B8%8A%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8Bwireguard%E6%9C%8D%E5%8A%A1%E7%AB%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%9C%A8OpenWrt%E4%B8%8A%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8Bwireguard%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="post-title-link" itemprop="url">「捯饬记录」在OpenWrt上配置一下wireguard服务端</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-08 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-08T23:33:03+08:00">2020-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:54:53" itemprop="dateModified" datetime="2020-02-12T22:54:53+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-2-月-8-日"><a href="#记录时间：2020-年-2-月-8-日" class="headerlink" title="记录时间：2020 年 2 月 8 日"></a>记录时间：2020 年 2 月 8 日</h1><h2 id="关键词：OpenWrt-wireguard-配置-ipv6"><a href="#关键词：OpenWrt-wireguard-配置-ipv6" class="headerlink" title="关键词：OpenWrt wireguard 配置 ipv6"></a>关键词：OpenWrt wireguard 配置 ipv6</h2><h2 id="记录用途"><a href="#记录用途" class="headerlink" title="记录用途"></a>记录用途</h2><p>路由器作为服务端，利用ipv6方便地连接到家庭内网，传输文件，局域网游戏等等</p>
+<h2 id="记录环境"><a href="#记录环境" class="headerlink" title="记录环境"></a>记录环境</h2><p>K2路由器(PSG1218) OpenWrt 19.07.1 固件 ，家庭宽带 ipv6</p>
+<p>安装的openwrt 软件包：wireguard  luci-app-wireguard 以及汉化包 luci-i18n-wireguard-zh-cn luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn</p>
+<h2 id="luci管理界面直接配置"><a href="#luci管理界面直接配置" class="headerlink" title="luci管理界面直接配置"></a>luci管理界面直接配置</h2><ol>
+<li><strong>添加接口</strong></li>
+</ol>
+<p>依次找到<a href="http://openwrt.lan/cgi-bin/luci/admin/network/network" target="_blank" rel="noopener">网络-&gt;接口</a>-&gt;添加新接口，设置内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">名称：wg</span><br><span class="line">协议：WireGuard VPN</span><br></pre></td></tr></table></figure>
+<p>然后创建接口。</p>
+<ol>
+<li><strong>接口&gt;&gt;wg 基本设置</strong></li>
+</ol>
+<p>分别填写举例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">私钥：Yczs1a2s5dRib6UUEl2a14Wd0OuZ8gVy&#x2F;Cz6UgjiQI&#x3D; （必须由程序生成）</span><br><span class="line">监听端口：23333 （可以在1~65535范围内选择，尽量大一些，另外注意避免与常用端口冲突）</span><br><span class="line">IP地址:  192.168.10.1 （填写一个私人的子网ipv4地址，不能与已有的网段冲突）</span><br></pre></td></tr></table></figure>
+<p>关于公钥私钥的获得：可以在Android或者windows等客户端上，选择手动添加配置，就会自动生成一组，然后直接复制private key填写在这里即可。另外public key也要保存一下，客户端的配置需要用到。</p>
+<p>也可以ssh到openwrt，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wg genkey | tee privatekey | wg pubkey &gt; publickey</span><br></pre></td></tr></table></figure>
+<p>在privatekey文件中得到私钥，在publickey文件得到公钥。</p>
+<ol>
+<li><strong>接口&gt;&gt;wg 防火墙设置</strong></li>
+</ol>
+<p>创建/分配防火墙区域：选择<code>lan</code></p>
+<ol>
+<li><strong>接口&gt;&gt;wg Peers</strong></li>
+</ol>
+<p>点击<code>添加对等点</code>，填写配置举例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">描述（可选）：android111  （自定一个客户端的英文名称）</span><br><span class="line">公钥：WKpXJN&#x2F;qy1d6541WxUQuhMPxfE6vQ6r5+LvO1xFZT38&#x3D;  （填写客户端的公钥，而不是服务端的）</span><br><span class="line">允许的 IP：192.168.10.2  （允许客户端在VPN网络中使用的ip地址）</span><br><span class="line">路由允许的 IP：√  （这里一定要选中！不然无法访问内网设备）</span><br><span class="line">持续 Keep-Alive（可选）：25  （若对方客户端网络是在NAT后的环境，则需要开启，但ipv6基本不存在NAT所以不用开启）</span><br></pre></td></tr></table></figure>
+<p>然后保存并应用。若需要添加更多客户端，只需要重复这一步添加更多的Peers即可，最基本的只要填写对应的<code>公钥</code>和<code>允许的IP</code>即可。</p>
+<ol>
+<li><strong>设置防火墙开放监听端口</strong></li>
+</ol>
+<p>依次找到网络-&gt;防火墙-&gt;通信规则-&gt;添加，打开的页面为防火墙 - 通信规则 - 未命名规则，在基本设置中只需修改如下几项，其他项默认即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">名称：Allow_Wireguard-Inbound   （名称任意，只要是便于识别的英文即可）</span><br><span class="line">协议：UDP        （wireguard只支持UDP协议）</span><br><span class="line">源区域：任意区域（转发）</span><br><span class="line">目标区域：设备（输入）</span><br><span class="line">目标端口：23333      （这个目标端口必须与第2步设置的监听端口一致）</span><br></pre></td></tr></table></figure>
+<p>然后保存并应用。最后还需要重启一次wg接口或路由器才会生效。一旦连接成功可以在 状态-&gt;Wireguard状态 中看到相关的信息。</p>
+<h2 id="对客户端的配置"><a href="#对客户端的配置" class="headerlink" title="对客户端的配置"></a>对客户端的配置</h2><p>推荐参考这篇文章：</p>
+<p>自己搭建WireGuard给Android用：<a href="https://mine260309.me/archives/1697" target="_blank" rel="noopener">https://mine260309.me/archives/1697</a></p>
+<p>如果要配置windows端或其他平台，可以先在手机端配置好后，导出配置文件再发送过去直接导入配置就行了。因为感觉windows客户端目前用起来还是有点简陋啊，静待更新吧。</p>
+<h2 id="关于wireguard"><a href="#关于wireguard" class="headerlink" title="关于wireguard"></a>关于wireguard</h2><p>其实wireguard本身的设计是既可以作为服务端也可以作为客户端的，所以说一个端点起什么作用只看你的接口(interface)和对等端(peers)设置是如何填写的了。</p>
+<p>由于之前对于非对称加密没什么了解，在配置时就被自己坑了，弄错了公钥和私钥的使用对象。所以以配置过程为例，稍稍记录一下这个关系。</p>
+<p>interface为本机的相关信息，peers为对方的相关信息。无论服务端还是客户端，在一个完整的配置中，peers的公钥只填写对方设备的公钥，而私钥则是本机（interface）自己的。一开始配置时没有搞清楚这个公私钥的关系，考虑了半天才明白就是这么简单。对于生成的一对公钥和私钥，私钥只给自己用，公钥则交给对方使用。</p>
+<h2 id="非ipv6的备选方案"><a href="#非ipv6的备选方案" class="headerlink" title="非ipv6的备选方案"></a>非ipv6的备选方案</h2><p>如果没有ipv6或公网ip怎么办？ 推荐使用<a href="https://www.zerotier.com/" target="_blank" rel="noopener">ZeroTier</a>，而且这个感觉使用和配置更简单一些。</p>
+<h2 id="关于记录"><a href="#关于记录" class="headerlink" title="关于记录"></a>关于记录</h2><p>没有整到用起来流畅的图床，只能用文字记录了</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>自己搭建WireGuard给Android用：<a href="https://mine260309.me/archives/1697" target="_blank" rel="noopener">https://mine260309.me/archives/1697</a></p>
+<p>Setting up a WireGuard server on OpenWRT：<a href="https://blog.birkhoff.me/setting-up-a-wireguard-server-on-openwrt/" target="_blank" rel="noopener">https://blog.birkhoff.me/setting-up-a-wireguard-server-on-openwrt/</a></p>
+<p>记 WireGuard 部署及注意事项：<a href="https://yooooex.com/2019/05/23/wireguard-deploy/" target="_blank" rel="noopener">https://yooooex.com/2019/05/23/wireguard-deploy/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%BF%E7%94%A8image%20builder%E4%B8%BAK2%E7%AE%80%E5%8D%95%E6%89%93%E5%8C%85%E4%B8%80%E4%B8%AAopenwrt%E5%9B%BA%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/01/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%BF%E7%94%A8image%20builder%E4%B8%BAK2%E7%AE%80%E5%8D%95%E6%89%93%E5%8C%85%E4%B8%80%E4%B8%AAopenwrt%E5%9B%BA%E4%BB%B6/" class="post-title-link" itemprop="url">「捯饬记录」使用image builder为K2简单打包一个openwrt固件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-01 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-01T23:33:03+08:00">2020-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-2-月-1-日"><a href="#记录时间：2020-年-2-月-1-日" class="headerlink" title="记录时间：2020 年 2 月 1 日"></a>记录时间：2020 年 2 月 1 日</h1><h2 id="关键词：OpenWrt-imagebuilder-K2-package-固件打包"><a href="#关键词：OpenWrt-imagebuilder-K2-package-固件打包" class="headerlink" title="关键词：OpenWrt imagebuilder K2 package 固件打包"></a>关键词：OpenWrt imagebuilder K2 package 固件打包</h2><p>K2在openwrt官方支持的固件列表里为psg1218a，如果没有做任何硬改，直接使用官方的固件也很不错。另外相比从源码开始编译，使用imagebuilder来做简单的固件定制更方便快捷体积小（其实就是提前把软件包集成在固件中）。</p>
+<p>此记录全程以K2路由器为例，其他路由器需要找到相对应的下载地址，请灵活变通。另外要注意涉及的下载、镜像地址和脚本可能在未来过时或失效。</p>
+<h2 id="使用imagebuilder打包"><a href="#使用imagebuilder打包" class="headerlink" title="使用imagebuilder打包"></a>使用imagebuilder打包</h2><ol>
+<li>下载image builder</li>
+</ol>
+<p>在清华镜像站下载image builder <a href="https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/</a></p>
+<p>K2的19.07.1版本在<a href="https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/19.07.1/targets/ramips/mt7620/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/19.07.1/targets/ramips/mt7620/</a></p>
+<p>文件名为openwrt-imagebuilder-19.07.1-ramips-mt7620.Linux-x86_64.tar.xz</p>
+<p>直接使用文件管理器，解压这个压缩包到主目录，打开解压出的这个文件夹。</p>
+<p><img src="https://uploader.shimo.im/f/eP03L1kGemEJJO4P.png!thumbnail" alt="图片"></p>
+<ol>
+<li>在当前目录下右键打开终端，执行以下指令更换一下清华源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#39;s#downloads.openwrt.org#mirrors.tuna.tsinghua.edu.cn&#x2F;openwrt#&#39; repositories.conf</span><br></pre></td></tr></table></figure></li>
+<li>安装必要的软件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-dev gawk git gettext libssl-dev xsltproc wget unzip python</span><br></pre></td></tr></table></figure></li>
+<li>执行并找到目标配置的名称，k2为psg1218a，其实就是官方固件文件名中的设备名称<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make info</span><br></pre></td></tr></table></figure></li>
+<li>开始打包，可以在PACKAGES后自行添加需要的软件包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make image PROFILE&#x3D;&quot;psg1218a&quot; PACKAGES&#x3D;&quot;luci luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn&quot;</span><br></pre></td></tr></table></figure>
+速度比较快，完成后，固件就在当前目录中的<code>bin</code>文件夹内<br>如果不满意，需要再次打包时，先执行一下<code>make clean</code>，再进行make image。</li>
+</ol>
+<p>另外还可以添加一些除官方源外的其他源或者下载好位于本地的package，具体可以参考<a href="https://openwrt.org/docs/guide-user/additional-software/imagebuilder" target="_blank" rel="noopener">官方的说明</a>。</p>
+<h2 id="利用GitHub-Actions自动打包"><a href="#利用GitHub-Actions自动打包" class="headerlink" title="利用GitHub Actions自动打包"></a>利用GitHub Actions自动打包</h2><p>方便快捷，就是下载回来有点难。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">name: OpenWrt image builder</span><br><span class="line">on: </span><br><span class="line">  push:</span><br><span class="line">    branches: </span><br><span class="line">      - master</span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line"></span><br><span class="line">    steps:</span><br><span class="line">    - name: 初始化</span><br><span class="line">      env:</span><br><span class="line">        DEBIAN_FRONTEND: noninteractive</span><br><span class="line">        #可修改imagebuilder下载地址</span><br><span class="line">        DOWNLOAD_URL: https:&#x2F;&#x2F;downloads.openwrt.org&#x2F;releases&#x2F;19.07.1&#x2F;targets&#x2F;ramips&#x2F;mt7620&#x2F;openwrt-imagebuilder-19.07.1-ramips-mt7620.Linux-x86_64.tar.xz</span><br><span class="line">        </span><br><span class="line">      run: |</span><br><span class="line">        sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-dev gawk git gettext libssl-dev xsltproc wget unzip python</span><br><span class="line">        wget -O &#x2F;tmp&#x2F;imagebuilder.tar.xz $DOWNLOAD_URL</span><br><span class="line">        sudo xz -d &#x2F;tmp&#x2F;imagebuilder.tar.xz</span><br><span class="line">        sudo tar -C &#x2F;tmp -xvf &#x2F;tmp&#x2F;imagebuilder.tar</span><br><span class="line">    - name: 打包固件</span><br><span class="line">      run: |</span><br><span class="line">        #在PROFILE中填写配置的设备名 在PACKAGES中添加需要的软件包</span><br><span class="line">        cd &#x2F;tmp&#x2F;$(ls &#x2F;tmp | grep &#39;openwrt-imagebuilder&#39;)</span><br><span class="line">        sudo make image PROFILE&#x3D;&quot;psg1218a&quot; PACKAGES&#x3D;&quot;luci luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn ssmtp wireguard luci-app-wireguard luci-i18n-wireguard-zh-cn&quot;</span><br><span class="line">        cp -r bin &#x2F;tmp</span><br><span class="line">    - name : 上传固件</span><br><span class="line">      uses: actions&#x2F;upload-artifact@master</span><br><span class="line">      with:</span><br><span class="line">        name: image</span><br><span class="line">        path: &#x2F;tmp&#x2F;bin</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>OpenWrt.org-Using the Image Builder:<a href="https://openwrt.org/docs/guide-user/additional-software/imagebuilder" target="_blank" rel="noopener"> https://openwrt.org/docs/guide-user/additional-software/imagebuilder</a></p>
+<p>imagebuilder快速编译OpenWrt固件使用教程+高级自定义+在线编译: <a href="https://www.right.com.cn/forum/thread-522029-1-1.html" target="_blank" rel="noopener">https://www.right.com.cn/forum/thread-522029-1-1.html</a></p>
+<p>Openwrt 国内源配置 · DarkGod’ Blog：<a href="https://www.dazhuanlan.com/2019/10/17/5da7cdea1f0c8/" target="_blank" rel="noopener">https://www.dazhuanlan.com/2019/10/17/5da7cdea1f0c8/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/" class="post-title-link" itemprop="url">「捯饬记录」OpenWrt通过邮件发送wan IPv6地址</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-31 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-31T23:33:03+08:00">2020-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:58:38" itemprop="dateModified" datetime="2020-02-12T22:58:38+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-1-月-31-日"><a href="#记录时间：2020-年-1-月-31-日" class="headerlink" title="记录时间：2020 年 1 月 31 日"></a>记录时间：2020 年 1 月 31 日</h1><h2 id="关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2"><a href="#关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2" class="headerlink" title="关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2"></a>关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2</h2><h2 id="更换软件镜像源"><a href="#更换软件镜像源" class="headerlink" title="更换软件镜像源"></a>更换软件镜像源</h2><p>鉴于openwrt的官方软件源速度不太行，先换个清华的源。不过ssmtp体积很小，不换的话下载问题也不大。</p>
+<p><img src="https://uploader.shimo.im/f/rQGyF8v5Kg0Ex85v.png!thumbnail" alt="图片"></p>
+<p>复制类似下面的地址到<code>opkg/distfeeds.conf</code>并保存。这里以k2路由器的mt7620为例，其他类型或版本可以去<a href="https://mirrors.tuna.tsinghua.edu.cn/lede/" target="_blank" rel="noopener">清华的镜像源</a>查看，然后找到相对应的目录下复制url地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">src&#x2F;gz openwrt_core http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;targets&#x2F;ramips&#x2F;mt7620&#x2F;packages</span><br><span class="line">src&#x2F;gz openwrt_base http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;base</span><br><span class="line">src&#x2F;gz openwrt_luci http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;luci</span><br><span class="line">src&#x2F;gz openwrt_packages http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;packages</span><br><span class="line">src&#x2F;gz openwrt_routing http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;routing</span><br><span class="line">src&#x2F;gz openwrt_telephony http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;telephony</span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://uploader.shimo.im/f/CBzx0l9UVUMvVkTx.png!thumbnail" alt="图片"></h2><h2 id="安装ssmtp"><a href="#安装ssmtp" class="headerlink" title="安装ssmtp"></a>安装ssmtp</h2><p>关于ssmtp，体积小是选择这个的首要因素，下面两种方式都可以安装。</p>
+<ul>
+<li>luci管理界面安装</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/x1iti6bQqyo2CSw5.png!thumbnail" alt="图片"></p>
+<ul>
+<li>shell命令方式安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ssmtp</span><br></pre></td></tr></table></figure>
+<h2 id="配置ssmtp"><a href="#配置ssmtp" class="headerlink" title="配置ssmtp"></a>配置ssmtp</h2>ssh登录openwrt之后，修改并执行以下命令。这里的配置是以163邮箱举例的，如果使用其他的邮箱可能要稍作修改，一些SMTP服务器可能还需要指定具体的端口，详情可以参考ssmtp配置文件中的注释。</li>
+</ul>
+<p>编辑配置文件可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> vim &#x2F;etc&#x2F;ssmtp&#x2F;ssmtp.conf</span><br></pre></td></tr></table></figure>
+<p>也可以用winscp登录，打开<code>/etc/ssmtp/</code>目录下的<code>ssmtp.conf</code>文件修改<br>下面是需要修改的内容举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root&#x3D;xxx@163.com  #替换成自己的邮箱帐户</span><br><span class="line">mailhub&#x3D;smtp.163.com:994  #邮箱的smtp服务器+相应协议的端口号，不填端口则默认25</span><br><span class="line">rewriteDomain&#x3D;163.com</span><br><span class="line">hostname&#x3D;163.com</span><br><span class="line">FromLineOverride&#x3D;YES</span><br><span class="line">UseTLS&#x3D;YES  #启用TLS加密发送邮件</span><br><span class="line">AuthUser&#x3D;xxx@163.com  #替换为自己的邮箱帐户</span><br><span class="line">AuthPass&#x3D;xxx  #邮箱密码或者邮箱客户端授权码</span><br></pre></td></tr></table></figure>
+<p>关于端口号：网易163邮箱提供的SMTP服务器端口号</p>
+<p><img src="https://uploader.shimo.im/f/bgihCCFsvvEmk1NC.png!thumbnail" alt="图片"></p>
+<h2 id="创建获取IP并发送邮件的脚本"><a href="#创建获取IP并发送邮件的脚本" class="headerlink" title="创建获取IP并发送邮件的脚本"></a>创建获取IP并发送邮件的脚本</h2><p>其实就是把之前用于Padavan的脚本稍作修改之后得到的。另外除了<a href="https://github.com/whatGUI/openwrt-mail-u-ip" target="_blank" rel="noopener">下载</a>也可以直接复制脚本内容，手动新建一个脚本文件，或者保存修改后用winscp等等工具上传到openwrt等等，怎么方便怎么来。</p>
+<p>建立脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;sbin&#x2F;ipmail.sh</span><br><span class="line">vim &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<p>复制以下内容到ipmail.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh -e</span><br><span class="line">#设置发件人地址，与ssmtp配置一致</span><br><span class="line">from&#x3D;FROM</span><br><span class="line">#设置收件人地址，多人用英文逗号隔开</span><br><span class="line">towho&#x3D;TOWHO</span><br><span class="line">#有必要的话更改网络接口名（网卡）</span><br><span class="line">interface&#x3D;pppoe-wan</span><br><span class="line">file&#x3D;$HOME&#x2F;.ipmail</span><br><span class="line">[ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">#获取wan ip地址</span><br><span class="line">ipaddress&#x3D;$(ip -6 addr list scope global $interface | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">mailtxt&#x3D;$HOME&#x2F;.ipmailtext</span><br><span class="line">#写好邮件</span><br><span class="line">cat &gt; $mailtxt &lt;&lt;EOF</span><br><span class="line">From:$&#123;from&#125;</span><br><span class="line">To:$&#123;towho&#125;</span><br><span class="line">Subject:IP发生变更，打开查看详情</span><br><span class="line"></span><br><span class="line">OpenWrt：检测到WAN IP发生变更！</span><br><span class="line">新的IP为  $&#123;ipaddress&#125;</span><br><span class="line">EOF</span><br><span class="line">#发送邮件</span><br><span class="line">ssmtp $towho &lt; $mailtxt</span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加发件人和收件人地址"><a href="#添加发件人和收件人地址" class="headerlink" title="添加发件人和收件人地址"></a>添加发件人和收件人地址</h2><p>务必修改脚本中的以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#设置发件人地址 与ssmtp配置一致</span><br><span class="line">from&#x3D;xxxx@163.com</span><br><span class="line">#设置收件人地址，多人用英文逗号隔开</span><br><span class="line">towho&#x3D;xxx@qq.com,xxxx@qq.com</span><br></pre></td></tr></table></figure>
+<h2 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<h2 id="添加到计划任务"><a href="#添加到计划任务" class="headerlink" title="添加到计划任务"></a>添加到计划任务</h2><p>可以直接在管理界面添加，意思是每10分钟执行一次，另外第一次添加计划任务可能会不起作用，可以在<code>启动项</code>中找到<code>cron</code>重启一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;10 * * * * &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<p><img src="https://uploader.shimo.im/f/WS6skdAC1J8y2ALh.png!thumbnail" alt="图片"></p>
+<h2 id="关于脚本"><a href="#关于脚本" class="headerlink" title="关于脚本"></a>关于脚本</h2><p>修改自<a href="https://whatgui.github.io/2020/01/14/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">上一篇</a>，与参考中的<a href="https://www.jianshu.com/p/5effa0c0aab3" target="_blank" rel="noopener">《Openwrt发邮件通知Wan口Ip变化》</a>相比，定时执行采用openwrt的计划任务，感觉可能会稍微灵活一些。另外本脚本会创建临时文件，而参考脚本不需要。其他的差别就不太清楚了，如果有人看到这篇并且知道差别请带带我！虽然只要达到目的就行。</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>其实对每10分钟检测一次这个操作来说，家庭宽带的IPv6地址变化并没有这么频繁，基本上只有重启路由器和IPv6地址租期到期两种情况才会导致IP变化，因此只需要添加到开机启动脚本和检测IPv6到期即可，但是检测地址到期这个还没有搜索到相关的内容，暂时先放放好了。不过运行这个脚本消耗不大，只有检查到ip变化才会发送邮件，所以基本没什么影响。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>OpenWrt - SMTP clients：<a href="https://openwrt.org/docs/guide-user/services/email/smtp.client?s[]=ssmtp" target="_blank" rel="noopener">https://openwrt.org/docs/guide-user/services/email/smtp.client?s[]=ssmtp</a></p>
+<p>openwrt使用ssmtp发邮件：<a href="https://www.openwrtdl.com/wordpress/%E6%95%99%E7%A8%8Bopenwrt%E4%BD%BF%E7%94%A8ssmtp%E5%8F%91%E9%82%AE%E4%BB%B6" target="_blank" rel="noopener">https://www.openwrtdl.com/wordpress/%E6%95%99%E7%A8%8Bopenwrt%E4%BD%BF%E7%94%A8ssmtp%E5%8F%91%E9%82%AE%E4%BB%B6</a></p>
+<p>Openwrt发邮件通知Wan口Ip变化：<a href="https://www.jianshu.com/p/5effa0c0aab3" target="_blank" rel="noopener">https://www.jianshu.com/p/5effa0c0aab3</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/26/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%B0%9D%E8%AF%95%E4%B8%BAPadavan%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%80%E4%B8%AAwireguard-go%E5%92%8Cwireguard-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/26/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%B0%9D%E8%AF%95%E4%B8%BAPadavan%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%80%E4%B8%AAwireguard-go%E5%92%8Cwireguard-tools/" class="post-title-link" itemprop="url">「捯饬记录」尝试为Padavan交叉编译一个wireguard-go和wireguard-tools</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-26 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-26T23:33:03+08:00">2020-01-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:58:38" itemprop="dateModified" datetime="2020-02-12T22:58:38+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-1-月-26-日"><a href="#记录时间：2020-年-1-月-26-日" class="headerlink" title="记录时间：2020 年 1 月 26 日"></a>记录时间：2020 年 1 月 26 日</h1><h2 id="关键词：Padavan-golang-交叉编译-wireguard"><a href="#关键词：Padavan-golang-交叉编译-wireguard" class="headerlink" title="关键词：Padavan golang 交叉编译 wireguard"></a>关键词：Padavan golang 交叉编译 wireguard</h2><p><em>注意这是一次<strong><strong>失败记录</strong></strong>，虽然成功地编译出了wireguard-go和 tools，但是编译出的文件体积太大装不进K2路由器，不能测试其是否可用，也不想搞了，因为OpenWrt体积更小使用也简单，稳定性方面也超出我的预期，所以之后换用OpenWrt了。另外再说一下，wg体积小性能稳，对于家庭的组网来说很好用。</em></p>
+<p>注：本记录仅为学习！关于使用请遵守相关规定！</p>
+<h2 id="在Ubuntu编译"><a href="#在Ubuntu编译" class="headerlink" title="在Ubuntu编译"></a>在Ubuntu编译</h2><ol>
+<li>准备编译环境</li>
+</ol>
+<p>编译系统为 Ubuntu 18.04，首先安装必要的软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt-get install build-essential pkg-config cmake autoconf automake libtool wget git</span><br><span class="line">#编译libmnl</span><br><span class="line">cd &#x2F;tmp</span><br><span class="line">git clone git:&#x2F;&#x2F;git.netfilter.org&#x2F;libmnl</span><br><span class="line">cd &#x2F;tmp&#x2F;libmnl&#x2F;</span><br><span class="line">.&#x2F;autogen.sh --disable-shared --host&#x3D;mipsel-linux-uclibc</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<ol>
+<li>编译wireguard-tools<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;WireGuard&#x2F;wireguard-tools.git</span><br><span class="line">cd wireguard-tools&#x2F;src&#x2F;</span><br><span class="line">env CFLAGS&#x3D;-I&#x2F;tmp&#x2F;libmnl&#x2F;include LDFLAGS&#x3D;-L&#x2F;tmp&#x2F;libmnl&#x2F;src&#x2F;.libs make</span><br></pre></td></tr></table></figure></li>
+<li>安装go<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这里安装了golang版本为1.13.7</span><br><span class="line">wget -O &#x2F;tmp&#x2F;golang.tar.gz https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.13.7.linux-amd64.tar.gz</span><br><span class="line">tar -C &#x2F;usr&#x2F;local -xvzf &#x2F;tmp&#x2F;golang.tar.gz</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin</span><br><span class="line">#启用阿里云go镜像加速下载</span><br><span class="line">export GOPROXY&#x3D;&quot;https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;goproxy&#x2F;&quot;</span><br></pre></td></tr></table></figure></li>
+<li>编译wireguard-go<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $HOME&#x2F;gobuild&#x2F; &amp;&amp; cd $HOME&#x2F;gobuild&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;WireGuard&#x2F;wireguard-go.git</span><br><span class="line">cd wireguard-go</span><br><span class="line">export GOPATH&#x3D;&quot;$HOME&#x2F;gobuild&#x2F;&quot;</span><br><span class="line">env GOOS&#x3D;linux GOARCH&#x3D;mipsle go build -v -o &quot;wireguard-go&quot;</span><br></pre></td></tr></table></figure></li>
+<li>复制wg和wireguard-go到主目录，就可以在主目录中找到了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp $HOME&#x2F;wireguard-tools&#x2F;src&#x2F;wg $HOME</span><br><span class="line">cp $HOME&#x2F;gobuild&#x2F;wireguard-go&#x2F;wireguard-go $HOME</span><br></pre></td></tr></table></figure>
+<h2 id="直接用github-actions自动编译（特别推荐）"><a href="#直接用github-actions自动编译（特别推荐）" class="headerlink" title="直接用github actions自动编译（特别推荐）"></a>直接用github actions自动编译（特别推荐）</h2>贼省事，不多解释了，直接上脚本。由于没有仔细了解脚本语法，因此这个脚本是简单修改来的可能有不合理的地方，另外要注意一下随着源码的不断更新，脚本可能会在未来失效。关于使用可以参考一下前面的捯饬记录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">name: Build wireguard-go for Padavan</span><br><span class="line"></span><br><span class="line">on: </span><br><span class="line">  push:</span><br><span class="line">    branches: </span><br><span class="line">      - master</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line"></span><br><span class="line">    steps:</span><br><span class="line">    - name: 初始化</span><br><span class="line">      env:</span><br><span class="line">        DEBIAN_FRONTEND: noninteractive</span><br><span class="line">      run: |</span><br><span class="line">        #sudo apt-get update</span><br><span class="line">        wget -O &#x2F;tmp&#x2F;golang.tar.gz https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.13.7.linux-amd64.tar.gz</span><br><span class="line">        sudo tar -C &#x2F;usr&#x2F;local -xvzf &#x2F;tmp&#x2F;golang.tar.gz</span><br><span class="line">        export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin</span><br><span class="line">    - name: 编译wireguard-go</span><br><span class="line">      run: |</span><br><span class="line">        mkdir -p &#x2F;tmp&#x2F;gobuild&#x2F; &amp;&amp; cd &#x2F;tmp&#x2F;gobuild&#x2F;</span><br><span class="line">        git clone https:&#x2F;&#x2F;git.zx2c4.com&#x2F;wireguard-go</span><br><span class="line">        cd wireguard-go</span><br><span class="line">        export GOPATH&#x3D;&quot;&#x2F;tmp&#x2F;gobuild&#x2F;&quot;</span><br><span class="line">        env GOOS&#x3D;linux GOARCH&#x3D;mipsle go build -v -o &quot;wireguard-go&quot;</span><br><span class="line">    - name : 上传wireguard-go</span><br><span class="line">      uses: actions&#x2F;upload-artifact@master</span><br><span class="line">      with:</span><br><span class="line">        name: wireguard-go</span><br><span class="line">        path: &#x2F;tmp&#x2F;gobuild&#x2F;wireguard-go&#x2F;wireguard-go</span><br><span class="line">    - name: 编译wireguard-tools</span><br><span class="line">      run: |</span><br><span class="line">        cd &#x2F;tmp</span><br><span class="line">        git clone https:&#x2F;&#x2F;git.zx2c4.com&#x2F;wireguard-tools</span><br><span class="line">        git clone git:&#x2F;&#x2F;git.netfilter.org&#x2F;libmnl</span><br><span class="line">        cd &#x2F;tmp&#x2F;libmnl&#x2F;</span><br><span class="line">        .&#x2F;autogen.sh --disable-shared --host&#x3D;mipsel-linux-uclibc</span><br><span class="line">        .&#x2F;configure</span><br><span class="line">        make</span><br><span class="line">        cd &#x2F;tmp&#x2F;wireguard-tools&#x2F;src&#x2F;</span><br><span class="line">        env CFLAGS&#x3D;-I&#x2F;tmp&#x2F;libmnl&#x2F;include LDFLAGS&#x3D;-L&#x2F;tmp&#x2F;libmnl&#x2F;src&#x2F;.libs make        </span><br><span class="line">    - name : 上传wireguard-tools</span><br><span class="line">      uses: actions&#x2F;upload-artifact@master</span><br><span class="line">      with:</span><br><span class="line">        name: wireguard-tools</span><br><span class="line">        path: &#x2F;tmp&#x2F;wireguard-tools&#x2F;src&#x2F;wg</span><br></pre></td></tr></table></figure>
+<h2 id="关于wg文件的使用"><a href="#关于wg文件的使用" class="headerlink" title="关于wg文件的使用"></a>关于wg文件的使用</h2><p>因为不能测试，也就没有做进一步的了解。官方的简单说明中关于wireguard-tools都是直接编译安装，对单个wg的使用可能需要啃一下官方的文档，或者了解一下make install来手动配置，应该也挺麻烦的吧。</p>
+<h2 id="简单记录一下使用docker来编译的过程"><a href="#简单记录一下使用docker来编译的过程" class="headerlink" title="简单记录一下使用docker来编译的过程"></a>简单记录一下使用docker来编译的过程</h2><p>在docker容器中编译（前提是安装了docker），因为我的Ubuntu里装了很多乱七八糟的东西，为了保持干净还是选择用docker来编译，但是没有特地做新的镜像，所以容器里的环境是从头开始搭的。</p>
+<ol>
+<li>启动一个docker ubuntu容器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -it --rm ubuntu</span><br></pre></td></tr></table></figure></li>
+<li>安装必要的软件，切换软件源加速后续下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install -y apt-transport-https ca-certificates</span><br><span class="line">sed -i &#39;s#http:&#x2F;&#x2F;archive.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line">sed -i &#39;s#http:&#x2F;&#x2F;security.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br></pre></td></tr></table></figure></li>
+<li>中间编译步骤和上边 在ubuntu编译 是一样的</li>
+<li>编译完成后另开一个终端窗口，执行以下命令复制wg和wireguard-go到本机<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp &lt;container&gt;:&#x2F;root&#x2F;wireguard-tools&#x2F;src&#x2F;wg wg</span><br><span class="line">sudo docker cp &lt;container&gt;:&#x2F;root&#x2F;gobuild&#x2F;wireguard-go&#x2F;wireguard-go wireguard-go</span><br></pre></td></tr></table></figure>
+使用完毕后ctrl + d退出容器，不留痕迹！<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2>经过这次捯饬才发现Padavan的缺点：Linux版本有点低（3.4），而且模块化程度低，真想捯饬还得是OpenWrt。另外一个wireguard-go体积达到了4M，这K2就很吃力啊，由于这些原因还是转向了OpenWrt。经过短暂的试用感觉官方版OpenWrt 19.07的稳定性表现超出了我的预期，所以Padavan的内容到这里应该就告一段落了，哎希望给能看到这些个记录的带来一点点启发。不说了，IPv6我来了！</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>Compiling the Kernel Module from Source：<a href="https://www.wireguard.com/compilation/" target="_blank" rel="noopener">https://www.wireguard.com/compilation/</a></p>
+<p>Installing WireGuard on ASUS RT-N56U (Padavan)：<a href="https://medium.com/@yjwong/installing-wireguard-on-asus-rt-n56u-731c22f1f5bd" target="_blank" rel="noopener">https://medium.com/@yjwong/installing-wireguard-on-asus-rt-n56u-731c22f1f5bd</a></p>
+<p>Go 语言跨平台路由器编译：<a href="https://blog.lutty.me/code/2017-04/golang-cross-compile-openwrt-ddwrt-build.html" target="_blank" rel="noopener">https://blog.lutty.me/code/2017-04/golang-cross-compile-openwrt-ddwrt-build.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/16/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%93%E9%AA%8C%E4%B8%80%E4%B8%8BGitHub%E7%9A%84%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/16/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%93%E9%AA%8C%E4%B8%80%E4%B8%8BGitHub%E7%9A%84%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">「捯饬记录」体验一下GitHub的自动编译</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-16 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-16T23:33:03+08:00">2020-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-1-月-16-日"><a href="#记录时间：2020-年-1-月-16-日" class="headerlink" title="记录时间：2020 年 1 月 16 日"></a>记录时间：2020 年 1 月 16 日</h1><h2 id="关键词：GitHub-Action-Padavan-自动编译-云编译-固件-K2"><a href="#关键词：GitHub-Action-Padavan-自动编译-云编译-固件-K2" class="headerlink" title="关键词：GitHub Action  Padavan 自动编译 云编译 固件 K2"></a>关键词：GitHub Action  Padavan 自动编译 云编译 固件 K2</h2><p>在之前搜索Padavan的编译教程时，发现了<a href="https://github.com/KFERMercer/OpenWrt-CI" target="_blank" rel="noopener">openwrt固件的在线自动编译</a>，当时觉得很厉害。在捯饬完Padavan的固件编译之后，想找找看Padavan有没有类似的东西，直接在GitHub上搜索就找到了，地址：<a href="https://github.com/chongshengB/Padavan-build" target="_blank" rel="noopener">https://github.com/chongshengB/Padavan-build</a>，感谢chongshengB。</p>
+<h2 id="简单的试用"><a href="#简单的试用" class="headerlink" title="简单的试用"></a>简单的试用</h2><p>由于打开页面时没有任何说明，于是直接fork了这个脚本，根据openwrt的自动编译教程以及这个编译脚本的内部注释，简单试用了一下一次就编译通过了，非常方便快捷，但是脚本默认编译的是K2P的固件没法测试。</p>
+<p>简单说一下脚本的使用方法：</p>
+<ol>
+<li>fork这个<a href="https://github.com/chongshengB/Padavan-build" target="_blank" rel="noopener">脚本</a></li>
+<li>打开Actions页面，点击绿色的 <code>I understand my workflows, go ahead and run them</code></li>
+<li>返回Code页面，打开<code>.github/workflows</code>,再打开<code>build-padavan.yml</code>文件，删除如下这几行中的<code>#</code>之后提交保存，编译就会开始自动运行，在Actions页面还能看到编译进度</li>
+<li>编译完成后，再次打开Actions, 点击右上方的Artifacts就能看到下载的链接了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  #  branches: </span><br><span class="line">  #    - master</span><br><span class="line">#  schedule:</span><br><span class="line">#    - cron: 0 8 * * 5</span><br><span class="line"> # watch:</span><br><span class="line"> #   types: [started]</span><br></pre></td></tr></table></figure>
+<h2 id="尝试自动编译一个K2的固件"><a href="#尝试自动编译一个K2的固件" class="headerlink" title="尝试自动编译一个K2的固件"></a>尝试自动编译一个K2的固件</h2></li>
+<li>找到<code>build-padavan.yml</code>文件中第48行中的<code>TNAME: K2P-5.0</code>，修改为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TNAME: PSG1218</span><br></pre></td></tr></table></figure></li>
+<li>按脚本注释删除和添加配置项，关于配置项，可以查看<a href="https://github.com/chongshengB/rt-n56u/tree/master/trunk/configs/templates" target="_blank" rel="noopener">配置文件</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！</span><br><span class="line">sed -i &#39;&#x2F;CONFIG_FIRMWARE_INCLUDE_MENTOHUST&#x2F;d&#39; .config #删除配置项MENTOHUST</span><br><span class="line">sed -i &#39;&#x2F;CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT&#x2F;d&#39; .config #删除配置项SCUTCLIENT</span><br><span class="line">#以下选项是定义你需要的功能（y&#x3D;集成,n&#x3D;忽略），重新写入到.config文件</span><br><span class="line">echo &quot;CONFIG_FIRMWARE_INCLUDE_MENTOHUST&#x3D;n&quot; &gt;&gt; .config #MENTOHUST</span><br><span class="line">echo &quot;CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT&#x3D;n&quot; &gt;&gt; .config #SCUTCLIENT</span><br></pre></td></tr></table></figure></li>
+<li>保存并重新上传该脚本，Actions就开始自动编译步骤了，编译完成后在Artifacts中下载编译完成的固件<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2>其实自动编译过程就是将手动编译时的每个步骤写成了脚本，GitHub Actions会根据脚本来运行每条命令，非常方便。甚至可以利用Actions和GitHub page方便地搭建博客，总之使用方法多样，另外在这个<a href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener">Marketplace</a>还能找到很多别人写好的Actions，实现很多有趣的功能。关于GitHub Actions 详细的内容可以参考一下<a href="https://help.github.com/en/actions/automating-your-workflow-with-github-actions/about-actions" target="_blank" rel="noopener">官方文档</a>。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/" class="post-title-link" itemprop="url">「捯饬记录」配置一下Padavan的IPV6动态域名解析</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-08 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-08T23:33:03+08:00">2020-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
 
           
 
@@ -208,33 +839,30 @@
 <p>更新：不多赘述，具体查看这两个帖子 <a href="https://v2ex.com/t/608821?p=1" target="_blank" rel="noopener">家庭宽带 私设 web 被检测 魔都电信被停宽带</a> 和 <a href="https://v2ex.com/t/635028#reply63" target="_blank" rel="noopener">应对家宽 Web 的收紧，讨论一下在外网控制家庭设备的方案</a>，因此不再推荐自家家用用途采取DDNS的方法！推荐用邮件或其他方式获取ip，采用ip来访问，邮件脚本见下文。</p>
 <h2 id="使用脚本配置-DDNS"><a href="#使用脚本配置-DDNS" class="headerlink" title="使用脚本配置 DDNS"></a>使用脚本配置 DDNS</h2><h3 id="使用前提"><a href="#使用前提" class="headerlink" title="使用前提"></a>使用前提</h3><p>本文使用到的脚本适用于下图中的这种情况，WAN IP 与 LAN IP 都为无状态分配(stateless)，并且 pppoe 也在此路由器上进行，其他的路由配置情况没有测试，待测试后再来更新。</p>
 <p><img src="https://uploader.shimo.im/f/4BR4laYLTwUwowJu.png!thumbnail" alt="图片"></p>
-<h3 id="路由器和下级设备的-DDNS"><a href="#路由器和下级设备的-DDNS" class="headerlink" title="路由器和下级设备的 DDNS"></a>路由器和下级设备的 DDNS</h3><p>脚本文件已经上传到了我的 GitHub， <a href="https://github.com/whatGUI/Padavan-DDNS-Solution" target="_blank" rel="noopener">可以点这里查看</a> 。注意！该脚本仅更新<code>临时地址</code>，不支持其他类型地址。另外本脚本的IPV6地址直接使用ip命令和NDP获取，除了发送邮件外不会连接任何第三方服务器。</p>
+<h3 id="路由器和下级设备的-DDNS"><a href="#路由器和下级设备的-DDNS" class="headerlink" title="路由器和下级设备的 DDNS"></a>路由器和下级设备的 DDNS</h3><p>注意！该脚本仅更新<code>临时地址</code>，不支持其他类型地址。另外本脚本的IPV6地址直接使用ip命令和NDP获取，除了发送邮件外不会连接任何第三方服务器。</p>
 <ol>
-<li>首先通过 ssh 连接到路由器，然后执行以下命令来下载脚本到指定位置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;storage</span><br><span class="line">curl -Lk &quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;whatGUI&#x2F;Padavan-DDNS-Solution&#x2F;master&#x2F;dynv6.sh&quot; &gt; dynv6.sh</span><br></pre></td></tr></table></figure></li>
-<li>写入 dynv6 账户信息：将下面命令中的<code>令牌</code>改为你注册 dynv6 得到的 token 信息，然后执行命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;s&#x2F;TOKEN&#x2F;令牌&#x2F;g&quot; dynv6.sh</span><br></pre></td></tr></table></figure></li>
-<li>添加可执行权限，保存已有的计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x dynv6.sh</span><br><span class="line">crontab -l &gt; dynv6cron</span><br></pre></td></tr></table></figure></li>
-<li>添加需要进行 DDNS 的设备，每 10 分钟自动执行一次检查。注意！把命令中的<code>域名</code>改为你的域名，比如 xxxx.dynv6.net，<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#参数格式说明：.&#x2F;dynv6.sh [模式] [域名] [设备名] [MAC地址]</span><br><span class="line"></span><br><span class="line">cat &gt;&gt; dynv6cron &lt;&lt;EOF</span><br><span class="line">#添加路由器的DDNS</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh router 域名</span><br><span class="line">#添加下级设备的DDNS</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh 域名 设备名 MAC地址</span><br><span class="line">#                ......</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#可以添加多个设备，每一行对应一个设备</span><br><span class="line">#举例如下</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh router xxx.dynv6.net</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh xxxx.dynv6.net phone 11:22:33:aa:bb:cc</span><br></pre></td></tr></table></figure></li>
+<li>什么方法都可以，只要把脚本文件放进路由器即可，这里以简单的winscp举例：用winscp连接到路由器，然后在/etc/storage目录下新建一个名为dynv6.sh的文本文件，复制以下脚本，并修改填写你的token信息。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash -e</span><br><span class="line">#脚本使用方法</span><br><span class="line">#.&#x2F;dynv6.sh [mode] [hostname] [name] [mac]    # mode: router or neigh</span><br><span class="line"></span><br><span class="line">########填写dynv6的token信息#######</span><br><span class="line">token&#x3D;xxxxxxxxxxxx</span><br><span class="line">#获取参数</span><br><span class="line">mode&#x3D;$1</span><br><span class="line">hostname&#x3D;$2</span><br><span class="line">name&#x3D;$&#123;3:-&#39;Router&#39;&#125;</span><br><span class="line">mac&#x3D;$4</span><br><span class="line">#有必要的话更改网络设备名</span><br><span class="line">device&#x3D;ppp0</span><br><span class="line"></span><br><span class="line">#模式选择错误处理</span><br><span class="line">if [ &quot;$mode&quot; !&#x3D; &quot;router&quot; -a &quot;$mode&quot; !&#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  echo &quot;please select router or neigh&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">#neigh模式处理下级设备IP</span><br><span class="line">if [ &quot;$mode&quot; &#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  if [ -z $mac ]; then</span><br><span class="line">    echo &quot;mac is empty&quot;</span><br><span class="line">    exit</span><br><span class="line">  fi</span><br><span class="line">  mac&#x3D;$( echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; )</span><br><span class="line">  file&#x3D;$HOME&#x2F;.dynv6.neigh.$name</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获得下级设备的ip</span><br><span class="line">  macinf&#x3D;$(echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; | awk  -F &#39;:&#39;  &#39;&#123;print $5$6&#125;&#39; )</span><br><span class="line">  ipaddress&#x3D;$(ip -6 neighbor | grep $mac | grep -v $macinf | grep -v &#39;fe80&#39; | awk &#39;&#123;print $1&#125;&#39;)</span><br><span class="line"></span><br><span class="line">  #router模式处理路由器IP</span><br><span class="line">  else</span><br><span class="line">  file&#x3D;$HOME&#x2F;.dynv6.router</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获取ip地址</span><br><span class="line">  ipaddress&#x3D;$(ip -6 addr list scope global $device | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#发送新的ipv6地址到dynv6</span><br><span class="line">curl -s -S -f -k &quot;https:&#x2F;&#x2F;dynv6.com&#x2F;api&#x2F;update?hostname&#x3D;$hostname&amp;ipv6&#x3D;$ipaddress&amp;token&#x3D;$token&quot;</span><br><span class="line"></span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br><span class="line"></span><br><span class="line">#打印系统日志</span><br><span class="line">logger 监测到设备 $name 的IPv6变更, dynv6 DDNS已完成同步</span><br></pre></td></tr></table></figure></li>
+<li>用ssh连接到路由器，对脚本文件添加可执行权限，保存已有的计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;storage</span><br><span class="line">chmod +x dynv6.sh</span><br><span class="line">crontab -l &gt; dynv6cron</span><br></pre></td></tr></table></figure></li>
+<li>添加需要进行 DDNS 的设备，每 10 分钟自动执行一次检查。注意！把命令中的<code>域名</code>改为你的域名，比如 xxxx.dynv6.net，<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#参数格式说明：.&#x2F;dynv6.sh [模式] [域名] [设备名] [MAC地址]</span><br><span class="line">cat &gt;&gt; dynv6cron &lt;&lt;EOF</span><br><span class="line">#添加路由器的DDNS</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh router 域名</span><br><span class="line">#添加下级设备的DDNS</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh 域名 设备名 MAC地址</span><br><span class="line">#                ......</span><br><span class="line">EOF</span><br><span class="line">#可以添加多个设备，每一行对应一个设备</span><br><span class="line">#举例如下</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh router xxx.dynv6.net</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh xxxx.dynv6.net phone 11:22:33:aa:bb:cc</span><br></pre></td></tr></table></figure></li>
 <li>启动计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab dynv6cron</span><br></pre></td></tr></table></figure></li>
 <li>在 Padavan 的后台管理页找到<code>高级设置</code>-&gt;<code>自定义设置</code>-&gt;<code>脚本</code>-&gt;<code>在 WAN 上行/下行启动后执行</code>中添加以下命令，就可以在重启路由后立即更新地址。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#对于路由器</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;dynv6.sh router 域名</span><br><span class="line">#或者是下级设备</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;dynv6.sh neigh 域名 设备名 MAC地址</span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="使用邮件的方式获得当前-IPV6-地址"><a href="#使用邮件的方式获得当前-IPV6-地址" class="headerlink" title="使用邮件的方式获得当前 IPV6 地址"></a>使用邮件的方式获得当前 IPV6 地址</h2>在搜集相关问题时，看到了这篇 <a href="https://zhuanlan.zhihu.com/p/75247811" target="_blank" rel="noopener">《IPV6网络下建立安全的家庭服务器[NAS]》</a> ，其中</li>
 </ol>
-<h2 id="使用邮件的方式获得当前-IPV6-地址"><a href="#使用邮件的方式获得当前-IPV6-地址" class="headerlink" title="使用邮件的方式获得当前 IPV6 地址"></a>使用邮件的方式获得当前 IPV6 地址</h2><p>在搜集相关问题时，看到了这篇 <a href="https://zhuanlan.zhihu.com/p/75247811" target="_blank" rel="noopener">《IPV6网络下建立安全的家庭服务器[NAS]》</a> ，其中</p>
 <blockquote>
-<p>在 ipv6 下，由于不再只分配一个 ip 地址，而是一下子给了你海量的 ipv6 地址，这就形成了天然的安全屏障。大家都知道，要尝试对某个家庭服务器发起攻击尝试，首要的条件就是知道对方的服务器地址。<br>最大的安全是什么，你的服务器 ipv6 地址只有你自己知道，如果你不对家庭服务器捆绑 DDNS(动态域名)，那么有心人即使知道了你家宽带今天 ipv6 的 64 位前缀，为了尝试获得服务器的真实 ipv6 地址，它需要对 16 亿亿个 ipv6 地址进行扫描，再牛的黑客，没有几年的时间是无法完成的。而你的 ipv6 地址一般每 3 天更换一次前缀，意味着黑客必须在 3 天内完成 16 亿亿个有效扫描，这是无法完成的任务。<br>而如果你捆绑了动态域名，这就好比直接打开了你家 ipv6 网络的一道门，任何人只要知道你的动态域名，根本不需要扫描，就可以直接知道你服务器的 ipv6 地址，然后进行攻击尝试。<br>由于家庭服务器，一般只为有限的家庭成员提供服务，因此服务器地址只需要家人能够解析就可以，因此通过服务器端发送邮件，用户直接在软件里自动通过电子邮件进行解析的方式，可以极大的保护建立在动态 ipv6 地址上的家庭服务器不被泄漏。<br>使用这种方式，黑客要获取服务器 ipv6 地址，就必须尝试获取邮件，而电子邮箱由于是需要用户名和口令才能登录，而破解大公司的邮箱服务器口令和用户名是非常非常的困难。也就是通过电子邮件解析服务器地址的方法，对比使用动态域名，多了一道由电子邮箱提供的安全防火门，让你家的服务器 ip 地址真正大隐隐于市了。</p>
+<p>在 ipv6 下，由于不再只分配一个 ip 地址，而是一下子给了你海量的 ipv6 地址，这就形成了天然的安全屏障。大家都知道，要尝试对某个家庭服务器发起攻击尝试，首要的条件就是知道对方的服务器地址。</p>
+<blockquote>
+<p>最大的安全是什么，你的服务器 ipv6 地址只有你自己知道，如果你不对家庭服务器捆绑 DDNS(动态域名)，那么有心人即使知道了你家宽带今天 ipv6 的 64 位前缀，为了尝试获得服务器的真实 ipv6 地址，它需要对 16 亿亿个 ipv6 地址进行扫描，再牛的黑客，没有几年的时间是无法完成的。而你的 ipv6 地址一般每 3 天更换一次前缀，意味着黑客必须在 3 天内完成 16 亿亿个有效扫描，这是无法完成的任务。<br>而如果你捆绑了动态域名，这就好比直接打开了你家 ipv6 网络的一道门，任何人只要知道你的动态域名，根本不需要扫描，就可以直接知道你服务器的 ipv6 地址，然后进行攻击尝试。<br>由于家庭服务器，一般只为有限的家庭成员提供服务，因此服务器地址只需要家人能够解析就可以，因此通过服务器端发送邮件，用户直接在软件里自动通过电子邮件进行解析的方式，可以极大的保护建立在动态 ipv6 地址上的家庭服务器不被泄漏。<br>使用这种方式，黑客要获取服务器 ipv6 地址，就必须尝试获取邮件，而电子邮箱由于是需要用户名和口令才能登录，而破解大公司的邮箱服务器口令和用户名是非常非常的困难。也就是通过电子邮件解析服务器地址的方法，对比使用动态域名，多了一道由电子邮箱提供的安全防火门，让你家的服务器 ip 地址真正大隐隐于市了。</p>
+</blockquote>
 </blockquote>
 <p>总结一下就是，使用 DDNS 域名一旦泄露被公布在互联网上，受到精准攻击的风险就会上升，因此直接使用动态变化的 IP 会安全一些。当然这只是针对自家家用用途，如果要对外提供服务还得上 DDNS。（下级设备可以使用 DHCPv6 stateful 有状态分配 ip，不推荐 EUI64 地址）</p>
 <h3 id="自动发送新的-IP-到指定邮箱"><a href="#自动发送新的-IP-到指定邮箱" class="headerlink" title="自动发送新的 IP 到指定邮箱"></a>自动发送新的 IP 到指定邮箱</h3><ol>
-<li>下载脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;storage</span><br><span class="line">curl -Lk &quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;whatGUI&#x2F;Padavan-DDNS-Solution&#x2F;master&#x2F;mailuip.sh&quot; &gt; mailuip.sh</span><br></pre></td></tr></table></figure></li>
-<li>填写 SMTP 邮箱配置，把下面命令中的<code>SMTP 服务器地址``邮箱账号``邮箱密码``收件地址</code>，分别改为对应的项，然后执行命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;s&#x2F;SERVER&#x2F;SMTP 服务器地址&#x2F;g&quot; mailuip.sh</span><br><span class="line">sed -i &quot;s&#x2F;ACCOUNT&#x2F;邮箱账号&#x2F;g&quot; mailuip.sh</span><br><span class="line">sed -i &quot;s&#x2F;PWD&#x2F;邮箱密码&#x2F;g&quot; mailuip.sh</span><br><span class="line">sed -i &quot;s&#x2F;TOWHO&#x2F;收件地址&#x2F;g&quot; mailuip.sh</span><br></pre></td></tr></table></figure>
-举例如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#例子</span><br><span class="line">#sed -i &quot;s&#x2F;SERVER&#x2F;smtp.163.com&#x2F;g&quot; mailuip.sh</span><br><span class="line">#sed -i &quot;s&#x2F;ACCOUNT&#x2F;666666@163.com&#x2F;g&quot; mailuip.sh</span><br><span class="line">#sed -i &quot;s&#x2F;PWD&#x2F;123456&#x2F;g&quot; mailuip.sh</span><br><span class="line">#sed -i &quot;s&#x2F;TOWHO&#x2F;666@qq.com,555@qq.com&#x2F;g&quot; mailuip.sh  #若有多个收件人用英文逗号分开</span><br></pre></td></tr></table></figure></li>
-<li>添加可执行权限，保存之前的计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x mailuip.sh</span><br><span class="line">crontab -l &gt; mailcron</span><br></pre></td></tr></table></figure></li>
-<li>添加需要发送 ip 的设备，每 10 分钟自动执行一次检查。注意！<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#参数格式说明：.&#x2F;mailuip.sh [模式] [设备名] [MAC地址]</span><br><span class="line"></span><br><span class="line">cat &gt;&gt; mailcron &lt;&lt;EOF</span><br><span class="line">#添加路由器</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh router</span><br><span class="line">#添加下级设备</span><br><span class="line">#可以添加多个设备，每一行对应一个设备</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh 设备名 MAC地址</span><br><span class="line">#                ......</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#对于下级设备举例如下，注意空格不能丢</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh iphone 11:22:33:aa:bb:cc</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh mypc ee:ff:gg:11:22:33</span><br></pre></td></tr></table></figure></li>
+<li>用winscp在路由器中的/etc/storage目录下，新建一个文件名为mailuip.sh的文本文件，复制脚本内容如下，务必填写SMTP的配置信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash -e</span><br><span class="line">#脚本使用方法</span><br><span class="line">#.&#x2F;mailuip.sh [mode] [name] [mac]</span><br><span class="line"></span><br><span class="line">#SMTP配置   #（例子）</span><br><span class="line">#SMTP服务器#smtpserver&#x3D;smtp.126.com</span><br><span class="line">#邮箱账号#fromaddress&#x3D;xxxxxx@126.com</span><br><span class="line">#邮箱密码fromaddresspwd&#x3D;xxxxxxxxxxxxx</span><br><span class="line">#收件人信息#toaddress&#x3D;xxxxxx@qq.com 多个收件人用英文逗号分隔</span><br><span class="line"></span><br><span class="line">#SMTP配置</span><br><span class="line">smtpserver&#x3D;</span><br><span class="line">fromaddress&#x3D;</span><br><span class="line">fromaddresspwd&#x3D;</span><br><span class="line">toaddress&#x3D;</span><br><span class="line"></span><br><span class="line">#参数配置</span><br><span class="line">mode&#x3D;$1</span><br><span class="line">name&#x3D;$&#123;2:-&#39;Router&#39;&#125;</span><br><span class="line">mac&#x3D;$3</span><br><span class="line">#有必要的话更改网络设备名</span><br><span class="line">device&#x3D;ppp0</span><br><span class="line"></span><br><span class="line">#模式选择错误处理</span><br><span class="line">if [ &quot;$mode&quot; !&#x3D; &quot;router&quot; -a &quot;$mode&quot; !&#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  echo &quot;please select router or neigh mode&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">#neigh模式处理下级设备IP</span><br><span class="line">if [ &quot;$mode&quot; &#x3D; &quot;neigh&quot; ]; then</span><br><span class="line">  if [ -z $mac ]; then</span><br><span class="line">    echo &quot;mac is empty&quot;</span><br><span class="line">    exit</span><br><span class="line">  fi</span><br><span class="line">  mac&#x3D;$( echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; )</span><br><span class="line">  file&#x3D;$HOME&#x2F;.mailuip.neigh.$name</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获得下级设备的ip</span><br><span class="line">  macinf&#x3D;$(echo $mac | tr &#39;[A-Z]&#39; &#39;[a-z]&#39; | awk  -F &#39;:&#39;  &#39;&#123;print $5$6&#125;&#39; )</span><br><span class="line">  ipaddress&#x3D;$(ip -6 neighbor | grep $mac | grep -v $macinf | grep -v &#39;fe80&#39; | awk &#39;&#123;print $1&#125;&#39;)</span><br><span class="line"></span><br><span class="line">  #router模式处理路由器IP</span><br><span class="line">  else</span><br><span class="line">  file&#x3D;$HOME&#x2F;.mailuip.router</span><br><span class="line">  [ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">  #获取ip地址</span><br><span class="line">  ipaddress&#x3D;$(ip -6 addr list scope global $device | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">mailtxt&#x3D;$HOME&#x2F;.mail.$name</span><br><span class="line">sdate&#x3D;&#96;date +%Y年%m月%d日%t%H:%M:%S&#96;</span><br><span class="line"></span><br><span class="line">#写好邮件</span><br><span class="line">cat &gt; $mailtxt &lt;&lt;EOF</span><br><span class="line">From:$&#123;fromaddress&#125;</span><br><span class="line">To:$&#123;toaddress&#125;</span><br><span class="line">Subject:IP发生变更，打开查看详情</span><br><span class="line">系统于 $&#123;sdate&#125; 检测到设备：$&#123;name&#125; 的IP已发生变更！</span><br><span class="line">新的IP为  $&#123;ipaddress&#125;</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#发送邮件</span><br><span class="line">sendmail -f $fromaddress -t $toaddress -S $smtpserver -au$fromaddress -ap$fromaddresspwd &lt; $mailtxt</span><br><span class="line"></span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br><span class="line"></span><br><span class="line">#打印系统日志</span><br><span class="line">logger 监测到设备 $name 的IPv6变更,已邮件通知 $toaddress</span><br></pre></td></tr></table></figure></li>
+<li>ssh连接到路由器，添加mailuip,sh的可执行权限，保存之前的计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;storage</span><br><span class="line">chmod +x mailuip.sh</span><br><span class="line">crontab -l &gt; mailcron</span><br></pre></td></tr></table></figure></li>
+<li>添加需要发送 ip 的设备，每 10 分钟自动执行一次检查。注意！<code>设备名</code>自定但必须是英文否则会出错，<code>MAC 地址</code>要求按照带有冒号分隔符的格式，例如<code>xx:xx:xx:xx:xx:xx</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#参数格式说明：.&#x2F;mailuip.sh [模式] [设备名] [MAC地址]</span><br><span class="line">cat &gt;&gt; mailcron &lt;&lt;EOF</span><br><span class="line">#添加路由器</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh router</span><br><span class="line">#添加下级设备</span><br><span class="line">#可以添加多个设备，每一行对应一个设备</span><br><span class="line">*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh 设备名 MAC地址</span><br><span class="line">#                ......</span><br><span class="line">EOF</span><br><span class="line">#对于下级设备举例如下，注意空格不能丢</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh iphone 11:22:33:aa:bb:cc</span><br><span class="line">#*&#x2F;10 * * * * &#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh mypc ee:ff:gg:11:22:33</span><br></pre></td></tr></table></figure></li>
 <li>启动计划任务<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab mailcron</span><br></pre></td></tr></table></figure></li>
 <li>在 Padavan 的后台管理页找到<code>高级设置</code>-&gt;<code>自定义设置</code>-&gt;<code>脚本</code>-&gt;<code>在 WAN 上行/下行启动后执行</code>中添加以下命令，就可以在重启路由后立即发送最新 IP 地址。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#对于路由器</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;mailuip.sh router</span><br><span class="line">#或者是下级设备</span><br><span class="line">&#x2F;etc&#x2F;storage&#x2F;mailuip.sh neigh 设备名 MAC地址</span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><h2 id="记一下编辑脚本时遇到的问题"><a href="#记一下编辑脚本时遇到的问题" class="headerlink" title="记一下编辑脚本时遇到的问题"></a>记一下编辑脚本时遇到的问题</h2>在 windows 下的换行与 Linux 的换行不同，互不兼容，这就导致在 windows 记事本中编辑过的 shell 脚本，放在 Linux 下无法运行。最后处理方法是用 VS Code 打开，点击右下角<code>CRLF</code>，选择行尾序列，改为<code>LF</code>保存即可。</li>
 </ol>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>如果有问题欢迎来 <a href="https://github.com/whatGUI/Padavan-DDNS-Solution" target="_blank" rel="noopener">GitHub</a> 提交你的 issue。</p>
-<h2 id="记一下编辑脚本时遇到的问题"><a href="#记一下编辑脚本时遇到的问题" class="headerlink" title="记一下编辑脚本时遇到的问题"></a>记一下编辑脚本时遇到的问题</h2><p>在 windows 下的换行与 Linux 的换行不同，互不兼容，这就导致在 windows 记事本中编辑过的 shell 脚本，放在 Linux 下无法运行。最后处理方法是用 VS Code 打开，点击右下角<code>CRLF</code>，选择行尾序列，改为<code>LF</code>保存即可。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>家用宽带的 IPv6 配置： <a href="https://lwz322.github.io/2019/07/25/IPv6_Home.html" target="_blank" rel="noopener">https://lwz322.github.io/2019/07/25/IPv6_Home.html</a></p>
 <p>V2EX › 宽带症候群 如何远程找到家里设备的 IPV6 地址？： <a href="https://www.v2ex.com/t/592571" target="_blank" rel="noopener">https://www.v2ex.com/t/592571</a></p>
 <p>知乎-IPV6 网络下建立安全的家庭服务器[NAS]： <a href="https://zhuanlan.zhihu.com/p/75247811" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/75247811</a></p>
@@ -261,7 +889,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%BF%98%E8%AE%B0%E5%AF%BC%E5%87%BAChrome%E4%B9%A6%E7%AD%BE%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%BF%98%E8%AE%B0%E5%AF%BC%E5%87%BAChrome%E4%B9%A6%E7%AD%BE%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -275,7 +903,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/01/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%BF%98%E8%AE%B0%E5%AF%BC%E5%87%BAChrome%E4%B9%A6%E7%AD%BE%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/" class="post-title-link" itemprop="url">「捯饬记录」忘记导出Chrome书签该怎么办？</a>
+            <a href="/2020/01/07/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%BF%98%E8%AE%B0%E5%AF%BC%E5%87%BAChrome%E4%B9%A6%E7%AD%BE%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F/" class="post-title-link" itemprop="url">「捯饬记录」忘记导出Chrome书签该怎么办？</a>
         </h1>
 
         <div class="post-meta">
@@ -284,10 +912,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-08 00:11:29 / 修改时间：00:20:59" itemprop="dateCreated datePublished" datetime="2020-01-08T00:11:29+08:00">2020-01-08</time>
+              <time title="创建时间：2020-01-07 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-07T23:33:03+08:00">2020-01-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+              </span>
 
           
 
@@ -349,14 +983,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-06 18:39:45" itemprop="dateCreated datePublished" datetime="2020-01-06T18:39:45+08:00">2020-01-06</time>
+              <time title="创建时间：2020-01-06 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-06T23:33:03+08:00">2020-01-06</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-11 18:02:00" itemprop="dateModified" datetime="2020-01-11T18:02:00+08:00">2020-01-11</time>
+                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
               </span>
 
           
@@ -413,196 +1047,12 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="whatGUI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="whatGUI">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">「捯饬记录」一次Padavan固件的简单定制过程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-31 17:17:06" itemprop="dateCreated datePublished" datetime="2019-12-31T17:17:06+08:00">2019-12-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-06 22:42:25" itemprop="dateModified" datetime="2020-01-06T22:42:25+08:00">2020-01-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="记录时间：2019-年-12-月-31-日"><a href="#记录时间：2019-年-12-月-31-日" class="headerlink" title="记录时间：2019 年 12 月 31 日"></a>记录时间：2019 年 12 月 31 日</h1><h2 id="关键词：K2-Padavan-固件编译-定制"><a href="#关键词：K2-Padavan-固件编译-定制" class="headerlink" title="关键词：K2 Padavan 固件编译 定制"></a>关键词：K2 Padavan 固件编译 定制</h2><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>手里的 K2 一直以来使用的都是某恪的固件，确实稳定好用，但是直到现在都没有加入 IPV6 的相关功能。怀着想要体验 IPV6 的心情，一番折腾之后诞生了这一系列记录。那为什么不使用强大的 openwrt 呢？稳定性和无线性能是我首要考虑的问题，因此选择了捯饬 Padavan。最后几经搜索选择了 hanwckf 的开源固件，模板多教程也多，方便进行简单的定制。</p>
-<h2 id="1-准备-Linux-系统环境"><a href="#1-准备-Linux-系统环境" class="headerlink" title="1. 准备 Linux 系统环境"></a>1. 准备 Linux 系统环境</h2><blockquote>
-<p>根据 libgcc 的 <a href="https://www.jianshu.com/p/6b8403cdea46" target="_blank" rel="noopener">Padavan固件编译办法</a> ，推荐没有安装或者不想安装 Linux 系统的使用 Windows10 系统的 wsl 功能。</p>
-</blockquote>
-<p>首先安装了 Ubuntu 19.10，安装过程略显曲折，因为安装到了移动硬盘。关于这部分内容将在下一篇细说。</p>
-<h3 id="1-1-更换国内源并更新了所有软件包，同时修改了-opt-目录权限为-777"><a href="#1-1-更换国内源并更新了所有软件包，同时修改了-opt-目录权限为-777" class="headerlink" title="1.1 更换国内源并更新了所有软件包，同时修改了/opt 目录权限为 777"></a>1.1 更换国内源并更新了所有软件包，同时修改了/opt 目录权限为 777</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &#39;s#http:&#x2F;&#x2F;archive.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line">sudo sed -i &#39;s#http:&#x2F;&#x2F;security.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo chmod 777 &#x2F;opt</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-安装必要的软件包"><a href="#1-2-安装必要的软件包" class="headerlink" title="1.2 安装必要的软件包"></a>1.2 安装必要的软件包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd \</span><br><span class="line">cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \</span><br><span class="line">pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev</span><br></pre></td></tr></table></figure>
-<h3 id="1-3-下载源码到本地"><a href="#1-3-下载源码到本地" class="headerlink" title="1.3 下载源码到本地"></a>1.3 下载源码到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth&#x3D;1 https:&#x2F;&#x2F;gitee.com&#x2F;hanwckf&#x2F;rt-n56u.git &#x2F;opt&#x2F;rt-n56u</span><br></pre></td></tr></table></figure>
-<p>这里没有用 GitHub，因为速度实在不给力。</p>
-<h3 id="1-4-准备并编译工具链"><a href="#1-4-准备并编译工具链" class="headerlink" title="1.4 准备并编译工具链"></a>1.4 准备并编译工具链</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;opt&#x2F;rt-n56u&#x2F;toolchain-mipsel</span><br><span class="line">.&#x2F;clean_toolchain</span><br><span class="line">.&#x2F;build_toolchain</span><br></pre></td></tr></table></figure>
-<p>这一步使用的笔记本电脑，编译花了 30+min。如果工具链的源码没有变化，下一次编译固件不用再重新编译工具链，可以直接使用。</p>
-<h2 id="2-修改配置文件进行简单的定制"><a href="#2-修改配置文件进行简单的定制" class="headerlink" title="2. 修改配置文件进行简单的定制"></a>2. 修改配置文件进行简单的定制</h2><p>为了修改文件更方便，先去下载了 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a> ，然后修改各配置文件。根据下表</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">配置文件路径</th>
-<th style="text-align:left">主要的可配置功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/configs/templates/PSG1218.config</td>
-<td style="text-align:left">包含软件包、功能</td>
-</tr>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/configs/boards/PSG1218/board.h</td>
-<td style="text-align:left">指示灯、复位键等</td>
-</tr>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config</td>
-<td style="text-align:left">WAN、LAN、内存</td>
-</tr>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/user/shared/defaults.h</td>
-<td style="text-align:left">路由器配置(默认网关、无线密码等)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>这次针对 K2 的定制过程修改的是 PSG1218_nano.config 和 defaults.h 这两个文件。主要是在/opt/rt-n56u/trunk/configs/templates/目录下发现了 PSG1218_nano.config 的配置模板文件，这个配置文件本身是 K2 的精简配置，出于对精简的谜之信仰选了这个。</p>
-<h3 id="2-1-修改-PSG1218-nano-config"><a href="#2-1-修改-PSG1218-nano-config" class="headerlink" title="2.1 修改 PSG1218_nano.config"></a>2.1 修改 PSG1218_nano.config</h3><p>需要启用或关闭一个功能则将该行的末尾改为 y 或 n，至于功能是什么文件里有描述和注释</p>
-<p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### Enable IPv6 support #是否启用 IPv6 支持</span><br><span class="line">CONFIG_FIRMWARE_ENABLE_IPV6&#x3D;y #表示启用</span><br><span class="line"></span><br><span class="line">### Enable USB support  #是否启用 USB 支持</span><br><span class="line">CONFIG_FIRMWARE_ENABLE_USB&#x3D;n #表示不启用（没有 usb 口）</span><br></pre></td></tr></table></figure>
-<p>这次编译固件做出的修改如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CONFIG_FIRMWARE_INCLUDE_XUPNPD&#x3D;n #去除用于 IPTV 的 XUPNP</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_DOGCOM&#x3D;n #去除用于 Drcom 的工具</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_MINIEAP&#x3D;n #去除可用于锐捷的 eap 客户端</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT&#x3D;n #去除南工网络客户端</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_VLMCSD&#x3D;n #去除用于 KMS 的工具</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-2-修改-defaults-h"><a href="#2-2-修改-defaults-h" class="headerlink" title="2.2 修改 defaults.h"></a>2.2 修改 defaults.h</h3><p>修改备用 NTP 服务器地址为 time.nist.gov</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define DEF_NTP_SERVER1     &quot;time.nist.gov&quot;</span><br></pre></td></tr></table></figure>
-<p>是的，编译完之后才发现这个更改没有任何意义，就是想找点什么改一下(￣▽￣)”<br>修改完毕，保存</p>
-<h2 id="3-清理代码树并开始编译"><a href="#3-清理代码树并开始编译" class="headerlink" title="3. 清理代码树并开始编译"></a>3. 清理代码树并开始编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;opt&#x2F;rt-n56u&#x2F;trunk</span><br><span class="line">sudo .&#x2F;clear_tree</span><br><span class="line">sudo .&#x2F;build_firmware_modify PSG1218_nano</span><br></pre></td></tr></table></figure>
-<h2 id="4-编译完成保存固件"><a href="#4-编译完成保存固件" class="headerlink" title="4. 编译完成保存固件"></a>4. 编译完成保存固件</h2><p>固件编译耗时约为 10min，完成后的.trx 文件在/opt/rt-n56u/trunk/images 路径下找到，然后复制到其他地方保存，因为下次编译会覆盖。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="whatGUI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="whatGUI">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/25/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-25 16:41:03" itemprop="dateCreated datePublished" datetime="2019-12-25T16:41:03+08:00">2019-12-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-06 21:43:40" itemprop="dateModified" datetime="2020-01-06T21:43:40+08:00">2020-01-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -667,7 +1117,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

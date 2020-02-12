@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="记录时间：2020 年 1 月 26 日关键词：Padavan golang 交叉编译 wireguard注意这是一次失败记录，虽然成功地编译出了wireguard-go和 tools，但是编译出的文件体积太大装不进K2路由器，不能测试其是否可用，也不想搞了，因为OpenWrt体积更小使用也简单，稳定性方面也超出我的预期，所以之后换用OpenWrt了。另外再说一下，wg体积小性能稳，对于家庭的组网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「捯饬记录」尝试为Padavan交叉编译一个wireguard-go和wireguard-tools">
+<meta property="og:url" content="http://yoursite.com/2020/01/26/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%B0%9D%E8%AF%95%E4%B8%BAPadavan%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%80%E4%B8%AAwireguard-go%E5%92%8Cwireguard-tools/index.html">
+<meta property="og:site_name" content="whatGUI">
+<meta property="og:description" content="记录时间：2020 年 1 月 26 日关键词：Padavan golang 交叉编译 wireguard注意这是一次失败记录，虽然成功地编译出了wireguard-go和 tools，但是编译出的文件体积太大装不进K2路由器，不能测试其是否可用，也不想搞了，因为OpenWrt体积更小使用也简单，稳定性方面也超出我的预期，所以之后换用OpenWrt了。另外再说一下，wg体积小性能稳，对于家庭的组网">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-26T15:33:03.000Z">
+<meta property="article:modified_time" content="2020-02-12T14:58:38.925Z">
+<meta property="article:author" content="whatGUI">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/26/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%B0%9D%E8%AF%95%E4%B8%BAPadavan%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%80%E4%B8%AAwireguard-go%E5%92%8Cwireguard-tools/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>「捯饬记录」尝试为Padavan交叉编译一个wireguard-go和wireguard-tools | whatGUI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">whatGUI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/26/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%B0%9D%E8%AF%95%E4%B8%BAPadavan%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%80%E4%B8%AAwireguard-go%E5%92%8Cwireguard-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「捯饬记录」尝试为Padavan交叉编译一个wireguard-go和wireguard-tools
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-26 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-26T23:33:03+08:00">2020-01-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:58:38" itemprop="dateModified" datetime="2020-02-12T22:58:38+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="记录时间：2020-年-1-月-26-日"><a href="#记录时间：2020-年-1-月-26-日" class="headerlink" title="记录时间：2020 年 1 月 26 日"></a>记录时间：2020 年 1 月 26 日</h1><h2 id="关键词：Padavan-golang-交叉编译-wireguard"><a href="#关键词：Padavan-golang-交叉编译-wireguard" class="headerlink" title="关键词：Padavan golang 交叉编译 wireguard"></a>关键词：Padavan golang 交叉编译 wireguard</h2><p><em>注意这是一次<strong><strong>失败记录</strong></strong>，虽然成功地编译出了wireguard-go和 tools，但是编译出的文件体积太大装不进K2路由器，不能测试其是否可用，也不想搞了，因为OpenWrt体积更小使用也简单，稳定性方面也超出我的预期，所以之后换用OpenWrt了。另外再说一下，wg体积小性能稳，对于家庭的组网来说很好用。</em></p>
+<p>注：本记录仅为学习！关于使用请遵守相关规定！</p>
+<h2 id="在Ubuntu编译"><a href="#在Ubuntu编译" class="headerlink" title="在Ubuntu编译"></a>在Ubuntu编译</h2><ol>
+<li>准备编译环境</li>
+</ol>
+<p>编译系统为 Ubuntu 18.04，首先安装必要的软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt-get install build-essential pkg-config cmake autoconf automake libtool wget git</span><br><span class="line">#编译libmnl</span><br><span class="line">cd &#x2F;tmp</span><br><span class="line">git clone git:&#x2F;&#x2F;git.netfilter.org&#x2F;libmnl</span><br><span class="line">cd &#x2F;tmp&#x2F;libmnl&#x2F;</span><br><span class="line">.&#x2F;autogen.sh --disable-shared --host&#x3D;mipsel-linux-uclibc</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<ol>
+<li>编译wireguard-tools<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;WireGuard&#x2F;wireguard-tools.git</span><br><span class="line">cd wireguard-tools&#x2F;src&#x2F;</span><br><span class="line">env CFLAGS&#x3D;-I&#x2F;tmp&#x2F;libmnl&#x2F;include LDFLAGS&#x3D;-L&#x2F;tmp&#x2F;libmnl&#x2F;src&#x2F;.libs make</span><br></pre></td></tr></table></figure></li>
+<li>安装go<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这里安装了golang版本为1.13.7</span><br><span class="line">wget -O &#x2F;tmp&#x2F;golang.tar.gz https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.13.7.linux-amd64.tar.gz</span><br><span class="line">tar -C &#x2F;usr&#x2F;local -xvzf &#x2F;tmp&#x2F;golang.tar.gz</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin</span><br><span class="line">#启用阿里云go镜像加速下载</span><br><span class="line">export GOPROXY&#x3D;&quot;https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;goproxy&#x2F;&quot;</span><br></pre></td></tr></table></figure></li>
+<li>编译wireguard-go<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $HOME&#x2F;gobuild&#x2F; &amp;&amp; cd $HOME&#x2F;gobuild&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;WireGuard&#x2F;wireguard-go.git</span><br><span class="line">cd wireguard-go</span><br><span class="line">export GOPATH&#x3D;&quot;$HOME&#x2F;gobuild&#x2F;&quot;</span><br><span class="line">env GOOS&#x3D;linux GOARCH&#x3D;mipsle go build -v -o &quot;wireguard-go&quot;</span><br></pre></td></tr></table></figure></li>
+<li>复制wg和wireguard-go到主目录，就可以在主目录中找到了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp $HOME&#x2F;wireguard-tools&#x2F;src&#x2F;wg $HOME</span><br><span class="line">cp $HOME&#x2F;gobuild&#x2F;wireguard-go&#x2F;wireguard-go $HOME</span><br></pre></td></tr></table></figure>
+<h2 id="直接用github-actions自动编译（特别推荐）"><a href="#直接用github-actions自动编译（特别推荐）" class="headerlink" title="直接用github actions自动编译（特别推荐）"></a>直接用github actions自动编译（特别推荐）</h2>贼省事，不多解释了，直接上脚本。由于没有仔细了解脚本语法，因此这个脚本是简单修改来的可能有不合理的地方，另外要注意一下随着源码的不断更新，脚本可能会在未来失效。关于使用可以参考一下前面的捯饬记录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">name: Build wireguard-go for Padavan</span><br><span class="line"></span><br><span class="line">on: </span><br><span class="line">  push:</span><br><span class="line">    branches: </span><br><span class="line">      - master</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line"></span><br><span class="line">    steps:</span><br><span class="line">    - name: 初始化</span><br><span class="line">      env:</span><br><span class="line">        DEBIAN_FRONTEND: noninteractive</span><br><span class="line">      run: |</span><br><span class="line">        #sudo apt-get update</span><br><span class="line">        wget -O &#x2F;tmp&#x2F;golang.tar.gz https:&#x2F;&#x2F;dl.google.com&#x2F;go&#x2F;go1.13.7.linux-amd64.tar.gz</span><br><span class="line">        sudo tar -C &#x2F;usr&#x2F;local -xvzf &#x2F;tmp&#x2F;golang.tar.gz</span><br><span class="line">        export PATH&#x3D;$PATH:&#x2F;usr&#x2F;local&#x2F;go&#x2F;bin</span><br><span class="line">    - name: 编译wireguard-go</span><br><span class="line">      run: |</span><br><span class="line">        mkdir -p &#x2F;tmp&#x2F;gobuild&#x2F; &amp;&amp; cd &#x2F;tmp&#x2F;gobuild&#x2F;</span><br><span class="line">        git clone https:&#x2F;&#x2F;git.zx2c4.com&#x2F;wireguard-go</span><br><span class="line">        cd wireguard-go</span><br><span class="line">        export GOPATH&#x3D;&quot;&#x2F;tmp&#x2F;gobuild&#x2F;&quot;</span><br><span class="line">        env GOOS&#x3D;linux GOARCH&#x3D;mipsle go build -v -o &quot;wireguard-go&quot;</span><br><span class="line">    - name : 上传wireguard-go</span><br><span class="line">      uses: actions&#x2F;upload-artifact@master</span><br><span class="line">      with:</span><br><span class="line">        name: wireguard-go</span><br><span class="line">        path: &#x2F;tmp&#x2F;gobuild&#x2F;wireguard-go&#x2F;wireguard-go</span><br><span class="line">    - name: 编译wireguard-tools</span><br><span class="line">      run: |</span><br><span class="line">        cd &#x2F;tmp</span><br><span class="line">        git clone https:&#x2F;&#x2F;git.zx2c4.com&#x2F;wireguard-tools</span><br><span class="line">        git clone git:&#x2F;&#x2F;git.netfilter.org&#x2F;libmnl</span><br><span class="line">        cd &#x2F;tmp&#x2F;libmnl&#x2F;</span><br><span class="line">        .&#x2F;autogen.sh --disable-shared --host&#x3D;mipsel-linux-uclibc</span><br><span class="line">        .&#x2F;configure</span><br><span class="line">        make</span><br><span class="line">        cd &#x2F;tmp&#x2F;wireguard-tools&#x2F;src&#x2F;</span><br><span class="line">        env CFLAGS&#x3D;-I&#x2F;tmp&#x2F;libmnl&#x2F;include LDFLAGS&#x3D;-L&#x2F;tmp&#x2F;libmnl&#x2F;src&#x2F;.libs make        </span><br><span class="line">    - name : 上传wireguard-tools</span><br><span class="line">      uses: actions&#x2F;upload-artifact@master</span><br><span class="line">      with:</span><br><span class="line">        name: wireguard-tools</span><br><span class="line">        path: &#x2F;tmp&#x2F;wireguard-tools&#x2F;src&#x2F;wg</span><br></pre></td></tr></table></figure>
+<h2 id="关于wg文件的使用"><a href="#关于wg文件的使用" class="headerlink" title="关于wg文件的使用"></a>关于wg文件的使用</h2><p>因为不能测试，也就没有做进一步的了解。官方的简单说明中关于wireguard-tools都是直接编译安装，对单个wg的使用可能需要啃一下官方的文档，或者了解一下make install来手动配置，应该也挺麻烦的吧。</p>
+<h2 id="简单记录一下使用docker来编译的过程"><a href="#简单记录一下使用docker来编译的过程" class="headerlink" title="简单记录一下使用docker来编译的过程"></a>简单记录一下使用docker来编译的过程</h2><p>在docker容器中编译（前提是安装了docker），因为我的Ubuntu里装了很多乱七八糟的东西，为了保持干净还是选择用docker来编译，但是没有特地做新的镜像，所以容器里的环境是从头开始搭的。</p>
+<ol>
+<li>启动一个docker ubuntu容器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -it --rm ubuntu</span><br></pre></td></tr></table></figure></li>
+<li>安装必要的软件，切换软件源加速后续下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt install -y apt-transport-https ca-certificates</span><br><span class="line">sed -i &#39;s#http:&#x2F;&#x2F;archive.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line">sed -i &#39;s#http:&#x2F;&#x2F;security.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br></pre></td></tr></table></figure></li>
+<li>中间编译步骤和上边 在ubuntu编译 是一样的</li>
+<li>编译完成后另开一个终端窗口，执行以下命令复制wg和wireguard-go到本机<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker cp &lt;container&gt;:&#x2F;root&#x2F;wireguard-tools&#x2F;src&#x2F;wg wg</span><br><span class="line">sudo docker cp &lt;container&gt;:&#x2F;root&#x2F;gobuild&#x2F;wireguard-go&#x2F;wireguard-go wireguard-go</span><br></pre></td></tr></table></figure>
+使用完毕后ctrl + d退出容器，不留痕迹！<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2>经过这次捯饬才发现Padavan的缺点：Linux版本有点低（3.4），而且模块化程度低，真想捯饬还得是OpenWrt。另外一个wireguard-go体积达到了4M，这K2就很吃力啊，由于这些原因还是转向了OpenWrt。经过短暂的试用感觉官方版OpenWrt 19.07的稳定性表现超出了我的预期，所以Padavan的内容到这里应该就告一段落了，哎希望给能看到这些个记录的带来一点点启发。不说了，IPv6我来了！</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>Compiling the Kernel Module from Source：<a href="https://www.wireguard.com/compilation/" target="_blank" rel="noopener">https://www.wireguard.com/compilation/</a></p>
+<p>Installing WireGuard on ASUS RT-N56U (Padavan)：<a href="https://medium.com/@yjwong/installing-wireguard-on-asus-rt-n56u-731c22f1f5bd" target="_blank" rel="noopener">https://medium.com/@yjwong/installing-wireguard-on-asus-rt-n56u-731c22f1f5bd</a></p>
+<p>Go 语言跨平台路由器编译：<a href="https://blog.lutty.me/code/2017-04/golang-cross-compile-openwrt-ddwrt-build.html" target="_blank" rel="noopener">https://blog.lutty.me/code/2017-04/golang-cross-compile-openwrt-ddwrt-build.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/16/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%93%E9%AA%8C%E4%B8%80%E4%B8%8BGitHub%E7%9A%84%E8%87%AA%E5%8A%A8%E7%BC%96%E8%AF%91/" rel="prev" title="「捯饬记录」体验一下GitHub的自动编译">
+      <i class="fa fa-chevron-left"></i> 「捯饬记录」体验一下GitHub的自动编译
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/" rel="next" title="「捯饬记录」OpenWrt通过邮件发送wan IPv6地址">
+      「捯饬记录」OpenWrt通过邮件发送wan IPv6地址 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录时间：2020-年-1-月-26-日"><span class="nav-number">1.</span> <span class="nav-text">记录时间：2020 年 1 月 26 日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词：Padavan-golang-交叉编译-wireguard"><span class="nav-number">1.1.</span> <span class="nav-text">关键词：Padavan golang 交叉编译 wireguard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Ubuntu编译"><span class="nav-number">1.2.</span> <span class="nav-text">在Ubuntu编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接用github-actions自动编译（特别推荐）"><span class="nav-number">1.3.</span> <span class="nav-text">直接用github actions自动编译（特别推荐）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于wg文件的使用"><span class="nav-number">1.4.</span> <span class="nav-text">关于wg文件的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单记录一下使用docker来编译的过程"><span class="nav-number">1.5.</span> <span class="nav-text">简单记录一下使用docker来编译的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">1.6.</span> <span class="nav-text">END</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.7.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">whatGUI</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">whatGUI</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

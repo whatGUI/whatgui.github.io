@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="记录时间：2020 年 1 月 31 日关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2更换软件镜像源鉴于openwrt的官方软件源速度不太行，先换个清华的源。不过ssmtp体积很小，不换的话下载问题也不大。  复制类似下面的地址到opkg&#x2F;distfeeds.conf并保存。这里以k2路由器的mt7620为例，其他类型或版本可以去清华的镜像源查看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「捯饬记录」OpenWrt通过邮件发送wan IPv6地址">
+<meta property="og:url" content="http://yoursite.com/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/index.html">
+<meta property="og:site_name" content="whatGUI">
+<meta property="og:description" content="记录时间：2020 年 1 月 31 日关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2更换软件镜像源鉴于openwrt的官方软件源速度不太行，先换个清华的源。不过ssmtp体积很小，不换的话下载问题也不大。  复制类似下面的地址到opkg&#x2F;distfeeds.conf并保存。这里以k2路由器的mt7620为例，其他类型或版本可以去清华的镜像源查看">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploader.shimo.im/f/rQGyF8v5Kg0Ex85v.png!thumbnail">
+<meta property="og:image" content="https://uploader.shimo.im/f/CBzx0l9UVUMvVkTx.png!thumbnail">
+<meta property="og:image" content="https://uploader.shimo.im/f/x1iti6bQqyo2CSw5.png!thumbnail">
+<meta property="og:image" content="https://uploader.shimo.im/f/bgihCCFsvvEmk1NC.png!thumbnail">
+<meta property="og:image" content="https://uploader.shimo.im/f/WS6skdAC1J8y2ALh.png!thumbnail">
+<meta property="article:published_time" content="2020-01-31T15:33:03.000Z">
+<meta property="article:modified_time" content="2020-02-12T14:58:38.925Z">
+<meta property="article:author" content="whatGUI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploader.shimo.im/f/rQGyF8v5Kg0Ex85v.png!thumbnail">
+
+<link rel="canonical" href="http://yoursite.com/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>「捯饬记录」OpenWrt通过邮件发送wan IPv6地址 | whatGUI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">whatGUI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「捯饬记录」OpenWrt通过邮件发送wan IPv6地址
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-31 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-31T23:33:03+08:00">2020-01-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:58:38" itemprop="dateModified" datetime="2020-02-12T22:58:38+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="记录时间：2020-年-1-月-31-日"><a href="#记录时间：2020-年-1-月-31-日" class="headerlink" title="记录时间：2020 年 1 月 31 日"></a>记录时间：2020 年 1 月 31 日</h1><h2 id="关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2"><a href="#关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2" class="headerlink" title="关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2"></a>关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2</h2><h2 id="更换软件镜像源"><a href="#更换软件镜像源" class="headerlink" title="更换软件镜像源"></a>更换软件镜像源</h2><p>鉴于openwrt的官方软件源速度不太行，先换个清华的源。不过ssmtp体积很小，不换的话下载问题也不大。</p>
+<p><img src="https://uploader.shimo.im/f/rQGyF8v5Kg0Ex85v.png!thumbnail" alt="图片"></p>
+<p>复制类似下面的地址到<code>opkg/distfeeds.conf</code>并保存。这里以k2路由器的mt7620为例，其他类型或版本可以去<a href="https://mirrors.tuna.tsinghua.edu.cn/lede/" target="_blank" rel="noopener">清华的镜像源</a>查看，然后找到相对应的目录下复制url地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">src&#x2F;gz openwrt_core http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;targets&#x2F;ramips&#x2F;mt7620&#x2F;packages</span><br><span class="line">src&#x2F;gz openwrt_base http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;base</span><br><span class="line">src&#x2F;gz openwrt_luci http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;luci</span><br><span class="line">src&#x2F;gz openwrt_packages http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;packages</span><br><span class="line">src&#x2F;gz openwrt_routing http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;routing</span><br><span class="line">src&#x2F;gz openwrt_telephony http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;telephony</span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://uploader.shimo.im/f/CBzx0l9UVUMvVkTx.png!thumbnail" alt="图片"></h2><h2 id="安装ssmtp"><a href="#安装ssmtp" class="headerlink" title="安装ssmtp"></a>安装ssmtp</h2><p>关于ssmtp，体积小是选择这个的首要因素，下面两种方式都可以安装。</p>
+<ul>
+<li>luci管理界面安装</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/x1iti6bQqyo2CSw5.png!thumbnail" alt="图片"></p>
+<ul>
+<li>shell命令方式安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ssmtp</span><br></pre></td></tr></table></figure>
+<h2 id="配置ssmtp"><a href="#配置ssmtp" class="headerlink" title="配置ssmtp"></a>配置ssmtp</h2>ssh登录openwrt之后，修改并执行以下命令。这里的配置是以163邮箱举例的，如果使用其他的邮箱可能要稍作修改，一些SMTP服务器可能还需要指定具体的端口，详情可以参考ssmtp配置文件中的注释。</li>
+</ul>
+<p>编辑配置文件可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> vim &#x2F;etc&#x2F;ssmtp&#x2F;ssmtp.conf</span><br></pre></td></tr></table></figure>
+<p>也可以用winscp登录，打开<code>/etc/ssmtp/</code>目录下的<code>ssmtp.conf</code>文件修改<br>下面是需要修改的内容举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root&#x3D;xxx@163.com  #替换成自己的邮箱帐户</span><br><span class="line">mailhub&#x3D;smtp.163.com:994  #邮箱的smtp服务器+相应协议的端口号，不填端口则默认25</span><br><span class="line">rewriteDomain&#x3D;163.com</span><br><span class="line">hostname&#x3D;163.com</span><br><span class="line">FromLineOverride&#x3D;YES</span><br><span class="line">UseTLS&#x3D;YES  #启用TLS加密发送邮件</span><br><span class="line">AuthUser&#x3D;xxx@163.com  #替换为自己的邮箱帐户</span><br><span class="line">AuthPass&#x3D;xxx  #邮箱密码或者邮箱客户端授权码</span><br></pre></td></tr></table></figure>
+<p>关于端口号：网易163邮箱提供的SMTP服务器端口号</p>
+<p><img src="https://uploader.shimo.im/f/bgihCCFsvvEmk1NC.png!thumbnail" alt="图片"></p>
+<h2 id="创建获取IP并发送邮件的脚本"><a href="#创建获取IP并发送邮件的脚本" class="headerlink" title="创建获取IP并发送邮件的脚本"></a>创建获取IP并发送邮件的脚本</h2><p>其实就是把之前用于Padavan的脚本稍作修改之后得到的。另外除了<a href="https://github.com/whatGUI/openwrt-mail-u-ip" target="_blank" rel="noopener">下载</a>也可以直接复制脚本内容，手动新建一个脚本文件，或者保存修改后用winscp等等工具上传到openwrt等等，怎么方便怎么来。</p>
+<p>建立脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;sbin&#x2F;ipmail.sh</span><br><span class="line">vim &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<p>复制以下内容到ipmail.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh -e</span><br><span class="line">#设置发件人地址，与ssmtp配置一致</span><br><span class="line">from&#x3D;FROM</span><br><span class="line">#设置收件人地址，多人用英文逗号隔开</span><br><span class="line">towho&#x3D;TOWHO</span><br><span class="line">#有必要的话更改网络接口名（网卡）</span><br><span class="line">interface&#x3D;pppoe-wan</span><br><span class="line">file&#x3D;$HOME&#x2F;.ipmail</span><br><span class="line">[ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">#获取wan ip地址</span><br><span class="line">ipaddress&#x3D;$(ip -6 addr list scope global $interface | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">mailtxt&#x3D;$HOME&#x2F;.ipmailtext</span><br><span class="line">#写好邮件</span><br><span class="line">cat &gt; $mailtxt &lt;&lt;EOF</span><br><span class="line">From:$&#123;from&#125;</span><br><span class="line">To:$&#123;towho&#125;</span><br><span class="line">Subject:IP发生变更，打开查看详情</span><br><span class="line"></span><br><span class="line">OpenWrt：检测到WAN IP发生变更！</span><br><span class="line">新的IP为  $&#123;ipaddress&#125;</span><br><span class="line">EOF</span><br><span class="line">#发送邮件</span><br><span class="line">ssmtp $towho &lt; $mailtxt</span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加发件人和收件人地址"><a href="#添加发件人和收件人地址" class="headerlink" title="添加发件人和收件人地址"></a>添加发件人和收件人地址</h2><p>务必修改脚本中的以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#设置发件人地址 与ssmtp配置一致</span><br><span class="line">from&#x3D;xxxx@163.com</span><br><span class="line">#设置收件人地址，多人用英文逗号隔开</span><br><span class="line">towho&#x3D;xxx@qq.com,xxxx@qq.com</span><br></pre></td></tr></table></figure>
+<h2 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<h2 id="添加到计划任务"><a href="#添加到计划任务" class="headerlink" title="添加到计划任务"></a>添加到计划任务</h2><p>可以直接在管理界面添加，意思是每10分钟执行一次，另外第一次添加计划任务可能会不起作用，可以在<code>启动项</code>中找到<code>cron</code>重启一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;10 * * * * &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<p><img src="https://uploader.shimo.im/f/WS6skdAC1J8y2ALh.png!thumbnail" alt="图片"></p>
+<h2 id="关于脚本"><a href="#关于脚本" class="headerlink" title="关于脚本"></a>关于脚本</h2><p>修改自<a href="https://whatgui.github.io/2020/01/14/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">上一篇</a>，与参考中的<a href="https://www.jianshu.com/p/5effa0c0aab3" target="_blank" rel="noopener">《Openwrt发邮件通知Wan口Ip变化》</a>相比，定时执行采用openwrt的计划任务，感觉可能会稍微灵活一些。另外本脚本会创建临时文件，而参考脚本不需要。其他的差别就不太清楚了，如果有人看到这篇并且知道差别请带带我！虽然只要达到目的就行。</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>其实对每10分钟检测一次这个操作来说，家庭宽带的IPv6地址变化并没有这么频繁，基本上只有重启路由器和IPv6地址租期到期两种情况才会导致IP变化，因此只需要添加到开机启动脚本和检测IPv6到期即可，但是检测地址到期这个还没有搜索到相关的内容，暂时先放放好了。不过运行这个脚本消耗不大，只有检查到ip变化才会发送邮件，所以基本没什么影响。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>OpenWrt - SMTP clients：<a href="https://openwrt.org/docs/guide-user/services/email/smtp.client?s[]=ssmtp" target="_blank" rel="noopener">https://openwrt.org/docs/guide-user/services/email/smtp.client?s[]=ssmtp</a></p>
+<p>openwrt使用ssmtp发邮件：<a href="https://www.openwrtdl.com/wordpress/%E6%95%99%E7%A8%8Bopenwrt%E4%BD%BF%E7%94%A8ssmtp%E5%8F%91%E9%82%AE%E4%BB%B6" target="_blank" rel="noopener">https://www.openwrtdl.com/wordpress/%E6%95%99%E7%A8%8Bopenwrt%E4%BD%BF%E7%94%A8ssmtp%E5%8F%91%E9%82%AE%E4%BB%B6</a></p>
+<p>Openwrt发邮件通知Wan口Ip变化：<a href="https://www.jianshu.com/p/5effa0c0aab3" target="_blank" rel="noopener">https://www.jianshu.com/p/5effa0c0aab3</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/26/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%B0%9D%E8%AF%95%E4%B8%BAPadavan%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%80%E4%B8%AAwireguard-go%E5%92%8Cwireguard-tools/" rel="prev" title="「捯饬记录」尝试为Padavan交叉编译一个wireguard-go和wireguard-tools">
+      <i class="fa fa-chevron-left"></i> 「捯饬记录」尝试为Padavan交叉编译一个wireguard-go和wireguard-tools
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/01/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%BF%E7%94%A8image%20builder%E4%B8%BAK2%E7%AE%80%E5%8D%95%E6%89%93%E5%8C%85%E4%B8%80%E4%B8%AAopenwrt%E5%9B%BA%E4%BB%B6/" rel="next" title="「捯饬记录」使用image builder为K2简单打包一个openwrt固件">
+      「捯饬记录」使用image builder为K2简单打包一个openwrt固件 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录时间：2020-年-1-月-31-日"><span class="nav-number">1.</span> <span class="nav-text">记录时间：2020 年 1 月 31 日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2"><span class="nav-number">1.1.</span> <span class="nav-text">关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更换软件镜像源"><span class="nav-number">1.2.</span> <span class="nav-text">更换软件镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ssmtp"><span class="nav-number">1.4.</span> <span class="nav-text">安装ssmtp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置ssmtp"><span class="nav-number">1.5.</span> <span class="nav-text">配置ssmtp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建获取IP并发送邮件的脚本"><span class="nav-number">1.6.</span> <span class="nav-text">创建获取IP并发送邮件的脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加发件人和收件人地址"><span class="nav-number">1.7.</span> <span class="nav-text">添加发件人和收件人地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加可执行权限"><span class="nav-number">1.8.</span> <span class="nav-text">添加可执行权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加到计划任务"><span class="nav-number">1.9.</span> <span class="nav-text">添加到计划任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于脚本"><span class="nav-number">1.10.</span> <span class="nav-text">关于脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">1.11.</span> <span class="nav-text">END</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.12.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">whatGUI</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">whatGUI</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
