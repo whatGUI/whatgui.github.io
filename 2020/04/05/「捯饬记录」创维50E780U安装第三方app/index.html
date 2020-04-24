@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="记录时间：2020 年 4 月 5 日关键词：创维 50E780U 第三方app创维50E780U安装第三方app由于官方应用商店已经暂停维护了，下载应用都会失败，所以之前没有下载ES文件管理器就没有办法再用U盘安装其他的app了。这台电视就是这种情况。经过一番搜索，找到这篇 创维50E780U电视艰难的装应用 ，试验了一下完美成功！感谢一下原作者。另外本篇只是模仿过程中的一些总结、简化和补充。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「捯饬记录」创维50E780U安装第三方app">
+<meta property="og:url" content="http://yoursite.com/2020/04/05/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%88%9B%E7%BB%B450E780U%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9app/index.html">
+<meta property="og:site_name" content="whatGUI">
+<meta property="og:description" content="记录时间：2020 年 4 月 5 日关键词：创维 50E780U 第三方app创维50E780U安装第三方app由于官方应用商店已经暂停维护了，下载应用都会失败，所以之前没有下载ES文件管理器就没有办法再用U盘安装其他的app了。这台电视就是这种情况。经过一番搜索，找到这篇 创维50E780U电视艰难的装应用 ，试验了一下完美成功！感谢一下原作者。另外本篇只是模仿过程中的一些总结、简化和补充。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploader.shimo.im/f/bp2nU416zbYaEVGU.png!thumbnail">
+<meta property="article:published_time" content="2020-04-05T10:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-24T11:44:05.894Z">
+<meta property="article:author" content="whatGUI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploader.shimo.im/f/bp2nU416zbYaEVGU.png!thumbnail">
+
+<link rel="canonical" href="http://yoursite.com/2020/04/05/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%88%9B%E7%BB%B450E780U%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9app/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>「捯饬记录」创维50E780U安装第三方app | whatGUI</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">whatGUI</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%88%9B%E7%BB%B450E780U%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「捯饬记录」创维50E780U安装第三方app
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-05 18:00:00" itemprop="dateCreated datePublished" datetime="2020-04-05T18:00:00+08:00">2020-04-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 19:44:05" itemprop="dateModified" datetime="2020-04-24T19:44:05+08:00">2020-04-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="记录时间：2020-年-4-月-5-日"><a href="#记录时间：2020-年-4-月-5-日" class="headerlink" title="记录时间：2020 年 4 月 5 日"></a>记录时间：2020 年 4 月 5 日</h1><h2 id="关键词：创维-50E780U-第三方app"><a href="#关键词：创维-50E780U-第三方app" class="headerlink" title="关键词：创维 50E780U 第三方app"></a>关键词：创维 50E780U 第三方app</h2><h2 id="创维50E780U安装第三方app"><a href="#创维50E780U安装第三方app" class="headerlink" title="创维50E780U安装第三方app"></a>创维50E780U安装第三方app</h2><p>由于官方应用商店已经暂停维护了，下载应用都会失败，所以之前没有下载ES文件管理器就没有办法再用U盘安装其他的app了。这台电视就是这种情况。经过一番搜索，找到这篇 <a href="https://blog.csdn.net/weixin_41264518/article/details/104311812" target="_blank" rel="noopener">创维50E780U电视艰难的装应用</a> ，试验了一下完美成功！感谢一下原作者。另外本篇只是模仿过程中的一些总结、简化和补充。</p>
+<h2 id="搭建DNS服务器"><a href="#搭建DNS服务器" class="headerlink" title="搭建DNS服务器"></a>搭建DNS服务器</h2><p>提前说明一下，如果你的路由器支持修改host就可以忽略这一步，直接将解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crm.coocaa.com&#x3D;192.168.0.x（pc的地址）</span><br></pre></td></tr></table></figure><br>添加进去就ok了。</p>
+<p>由于手里只有一台老旧的win7笔记本，专门装个windows server感觉还是略麻烦了。只能找个别的DNS server了，一开始搜索到的bind，过于强大（<del>复杂</del>），配置了一次没能成功。遂放弃再次搜索并锁定了最终目标：<a href="http://dhcp-dns-server.sourceforge.net/" target="_blank" rel="noopener">Dual DHCP DNS Server</a></p>
+<p>安装非常简单，只记录一下配置过程：</p>
+<ol>
+<li>设置一个静态IP地址</li>
+</ol>
+<p>在 控制面板-网络和Internet-网络连接 中找到当前连接的网络，打开属性-Internet协议版本4（TCP/IPv4），根据路由器当前的内网地址设置（比如192.168.1.x）指定一个ip</p>
+<p><img src="https://uploader.shimo.im/f/bp2nU416zbYaEVGU.png!thumbnail" alt="图片"></p>
+<ol>
+<li>配置 DualServer.ini</li>
+</ol>
+<p>在安装目录下找到DualServer.ini文件，用记事本打开，找到并修改以下项。注：后面有简单的总结部分，这里可以跳过不看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[SERVICES]</span><br><span class="line">#Specify the service you want to use</span><br><span class="line">#Default is both services</span><br><span class="line">DNS</span><br><span class="line">;DHCP</span><br><span class="line">[LISTEN_ON]</span><br><span class="line">#Specify the Interfaces you would like Server to listen</span><br><span class="line">#if you have more than one NIC card on your server</span><br><span class="line">#always specify which cards will listen DHCP&#x2F;DNS requests</span><br><span class="line">#Requests from diffent Interfaces look for matching DHCP ranges.</span><br><span class="line">#Requests from relay agents look for matching range to relay agent IP.</span><br><span class="line">#upto 125 interfaces can be specified.</span><br><span class="line">#Default is all Static interfaces</span><br><span class="line">;192.168.0.1</span><br><span class="line">192.168.0.106</span><br><span class="line">[DNS_ALLOWED_HOSTS]</span><br><span class="line">#These are permitted hosts for DNS Query.</span><br><span class="line">#Hosts having IP address within these ip ranges</span><br><span class="line">#only will be responded to DNS requests.</span><br><span class="line">#Hosts &quot;queried for&quot; has nothing to do with these ranges.</span><br><span class="line">#125 ranges can be specified.</span><br><span class="line">#DHCP Client ranges are automatically included</span><br><span class="line">#use second example for allowing all hosts</span><br><span class="line">;192.168.0.1-192.168.255.254</span><br><span class="line">1.0.0.1-255.255.255.254</span><br><span class="line">[DNS_HOSTS]</span><br><span class="line">#This is where hosts and their</span><br><span class="line">#IPs needs to be specified</span><br><span class="line">#DNS will resolve as per</span><br><span class="line">#entries here, in addition to</span><br><span class="line">#DHCP alotted addresses.</span><br><span class="line">#Bare names automatically</span><br><span class="line">#assume local domain name.</span><br><span class="line">#hosts here need not be local</span><br><span class="line">#reverse entry is automatic.</span><br><span class="line">#MX and ALIASs needs to</span><br><span class="line">#be given in respected sections</span><br><span class="line">#no alias or wild cards in this section</span><br><span class="line">#No limit to no. of entries here !</span><br><span class="line">;OracleServer.yahoo.com&#x3D;192.168.0.43</span><br><span class="line">;DNS&#x3D;192.168.0.1</span><br><span class="line">;cpltcaxd02b&#x3D;192.168.0.2</span><br><span class="line">;homehost.external.com&#x3D;187.178.187.178</span><br><span class="line">;strange&#x3D;192.168.6.11</span><br><span class="line">;soho&#x3D;192.168.0.111</span><br><span class="line">;www&#x3D;12.67.4.3</span><br><span class="line">crm.coocaa.com&#x3D;192.168.0.103</span><br><span class="line">[FORWARDING_SERVERS]</span><br><span class="line">#These servers are default Forward DNS Servers</span><br><span class="line">#Program auto detects if not specified</span><br><span class="line">192.168.0.1</span><br><span class="line">;10.10.10.1</span><br></pre></td></tr></table></figure>
+<p>以下是简单的总结与部分举例说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#注：行前加分号;的参数为注释，并不会生效</span><br><span class="line">#选择启用哪项服务（只启用DNS服务器）</span><br><span class="line">[SERVICES]</span><br><span class="line">DNS</span><br><span class="line"></span><br><span class="line">#选择监听地址（本机的静态IP地址）</span><br><span class="line">[LISTEN_ON]</span><br><span class="line">192.168.0.106</span><br><span class="line"></span><br><span class="line">#允许服务的IP范围（全部）</span><br><span class="line">[DNS_ALLOWED_HOSTS]</span><br><span class="line">1.0.0.1-255.255.255.254</span><br><span class="line"></span><br><span class="line">#DNS规则（劫持应用商店的下载地址并指向到本机）</span><br><span class="line">[DNS_HOSTS]</span><br><span class="line">crm.coocaa.com&#x3D;192.168.0.106</span><br><span class="line"></span><br><span class="line">#查询失败时的处理（上级路由器）</span><br><span class="line">[FORWARDING_SERVERS]</span><br><span class="line">192.168.0.1</span><br></pre></td></tr></table></figure><br>之后，启动目录下的<code>RunStandAlone.bat</code>文件即可</p>
+<h2 id="使用Fiddler工具拦截应用商店的下载请求"><a href="#使用Fiddler工具拦截应用商店的下载请求" class="headerlink" title="使用Fiddler工具拦截应用商店的下载请求"></a>使用Fiddler工具拦截应用商店的下载请求</h2><p>好用的抓包工具Fiddler下载地址：<a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">https://www.telerik.com/fiddler</a></p>
+<p>这部分内容详情见原博客，博主已经写的很清楚了，这里就不多说了。</p>
+<p>只简略记录一下过程：</p>
+<p>先设置好Fiddler，然后在电视上设置DNS为前一步搭建的DNS服务器地址，重启一次电视之后进入应用商店，找到es文件管理器并安装，在Fiddler中使用自动响应把apk文件传过去就ok了。</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>参考博客的dns server配置过程中，添加了4个域名的正向查找Ａ记录，但是在实际操作过程中，只需要crm.coocaa.com这一个即可，如果把另外3个也都添加进去会导致应用商店报错打不开。</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>最后虽然成功安装了第三方的app到这台电视上，但是发现有很多app都不再支持这老旧的安卓系统，如果尝试安装就会弹出无法解析安装包的错误提示。所以可能整一个电视盒子的体验会更好一点，电视呢就让它安安静静的做一个显示器好了。另外，这次安装本身也算是小小的hack吧 \^o^/。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>创维50E780U电视艰难的装应用：<a href="https://blog.csdn.net/weixin_41264518/article/details/104311812" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41264518/article/details/104311812</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/11/DLNA%E4%B8%8Ebubbleupnp%E7%9A%84%E5%87%A0%E7%A7%8D%E7%A5%9E%E5%A5%87%E7%94%A8%E9%80%94/" rel="prev" title="DLNA与bubbleupnp的几种神奇用途">
+      <i class="fa fa-chevron-left"></i> DLNA与bubbleupnp的几种神奇用途
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记录时间：2020-年-4-月-5-日"><span class="nav-number">1.</span> <span class="nav-text">记录时间：2020 年 4 月 5 日</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关键词：创维-50E780U-第三方app"><span class="nav-number">1.1.</span> <span class="nav-text">关键词：创维 50E780U 第三方app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创维50E780U安装第三方app"><span class="nav-number">1.2.</span> <span class="nav-text">创维50E780U安装第三方app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建DNS服务器"><span class="nav-number">1.3.</span> <span class="nav-text">搭建DNS服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Fiddler工具拦截应用商店的下载请求"><span class="nav-number">1.4.</span> <span class="nav-text">使用Fiddler工具拦截应用商店的下载请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充说明"><span class="nav-number">1.5.</span> <span class="nav-text">补充说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#END"><span class="nav-number">1.6.</span> <span class="nav-text">END</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.7.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">whatGUI</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">whatGUI</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

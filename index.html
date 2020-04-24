@@ -165,6 +165,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/05/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%88%9B%E7%BB%B450E780U%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9app/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/05/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%88%9B%E7%BB%B450E780U%E5%AE%89%E8%A3%85%E7%AC%AC%E4%B8%89%E6%96%B9app/" class="post-title-link" itemprop="url">「捯饬记录」创维50E780U安装第三方app</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-05 18:00:00" itemprop="dateCreated datePublished" datetime="2020-04-05T18:00:00+08:00">2020-04-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 19:44:05" itemprop="dateModified" datetime="2020-04-24T19:44:05+08:00">2020-04-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-4-月-5-日"><a href="#记录时间：2020-年-4-月-5-日" class="headerlink" title="记录时间：2020 年 4 月 5 日"></a>记录时间：2020 年 4 月 5 日</h1><h2 id="关键词：创维-50E780U-第三方app"><a href="#关键词：创维-50E780U-第三方app" class="headerlink" title="关键词：创维 50E780U 第三方app"></a>关键词：创维 50E780U 第三方app</h2><h2 id="创维50E780U安装第三方app"><a href="#创维50E780U安装第三方app" class="headerlink" title="创维50E780U安装第三方app"></a>创维50E780U安装第三方app</h2><p>由于官方应用商店已经暂停维护了，下载应用都会失败，所以之前没有下载ES文件管理器就没有办法再用U盘安装其他的app了。这台电视就是这种情况。经过一番搜索，找到这篇 <a href="https://blog.csdn.net/weixin_41264518/article/details/104311812" target="_blank" rel="noopener">创维50E780U电视艰难的装应用</a> ，试验了一下完美成功！感谢一下原作者。另外本篇只是模仿过程中的一些总结、简化和补充。</p>
+<h2 id="搭建DNS服务器"><a href="#搭建DNS服务器" class="headerlink" title="搭建DNS服务器"></a>搭建DNS服务器</h2><p>提前说明一下，如果你的路由器支持修改host就可以忽略这一步，直接将解析<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crm.coocaa.com&#x3D;192.168.0.x（pc的地址）</span><br></pre></td></tr></table></figure><br>添加进去就ok了。</p>
+<p>由于手里只有一台老旧的win7笔记本，专门装个windows server感觉还是略麻烦了。只能找个别的DNS server了，一开始搜索到的bind，过于强大（<del>复杂</del>），配置了一次没能成功。遂放弃再次搜索并锁定了最终目标：<a href="http://dhcp-dns-server.sourceforge.net/" target="_blank" rel="noopener">Dual DHCP DNS Server</a></p>
+<p>安装非常简单，只记录一下配置过程：</p>
+<ol>
+<li>设置一个静态IP地址</li>
+</ol>
+<p>在 控制面板-网络和Internet-网络连接 中找到当前连接的网络，打开属性-Internet协议版本4（TCP/IPv4），根据路由器当前的内网地址设置（比如192.168.1.x）指定一个ip</p>
+<p><img src="https://uploader.shimo.im/f/bp2nU416zbYaEVGU.png!thumbnail" alt="图片"></p>
+<ol>
+<li>配置 DualServer.ini</li>
+</ol>
+<p>在安装目录下找到DualServer.ini文件，用记事本打开，找到并修改以下项。注：后面有简单的总结部分，这里可以跳过不看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">[SERVICES]</span><br><span class="line">#Specify the service you want to use</span><br><span class="line">#Default is both services</span><br><span class="line">DNS</span><br><span class="line">;DHCP</span><br><span class="line">[LISTEN_ON]</span><br><span class="line">#Specify the Interfaces you would like Server to listen</span><br><span class="line">#if you have more than one NIC card on your server</span><br><span class="line">#always specify which cards will listen DHCP&#x2F;DNS requests</span><br><span class="line">#Requests from diffent Interfaces look for matching DHCP ranges.</span><br><span class="line">#Requests from relay agents look for matching range to relay agent IP.</span><br><span class="line">#upto 125 interfaces can be specified.</span><br><span class="line">#Default is all Static interfaces</span><br><span class="line">;192.168.0.1</span><br><span class="line">192.168.0.106</span><br><span class="line">[DNS_ALLOWED_HOSTS]</span><br><span class="line">#These are permitted hosts for DNS Query.</span><br><span class="line">#Hosts having IP address within these ip ranges</span><br><span class="line">#only will be responded to DNS requests.</span><br><span class="line">#Hosts &quot;queried for&quot; has nothing to do with these ranges.</span><br><span class="line">#125 ranges can be specified.</span><br><span class="line">#DHCP Client ranges are automatically included</span><br><span class="line">#use second example for allowing all hosts</span><br><span class="line">;192.168.0.1-192.168.255.254</span><br><span class="line">1.0.0.1-255.255.255.254</span><br><span class="line">[DNS_HOSTS]</span><br><span class="line">#This is where hosts and their</span><br><span class="line">#IPs needs to be specified</span><br><span class="line">#DNS will resolve as per</span><br><span class="line">#entries here, in addition to</span><br><span class="line">#DHCP alotted addresses.</span><br><span class="line">#Bare names automatically</span><br><span class="line">#assume local domain name.</span><br><span class="line">#hosts here need not be local</span><br><span class="line">#reverse entry is automatic.</span><br><span class="line">#MX and ALIASs needs to</span><br><span class="line">#be given in respected sections</span><br><span class="line">#no alias or wild cards in this section</span><br><span class="line">#No limit to no. of entries here !</span><br><span class="line">;OracleServer.yahoo.com&#x3D;192.168.0.43</span><br><span class="line">;DNS&#x3D;192.168.0.1</span><br><span class="line">;cpltcaxd02b&#x3D;192.168.0.2</span><br><span class="line">;homehost.external.com&#x3D;187.178.187.178</span><br><span class="line">;strange&#x3D;192.168.6.11</span><br><span class="line">;soho&#x3D;192.168.0.111</span><br><span class="line">;www&#x3D;12.67.4.3</span><br><span class="line">crm.coocaa.com&#x3D;192.168.0.103</span><br><span class="line">[FORWARDING_SERVERS]</span><br><span class="line">#These servers are default Forward DNS Servers</span><br><span class="line">#Program auto detects if not specified</span><br><span class="line">192.168.0.1</span><br><span class="line">;10.10.10.1</span><br></pre></td></tr></table></figure>
+<p>以下是简单的总结与部分举例说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#注：行前加分号;的参数为注释，并不会生效</span><br><span class="line">#选择启用哪项服务（只启用DNS服务器）</span><br><span class="line">[SERVICES]</span><br><span class="line">DNS</span><br><span class="line"></span><br><span class="line">#选择监听地址（本机的静态IP地址）</span><br><span class="line">[LISTEN_ON]</span><br><span class="line">192.168.0.106</span><br><span class="line"></span><br><span class="line">#允许服务的IP范围（全部）</span><br><span class="line">[DNS_ALLOWED_HOSTS]</span><br><span class="line">1.0.0.1-255.255.255.254</span><br><span class="line"></span><br><span class="line">#DNS规则（劫持应用商店的下载地址并指向到本机）</span><br><span class="line">[DNS_HOSTS]</span><br><span class="line">crm.coocaa.com&#x3D;192.168.0.106</span><br><span class="line"></span><br><span class="line">#查询失败时的处理（上级路由器）</span><br><span class="line">[FORWARDING_SERVERS]</span><br><span class="line">192.168.0.1</span><br></pre></td></tr></table></figure><br>之后，启动目录下的<code>RunStandAlone.bat</code>文件即可</p>
+<h2 id="使用Fiddler工具拦截应用商店的下载请求"><a href="#使用Fiddler工具拦截应用商店的下载请求" class="headerlink" title="使用Fiddler工具拦截应用商店的下载请求"></a>使用Fiddler工具拦截应用商店的下载请求</h2><p>好用的抓包工具Fiddler下载地址：<a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">https://www.telerik.com/fiddler</a></p>
+<p>这部分内容详情见原博客，博主已经写的很清楚了，这里就不多说了。</p>
+<p>只简略记录一下过程：</p>
+<p>先设置好Fiddler，然后在电视上设置DNS为前一步搭建的DNS服务器地址，重启一次电视之后进入应用商店，找到es文件管理器并安装，在Fiddler中使用自动响应把apk文件传过去就ok了。</p>
+<h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>参考博客的dns server配置过程中，添加了4个域名的正向查找Ａ记录，但是在实际操作过程中，只需要crm.coocaa.com这一个即可，如果把另外3个也都添加进去会导致应用商店报错打不开。</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>最后虽然成功安装了第三方的app到这台电视上，但是发现有很多app都不再支持这老旧的安卓系统，如果尝试安装就会弹出无法解析安装包的错误提示。所以可能整一个电视盒子的体验会更好一点，电视呢就让它安安静静的做一个显示器好了。另外，这次安装本身也算是小小的hack吧 \^o^/。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>创维50E780U电视艰难的装应用：<a href="https://blog.csdn.net/weixin_41264518/article/details/104311812" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41264518/article/details/104311812</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/DLNA%E4%B8%8Ebubbleupnp%E7%9A%84%E5%87%A0%E7%A7%8D%E7%A5%9E%E5%A5%87%E7%94%A8%E9%80%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -955,98 +1041,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E6%8A%8A%20Ubuntu%2019.10%20%E8%A3%85%E8%BF%9B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="whatGUI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="whatGUI">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/06/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E6%8A%8A%20Ubuntu%2019.10%20%E8%A3%85%E8%BF%9B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/" class="post-title-link" itemprop="url">「捯饬记录」把 Ubuntu 19.10 装进移动硬盘</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-06 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-06T23:33:03+08:00">2020-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="记录时间：2020-年-1-月-6-日"><a href="#记录时间：2020-年-1-月-6-日" class="headerlink" title="记录时间：2020 年 1 月 6 日"></a>记录时间：2020 年 1 月 6 日</h1><h2 id="关键词：Ubuntu-19-10-移动硬盘-Ubuntu安装-UEFI-GPT"><a href="#关键词：Ubuntu-19-10-移动硬盘-Ubuntu安装-UEFI-GPT" class="headerlink" title="关键词：Ubuntu 19.10 移动硬盘 Ubuntu安装 UEFI+GPT"></a>关键词：Ubuntu 19.10 移动硬盘 Ubuntu安装 UEFI+GPT</h2><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="https://whatgui.github.io/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/" target="_blank" rel="noopener">定制编译Padavan固件</a> 必须要用到 Linux 环境，考虑到 win10 wsl 较弱的 io 性能以及虚拟机性能，最后还是选择在物理机上安装一个 Ubuntu。但是又不想把电脑仅剩的一点硬盘空间分割出来献给 Ubuntu，于是打起了移动硬盘的主意。</p>
-<p>对于 win10，当你想要尝试通过 iso 直接安装到移动硬盘时只会得到：</p>
-<blockquote>
-<p>windows 无法安装到这个磁盘，安装程序不支持配置或安装通过 USB 或 IEEE1394 端口连接的磁盘</p>
-</blockquote>
-<p>这样的错误提示，因此只能借助 win to go 或者使用 VHD 的方法来安装。而对于 Ubuntu 好像没有这样的问题，可以直接安装。</p>
-<h2 id="现场情况"><a href="#现场情况" class="headerlink" title="现场情况"></a>现场情况</h2><p>1 台 win10 笔记本电脑（内置一块 SSD），一块 500G 移动硬盘（HDD），一个 16G U 盘以及 Ubuntu19.10 的 iso 文件（从 <a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener">这里</a> 下载的）</p>
-<h2 id="直接硬盘安装（失败）"><a href="#直接硬盘安装（失败）" class="headerlink" title="直接硬盘安装（失败）"></a>直接硬盘安装（失败）</h2><ol>
-<li>确定电脑 bios 和移动硬盘为 UEFI+GPT 模式</li>
-<li>给移动硬盘分出一个 3GB 的 FAT32 分区</li>
-<li>把 iso 包含的安装文件复制进这个分区</li>
-<li>重启，成功识别移动硬盘的安装文件并从中启动</li>
-<li>安装，分区完成点击现在安装，弹出错误提示：卸载/cdrom 分区失败，点击继续</li>
-<li>卡死在“正在探测文件系统…”</li>
-</ol>
-<p>经过反复试验了几次都不行，搜到的解决方法中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount -l &#x2F;isodevice</span><br><span class="line">sudo umount -l &#x2F;cdrom</span><br></pre></td></tr></table></figure>
-<p>都不起作用，而且手动卸载/cdrom 还会导致安装程序崩溃。<br><img src="https://uploader.shimo.im/f/R4MYfn9kmhc3oNrQ.jpg!thumbnail" alt="图片"><br><img src="https://uploader.shimo.im/f/b8bHxKSFgG4Ad4Br.jpg!thumbnail" alt="图片"><br>所以只能得到一个推测性的结论：Ubuntu19.10 不能支持安装文件与进行安装的分区在同一个磁盘，即硬盘安装的方法行不通。当然也不排除移动硬盘的兼容性问题，因为没有更多的设备来做测试。</p>
-<h2 id="推荐常规安装方法（成功）"><a href="#推荐常规安装方法（成功）" class="headerlink" title="推荐常规安装方法（成功）"></a>推荐常规安装方法（成功）</h2><ol>
-<li>确定电脑 bios 和移动硬盘分别为 UEFI+GPT 模式，空 U 盘格式化为 FAT32</li>
-<li>在 win10 下，双击打开 Ubuntu 的 iso 文件，复制其中的所有文件到 U 盘</li>
-<li>同时接上 U 盘与移动硬盘，重启，在 bios 启动选项中选择 U 盘</li>
-<li>根据安装向导完成安装（在安装选项选择<code>其他选项</code>，手动分区）</li>
-</ol>
-<p>这里如果手头没有 U 盘，也可以在电脑硬盘上临时分出一个 FAT32 分区来充当安装 U 盘的角色，大小要能装下 Ubuntu 的安装文件（Ubuntu19.10 分配 3GB 空间足够了），然后在重启时选择该分区的 efi 启动即可。</p>
-<p>另外，在安装分区时建议在移动硬盘上建立单独的<code>ESP分区</code>（EFI）存放启动信息，开机时使用 bios 来切换选择系统即可。也可以在 bios 中将移动硬盘的启动顺序设为第一位，这样可以做到插上移动硬盘开机自动进入 Ubuntu，拔掉硬盘开机自动进入原 win10 系统。</p>
-<h2 id="关于-UEFI-安装"><a href="#关于-UEFI-安装" class="headerlink" title="关于 UEFI 安装"></a>关于 UEFI 安装</h2><p>UEFI 会主动搜索 FAT32 分区中的 efi 文件来确定启动项，所以利用这种特性来安装系统，简单快捷还不需要安装其他工具。但是受 FAT32 单个文件最大 4GB 的限制，对于 iso 文件接近 5GB 的 win10 来说这个方法就不适用了，这种情况更加推荐 win10 的官方工具或者 Rufus。（貌似也有小部分主板的 UEFI 能支持 NTFS）</p>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>整个过程还被迫学会了一个强强操作：按住<code>Alt</code>+<code>PrintScreen</code> 再依次按 <code>r</code>、<code>e</code>、<code>i</code>、<code>s</code>、<code>u</code>、<code>b</code>，可以安全地强制 Ubuntu 系统重启。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1117,7 +1111,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
