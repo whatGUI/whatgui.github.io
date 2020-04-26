@@ -19,15 +19,15 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('http://yoursite.com').hostname,
+    hostname: new URL('https://whatgui.github.io').hostname,
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '7.7.0',
     exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    sidebar: {"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
     fancybox: false,
     mediumzoom: false,
     lazyload: false,
@@ -48,13 +48,13 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="whatGUI">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="https://whatgui.github.io/page/2/index.html">
 <meta property="og:site_name" content="whatGUI">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="whatGUI">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/page/2/">
+<link rel="canonical" href="https://whatgui.github.io/page/2/">
 
 
 <script id="page-configurations">
@@ -70,6 +70,15 @@
   
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0481ed37fe8b9c81c963b14112b16a98";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -146,10 +155,10 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/whatGUI" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main class="main">
@@ -165,7 +174,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E6%8A%8A%20Ubuntu%2019.10%20%E8%A3%85%E8%BF%9B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/">
+    <link itemprop="mainEntityOfPage" href="https://whatgui.github.io/2020/02/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%9C%A8OpenWrt%E4%B8%8A%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8Bwireguard%E6%9C%8D%E5%8A%A1%E7%AB%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -179,7 +188,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/01/06/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E6%8A%8A%20Ubuntu%2019.10%20%E8%A3%85%E8%BF%9B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/" class="post-title-link" itemprop="url">「捯饬记录」把 Ubuntu 19.10 装进移动硬盘</a>
+            <a href="/2020/02/08/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E5%9C%A8OpenWrt%E4%B8%8A%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8Bwireguard%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="post-title-link" itemprop="url">「捯饬记录」在OpenWrt上配置一下wireguard服务端</a>
         </h1>
 
         <div class="post-meta">
@@ -189,7 +198,116 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-06 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-06T23:33:03+08:00">2020-01-06</time>
+              <time title="创建时间：2020-02-08 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-08T23:33:03+08:00">2020-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 22:54:53" itemprop="dateModified" datetime="2020-02-12T22:54:53+08:00">2020-02-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="记录时间：2020-年-2-月-8-日"><a href="#记录时间：2020-年-2-月-8-日" class="headerlink" title="记录时间：2020 年 2 月 8 日"></a>记录时间：2020 年 2 月 8 日</h1><h2 id="关键词：OpenWrt-wireguard-配置-ipv6"><a href="#关键词：OpenWrt-wireguard-配置-ipv6" class="headerlink" title="关键词：OpenWrt wireguard 配置 ipv6"></a>关键词：OpenWrt wireguard 配置 ipv6</h2><h2 id="记录用途"><a href="#记录用途" class="headerlink" title="记录用途"></a>记录用途</h2><p>路由器作为服务端，利用ipv6方便地连接到家庭内网，传输文件，局域网游戏等等</p>
+<h2 id="记录环境"><a href="#记录环境" class="headerlink" title="记录环境"></a>记录环境</h2><p>K2路由器(PSG1218) OpenWrt 19.07.1 固件 ，家庭宽带 ipv6</p>
+<p>安装的openwrt 软件包：wireguard  luci-app-wireguard 以及汉化包 luci-i18n-wireguard-zh-cn luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn</p>
+<h2 id="luci管理界面直接配置"><a href="#luci管理界面直接配置" class="headerlink" title="luci管理界面直接配置"></a>luci管理界面直接配置</h2><ol>
+<li><strong>添加接口</strong></li>
+</ol>
+<p>依次找到<a href="http://openwrt.lan/cgi-bin/luci/admin/network/network" target="_blank" rel="noopener">网络-&gt;接口</a>-&gt;添加新接口，设置内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">名称：wg</span><br><span class="line">协议：WireGuard VPN</span><br></pre></td></tr></table></figure>
+<p>然后创建接口。</p>
+<ol>
+<li><strong>接口&gt;&gt;wg 基本设置</strong></li>
+</ol>
+<p>分别填写举例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">私钥：Yczs1a2s5dRib6UUEl2a14Wd0OuZ8gVy&#x2F;Cz6UgjiQI&#x3D; （必须由程序生成）</span><br><span class="line">监听端口：23333 （可以在1~65535范围内选择，尽量大一些，另外注意避免与常用端口冲突）</span><br><span class="line">IP地址:  192.168.10.1 （填写一个私人的子网ipv4地址，不能与已有的网段冲突）</span><br></pre></td></tr></table></figure>
+<p>关于公钥私钥的获得：可以在Android或者windows等客户端上，选择手动添加配置，就会自动生成一组，然后直接复制private key填写在这里即可。另外public key也要保存一下，客户端的配置需要用到。</p>
+<p>也可以ssh到openwrt，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wg genkey | tee privatekey | wg pubkey &gt; publickey</span><br></pre></td></tr></table></figure>
+<p>在privatekey文件中得到私钥，在publickey文件得到公钥。</p>
+<ol>
+<li><strong>接口&gt;&gt;wg 防火墙设置</strong></li>
+</ol>
+<p>创建/分配防火墙区域：选择<code>lan</code></p>
+<ol>
+<li><strong>接口&gt;&gt;wg Peers</strong></li>
+</ol>
+<p>点击<code>添加对等点</code>，填写配置举例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">描述（可选）：android111  （自定一个客户端的英文名称）</span><br><span class="line">公钥：WKpXJN&#x2F;qy1d6541WxUQuhMPxfE6vQ6r5+LvO1xFZT38&#x3D;  （填写客户端的公钥，而不是服务端的）</span><br><span class="line">允许的 IP：192.168.10.2  （允许客户端在VPN网络中使用的ip地址）</span><br><span class="line">路由允许的 IP：√  （这里一定要选中！不然无法访问内网设备）</span><br><span class="line">持续 Keep-Alive（可选）：25  （若对方客户端网络是在NAT后的环境，则需要开启，但ipv6基本不存在NAT所以不用开启）</span><br></pre></td></tr></table></figure>
+<p>然后保存并应用。若需要添加更多客户端，只需要重复这一步添加更多的Peers即可，最基本的只要填写对应的<code>公钥</code>和<code>允许的IP</code>即可。</p>
+<ol>
+<li><strong>设置防火墙开放监听端口</strong></li>
+</ol>
+<p>依次找到网络-&gt;防火墙-&gt;通信规则-&gt;添加，打开的页面为防火墙 - 通信规则 - 未命名规则，在基本设置中只需修改如下几项，其他项默认即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">名称：Allow_Wireguard-Inbound   （名称任意，只要是便于识别的英文即可）</span><br><span class="line">协议：UDP        （wireguard只支持UDP协议）</span><br><span class="line">源区域：任意区域（转发）</span><br><span class="line">目标区域：设备（输入）</span><br><span class="line">目标端口：23333      （这个目标端口必须与第2步设置的监听端口一致）</span><br></pre></td></tr></table></figure>
+<p>然后保存并应用。最后还需要重启一次wg接口或路由器才会生效。一旦连接成功可以在 状态-&gt;Wireguard状态 中看到相关的信息。</p>
+<h2 id="对客户端的配置"><a href="#对客户端的配置" class="headerlink" title="对客户端的配置"></a>对客户端的配置</h2><p>推荐参考这篇文章：</p>
+<p>自己搭建WireGuard给Android用：<a href="https://mine260309.me/archives/1697" target="_blank" rel="noopener">https://mine260309.me/archives/1697</a></p>
+<p>如果要配置windows端或其他平台，可以先在手机端配置好后，导出配置文件再发送过去直接导入配置就行了。因为感觉windows客户端目前用起来还是有点简陋啊，静待更新吧。</p>
+<h2 id="关于wireguard"><a href="#关于wireguard" class="headerlink" title="关于wireguard"></a>关于wireguard</h2><p>其实wireguard本身的设计是既可以作为服务端也可以作为客户端的，所以说一个端点起什么作用只看你的接口(interface)和对等端(peers)设置是如何填写的了。</p>
+<p>由于之前对于非对称加密没什么了解，在配置时就被自己坑了，弄错了公钥和私钥的使用对象。所以以配置过程为例，稍稍记录一下这个关系。</p>
+<p>interface为本机的相关信息，peers为对方的相关信息。无论服务端还是客户端，在一个完整的配置中，peers的公钥只填写对方设备的公钥，而私钥则是本机（interface）自己的。一开始配置时没有搞清楚这个公私钥的关系，考虑了半天才明白就是这么简单。对于生成的一对公钥和私钥，私钥只给自己用，公钥则交给对方使用。</p>
+<h2 id="非ipv6的备选方案"><a href="#非ipv6的备选方案" class="headerlink" title="非ipv6的备选方案"></a>非ipv6的备选方案</h2><p>如果没有ipv6或公网ip怎么办？ 推荐使用<a href="https://www.zerotier.com/" target="_blank" rel="noopener">ZeroTier</a>，而且这个感觉使用和配置更简单一些。</p>
+<h2 id="关于记录"><a href="#关于记录" class="headerlink" title="关于记录"></a>关于记录</h2><p>没有整到用起来流畅的图床，只能用文字记录了</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>自己搭建WireGuard给Android用：<a href="https://mine260309.me/archives/1697" target="_blank" rel="noopener">https://mine260309.me/archives/1697</a></p>
+<p>Setting up a WireGuard server on OpenWRT：<a href="https://blog.birkhoff.me/setting-up-a-wireguard-server-on-openwrt/" target="_blank" rel="noopener">https://blog.birkhoff.me/setting-up-a-wireguard-server-on-openwrt/</a></p>
+<p>记 WireGuard 部署及注意事项：<a href="https://yooooex.com/2019/05/23/wireguard-deploy/" target="_blank" rel="noopener">https://yooooex.com/2019/05/23/wireguard-deploy/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://whatgui.github.io/2020/02/01/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%BF%E7%94%A8image%20builder%E4%B8%BAK2%E7%AE%80%E5%8D%95%E6%89%93%E5%8C%85%E4%B8%80%E4%B8%AAopenwrt%E5%9B%BA%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="whatGUI">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="whatGUI">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/01/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%BD%BF%E7%94%A8image%20builder%E4%B8%BAK2%E7%AE%80%E5%8D%95%E6%89%93%E5%8C%85%E4%B8%80%E4%B8%AAopenwrt%E5%9B%BA%E4%BB%B6/" class="post-title-link" itemprop="url">「捯饬记录」使用image builder为K2简单打包一个openwrt固件</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-01 23:33:03" itemprop="dateCreated datePublished" datetime="2020-02-01T23:33:03+08:00">2020-02-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -210,34 +328,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="记录时间：2020-年-1-月-6-日"><a href="#记录时间：2020-年-1-月-6-日" class="headerlink" title="记录时间：2020 年 1 月 6 日"></a>记录时间：2020 年 1 月 6 日</h1><h2 id="关键词：Ubuntu-19-10-移动硬盘-Ubuntu安装-UEFI-GPT"><a href="#关键词：Ubuntu-19-10-移动硬盘-Ubuntu安装-UEFI-GPT" class="headerlink" title="关键词：Ubuntu 19.10 移动硬盘 Ubuntu安装 UEFI+GPT"></a>关键词：Ubuntu 19.10 移动硬盘 Ubuntu安装 UEFI+GPT</h2><h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p><a href="https://whatgui.github.io/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/" target="_blank" rel="noopener">定制编译Padavan固件</a> 必须要用到 Linux 环境，考虑到 win10 wsl 较弱的 io 性能以及虚拟机性能，最后还是选择在物理机上安装一个 Ubuntu。但是又不想把电脑仅剩的一点硬盘空间分割出来献给 Ubuntu，于是打起了移动硬盘的主意。</p>
-<p>对于 win10，当你想要尝试通过 iso 直接安装到移动硬盘时只会得到：</p>
-<blockquote>
-<p>windows 无法安装到这个磁盘，安装程序不支持配置或安装通过 USB 或 IEEE1394 端口连接的磁盘</p>
-</blockquote>
-<p>这样的错误提示，因此只能借助 win to go 或者使用 VHD 的方法来安装。而对于 Ubuntu 好像没有这样的问题，可以直接安装。</p>
-<h2 id="现场情况"><a href="#现场情况" class="headerlink" title="现场情况"></a>现场情况</h2><p>1 台 win10 笔记本电脑（内置一块 SSD），一块 500G 移动硬盘（HDD），一个 16G U 盘以及 Ubuntu19.10 的 iso 文件（从 <a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener">这里</a> 下载的）</p>
-<h2 id="直接硬盘安装（失败）"><a href="#直接硬盘安装（失败）" class="headerlink" title="直接硬盘安装（失败）"></a>直接硬盘安装（失败）</h2><ol>
-<li>确定电脑 bios 和移动硬盘为 UEFI+GPT 模式</li>
-<li>给移动硬盘分出一个 3GB 的 FAT32 分区</li>
-<li>把 iso 包含的安装文件复制进这个分区</li>
-<li>重启，成功识别移动硬盘的安装文件并从中启动</li>
-<li>安装，分区完成点击现在安装，弹出错误提示：卸载/cdrom 分区失败，点击继续</li>
-<li>卡死在“正在探测文件系统…”</li>
+          <h1 id="记录时间：2020-年-2-月-1-日"><a href="#记录时间：2020-年-2-月-1-日" class="headerlink" title="记录时间：2020 年 2 月 1 日"></a>记录时间：2020 年 2 月 1 日</h1><h2 id="关键词：OpenWrt-imagebuilder-K2-package-固件打包"><a href="#关键词：OpenWrt-imagebuilder-K2-package-固件打包" class="headerlink" title="关键词：OpenWrt imagebuilder K2 package 固件打包"></a>关键词：OpenWrt imagebuilder K2 package 固件打包</h2><p>K2在openwrt官方支持的固件列表里为psg1218a，如果没有做任何硬改，直接使用官方的固件也很不错。另外相比从源码开始编译，使用imagebuilder来做简单的固件定制更方便快捷体积小（其实就是提前把软件包集成在固件中）。</p>
+<p>此记录全程以K2路由器为例，其他路由器需要找到相对应的下载地址，请灵活变通。另外要注意涉及的下载、镜像地址和脚本可能在未来过时或失效。</p>
+<h2 id="使用imagebuilder打包"><a href="#使用imagebuilder打包" class="headerlink" title="使用imagebuilder打包"></a>使用imagebuilder打包</h2><ol>
+<li>下载image builder</li>
 </ol>
-<p>经过反复试验了几次都不行，搜到的解决方法中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount -l &#x2F;isodevice</span><br><span class="line">sudo umount -l &#x2F;cdrom</span><br></pre></td></tr></table></figure>
-<p>都不起作用，而且手动卸载/cdrom 还会导致安装程序崩溃。<br><img src="https://uploader.shimo.im/f/R4MYfn9kmhc3oNrQ.jpg!thumbnail" alt="图片"><br><img src="https://uploader.shimo.im/f/b8bHxKSFgG4Ad4Br.jpg!thumbnail" alt="图片"><br>所以只能得到一个推测性的结论：Ubuntu19.10 不能支持安装文件与进行安装的分区在同一个磁盘，即硬盘安装的方法行不通。当然也不排除移动硬盘的兼容性问题，因为没有更多的设备来做测试。</p>
-<h2 id="推荐常规安装方法（成功）"><a href="#推荐常规安装方法（成功）" class="headerlink" title="推荐常规安装方法（成功）"></a>推荐常规安装方法（成功）</h2><ol>
-<li>确定电脑 bios 和移动硬盘分别为 UEFI+GPT 模式，空 U 盘格式化为 FAT32</li>
-<li>在 win10 下，双击打开 Ubuntu 的 iso 文件，复制其中的所有文件到 U 盘</li>
-<li>同时接上 U 盘与移动硬盘，重启，在 bios 启动选项中选择 U 盘</li>
-<li>根据安装向导完成安装（在安装选项选择<code>其他选项</code>，手动分区）</li>
+<p>在清华镜像站下载image builder <a href="https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/</a></p>
+<p>K2的19.07.1版本在<a href="https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/19.07.1/targets/ramips/mt7620/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/19.07.1/targets/ramips/mt7620/</a></p>
+<p>文件名为openwrt-imagebuilder-19.07.1-ramips-mt7620.Linux-x86_64.tar.xz</p>
+<p>直接使用文件管理器，解压这个压缩包到主目录，打开解压出的这个文件夹。</p>
+<p><img src="https://uploader.shimo.im/f/eP03L1kGemEJJO4P.png!thumbnail" alt="图片"></p>
+<ol>
+<li>在当前目录下右键打开终端，执行以下指令更换一下清华源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#39;s#downloads.openwrt.org#mirrors.tuna.tsinghua.edu.cn&#x2F;openwrt#&#39; repositories.conf</span><br></pre></td></tr></table></figure></li>
+<li>安装必要的软件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-dev gawk git gettext libssl-dev xsltproc wget unzip python</span><br></pre></td></tr></table></figure></li>
+<li>执行并找到目标配置的名称，k2为psg1218a，其实就是官方固件文件名中的设备名称<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make info</span><br></pre></td></tr></table></figure></li>
+<li>开始打包，可以在PACKAGES后自行添加需要的软件包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make image PROFILE&#x3D;&quot;psg1218a&quot; PACKAGES&#x3D;&quot;luci luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn&quot;</span><br></pre></td></tr></table></figure>
+速度比较快，完成后，固件就在当前目录中的<code>bin</code>文件夹内<br>如果不满意，需要再次打包时，先执行一下<code>make clean</code>，再进行make image。</li>
 </ol>
-<p>这里如果手头没有 U 盘，也可以在电脑硬盘上临时分出一个 FAT32 分区来充当安装 U 盘的角色，大小要能装下 Ubuntu 的安装文件（Ubuntu19.10 分配 3GB 空间足够了），然后在重启时选择该分区的 efi 启动即可。</p>
-<p>另外，在安装分区时建议在移动硬盘上建立单独的<code>ESP分区</code>（EFI）存放启动信息，开机时使用 bios 来切换选择系统即可。也可以在 bios 中将移动硬盘的启动顺序设为第一位，这样可以做到插上移动硬盘开机自动进入 Ubuntu，拔掉硬盘开机自动进入原 win10 系统。</p>
-<h2 id="关于-UEFI-安装"><a href="#关于-UEFI-安装" class="headerlink" title="关于 UEFI 安装"></a>关于 UEFI 安装</h2><p>UEFI 会主动搜索 FAT32 分区中的 efi 文件来确定启动项，所以利用这种特性来安装系统，简单快捷还不需要安装其他工具。但是受 FAT32 单个文件最大 4GB 的限制，对于 iso 文件接近 5GB 的 win10 来说这个方法就不适用了，这种情况更加推荐 win10 的官方工具或者 Rufus。（貌似也有小部分主板的 UEFI 能支持 NTFS）</p>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>整个过程还被迫学会了一个强强操作：按住<code>Alt</code>+<code>PrintScreen</code> 再依次按 <code>r</code>、<code>e</code>、<code>i</code>、<code>s</code>、<code>u</code>、<code>b</code>，可以安全地强制 Ubuntu 系统重启。</p>
+<p>另外还可以添加一些除官方源外的其他源或者下载好位于本地的package，具体可以参考<a href="https://openwrt.org/docs/guide-user/additional-software/imagebuilder" target="_blank" rel="noopener">官方的说明</a>。</p>
+<h2 id="利用GitHub-Actions自动打包"><a href="#利用GitHub-Actions自动打包" class="headerlink" title="利用GitHub Actions自动打包"></a>利用GitHub Actions自动打包</h2><p>方便快捷，就是下载回来有点难。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">name: OpenWrt image builder</span><br><span class="line">on: </span><br><span class="line">  push:</span><br><span class="line">    branches: </span><br><span class="line">      - master</span><br><span class="line">jobs:</span><br><span class="line">  build:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line"></span><br><span class="line">    steps:</span><br><span class="line">    - name: 初始化</span><br><span class="line">      env:</span><br><span class="line">        DEBIAN_FRONTEND: noninteractive</span><br><span class="line">        #可修改imagebuilder下载地址</span><br><span class="line">        DOWNLOAD_URL: https:&#x2F;&#x2F;downloads.openwrt.org&#x2F;releases&#x2F;19.07.1&#x2F;targets&#x2F;ramips&#x2F;mt7620&#x2F;openwrt-imagebuilder-19.07.1-ramips-mt7620.Linux-x86_64.tar.xz</span><br><span class="line">        </span><br><span class="line">      run: |</span><br><span class="line">        sudo apt-get install build-essential libncurses5-dev libncursesw5-dev zlib1g-dev gawk git gettext libssl-dev xsltproc wget unzip python</span><br><span class="line">        wget -O &#x2F;tmp&#x2F;imagebuilder.tar.xz $DOWNLOAD_URL</span><br><span class="line">        sudo xz -d &#x2F;tmp&#x2F;imagebuilder.tar.xz</span><br><span class="line">        sudo tar -C &#x2F;tmp -xvf &#x2F;tmp&#x2F;imagebuilder.tar</span><br><span class="line">    - name: 打包固件</span><br><span class="line">      run: |</span><br><span class="line">        #在PROFILE中填写配置的设备名 在PACKAGES中添加需要的软件包</span><br><span class="line">        cd &#x2F;tmp&#x2F;$(ls &#x2F;tmp | grep &#39;openwrt-imagebuilder&#39;)</span><br><span class="line">        sudo make image PROFILE&#x3D;&quot;psg1218a&quot; PACKAGES&#x3D;&quot;luci luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn ssmtp wireguard luci-app-wireguard luci-i18n-wireguard-zh-cn&quot;</span><br><span class="line">        cp -r bin &#x2F;tmp</span><br><span class="line">    - name : 上传固件</span><br><span class="line">      uses: actions&#x2F;upload-artifact@master</span><br><span class="line">      with:</span><br><span class="line">        name: image</span><br><span class="line">        path: &#x2F;tmp&#x2F;bin</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>OpenWrt.org-Using the Image Builder:<a href="https://openwrt.org/docs/guide-user/additional-software/imagebuilder" target="_blank" rel="noopener"> https://openwrt.org/docs/guide-user/additional-software/imagebuilder</a></p>
+<p>imagebuilder快速编译OpenWrt固件使用教程+高级自定义+在线编译: <a href="https://www.right.com.cn/forum/thread-522029-1-1.html" target="_blank" rel="noopener">https://www.right.com.cn/forum/thread-522029-1-1.html</a></p>
+<p>Openwrt 国内源配置 · DarkGod’ Blog：<a href="https://www.dazhuanlan.com/2019/10/17/5da7cdea1f0c8/" target="_blank" rel="noopener">https://www.dazhuanlan.com/2019/10/17/5da7cdea1f0c8/</a></p>
 
       
     </div>
@@ -257,7 +370,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://whatgui.github.io/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -271,7 +384,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E4%B8%80%E6%AC%A1Padavan%E5%9B%BA%E4%BB%B6%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E5%88%B6%E8%BF%87%E7%A8%8B/" class="post-title-link" itemprop="url">「捯饬记录」一次Padavan固件的简单定制过程</a>
+            <a href="/2020/01/31/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8DOpenWrt%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81wan%20IPv6%E5%9C%B0%E5%9D%80/" class="post-title-link" itemprop="url">「捯饬记录」OpenWrt通过邮件发送wan IPv6地址</a>
         </h1>
 
         <div class="post-meta">
@@ -281,14 +394,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-31 23:33:03" itemprop="dateCreated datePublished" datetime="2019-12-31T23:33:03+08:00">2019-12-31</time>
+              <time title="创建时间：2020-01-31 23:33:03" itemprop="dateCreated datePublished" datetime="2020-01-31T23:33:03+08:00">2020-01-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-12 22:53:42" itemprop="dateModified" datetime="2020-02-12T22:53:42+08:00">2020-02-12</time>
+                <time title="修改时间：2020-02-12 22:58:38" itemprop="dateModified" datetime="2020-02-12T22:58:38+08:00">2020-02-12</time>
               </span>
 
           
@@ -302,129 +415,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="记录时间：2019-年-12-月-31-日"><a href="#记录时间：2019-年-12-月-31-日" class="headerlink" title="记录时间：2019 年 12 月 31 日"></a>记录时间：2019 年 12 月 31 日</h1><h2 id="关键词：K2-Padavan-固件编译-定制"><a href="#关键词：K2-Padavan-固件编译-定制" class="headerlink" title="关键词：K2 Padavan 固件编译 定制"></a>关键词：K2 Padavan 固件编译 定制</h2><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>手里的 K2 一直以来使用的都是某恪的固件，确实稳定好用，但是直到现在都没有加入 IPV6 的相关功能。怀着想要体验 IPV6 的心情，一番折腾之后诞生了这一系列记录。那为什么不使用强大的 openwrt 呢？稳定性和无线性能是我首要考虑的问题，因此选择了捯饬 Padavan。最后几经搜索选择了 hanwckf 的开源固件，模板多教程也多，方便进行简单的定制。</p>
-<h2 id="1-准备-Linux-系统环境"><a href="#1-准备-Linux-系统环境" class="headerlink" title="1. 准备 Linux 系统环境"></a>1. 准备 Linux 系统环境</h2><blockquote>
-<p>根据 libgcc 的 <a href="https://www.jianshu.com/p/6b8403cdea46" target="_blank" rel="noopener">Padavan固件编译办法</a> ，推荐没有安装或者不想安装 Linux 系统的使用 Windows10 系统的 wsl 功能。</p>
-</blockquote>
-<p>首先安装了 Ubuntu 19.10，安装过程略显曲折，因为安装到了移动硬盘。关于这部分内容将在下一篇细说。</p>
-<h3 id="1-1-更换国内源并更新了所有软件包，同时修改了-opt-目录权限为-777"><a href="#1-1-更换国内源并更新了所有软件包，同时修改了-opt-目录权限为-777" class="headerlink" title="1.1 更换国内源并更新了所有软件包，同时修改了/opt 目录权限为 777"></a>1.1 更换国内源并更新了所有软件包，同时修改了/opt 目录权限为 777</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i &#39;s#http:&#x2F;&#x2F;archive.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line">sudo sed -i &#39;s#http:&#x2F;&#x2F;security.ubuntu.com#https:&#x2F;&#x2F;mirrors.huaweicloud.com#&#39; &#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo chmod 777 &#x2F;opt</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-安装必要的软件包"><a href="#1-2-安装必要的软件包" class="headerlink" title="1.2 安装必要的软件包"></a>1.2 安装必要的软件包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install unzip libtool-bin curl cmake gperf gawk flex bison nano xxd \</span><br><span class="line">cpio git python-docutils gettext automake autopoint texinfo build-essential help2man \</span><br><span class="line">pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev</span><br></pre></td></tr></table></figure>
-<h3 id="1-3-下载源码到本地"><a href="#1-3-下载源码到本地" class="headerlink" title="1.3 下载源码到本地"></a>1.3 下载源码到本地</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth&#x3D;1 https:&#x2F;&#x2F;gitee.com&#x2F;hanwckf&#x2F;rt-n56u.git &#x2F;opt&#x2F;rt-n56u</span><br></pre></td></tr></table></figure>
-<p>这里没有用 GitHub，因为速度实在不给力。</p>
-<h3 id="1-4-准备并编译工具链"><a href="#1-4-准备并编译工具链" class="headerlink" title="1.4 准备并编译工具链"></a>1.4 准备并编译工具链</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;opt&#x2F;rt-n56u&#x2F;toolchain-mipsel</span><br><span class="line">.&#x2F;clean_toolchain</span><br><span class="line">.&#x2F;build_toolchain</span><br></pre></td></tr></table></figure>
-<p>这一步使用的笔记本电脑，编译花了 30+min。如果工具链的源码没有变化，下一次编译固件不用再重新编译工具链，可以直接使用。</p>
-<h2 id="2-修改配置文件进行简单的定制"><a href="#2-修改配置文件进行简单的定制" class="headerlink" title="2. 修改配置文件进行简单的定制"></a>2. 修改配置文件进行简单的定制</h2><p>为了修改文件更方便，先去下载了 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a> ，然后修改各配置文件。根据下表</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">配置文件路径</th>
-<th style="text-align:left">主要的可配置功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/configs/templates/PSG1218.config</td>
-<td style="text-align:left">包含软件包、功能</td>
-</tr>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/configs/boards/PSG1218/board.h</td>
-<td style="text-align:left">指示灯、复位键等</td>
-</tr>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/configs/boards/PSG1218/kernel-3.4.x.config</td>
-<td style="text-align:left">WAN、LAN、内存</td>
-</tr>
-<tr>
-<td style="text-align:left">/opt/rt-n56u/trunk/user/shared/defaults.h</td>
-<td style="text-align:left">路由器配置(默认网关、无线密码等)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>这次针对 K2 的定制过程修改的是 PSG1218_nano.config 和 defaults.h 这两个文件。主要是在/opt/rt-n56u/trunk/configs/templates/目录下发现了 PSG1218_nano.config 的配置模板文件，这个配置文件本身是 K2 的精简配置，出于对精简的谜之信仰选了这个。</p>
-<h3 id="2-1-修改-PSG1218-nano-config"><a href="#2-1-修改-PSG1218-nano-config" class="headerlink" title="2.1 修改 PSG1218_nano.config"></a>2.1 修改 PSG1218_nano.config</h3><p>需要启用或关闭一个功能则将该行的末尾改为 y 或 n，至于功能是什么文件里有描述和注释</p>
-<p>举个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### Enable IPv6 support #是否启用 IPv6 支持</span><br><span class="line">CONFIG_FIRMWARE_ENABLE_IPV6&#x3D;y #表示启用</span><br><span class="line"></span><br><span class="line">### Enable USB support  #是否启用 USB 支持</span><br><span class="line">CONFIG_FIRMWARE_ENABLE_USB&#x3D;n #表示不启用（没有 usb 口）</span><br></pre></td></tr></table></figure>
-<p>这次编译固件做出的修改如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CONFIG_FIRMWARE_INCLUDE_XUPNPD&#x3D;n #去除用于 IPTV 的 XUPNP</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_DOGCOM&#x3D;n #去除用于 Drcom 的工具</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_MINIEAP&#x3D;n #去除可用于锐捷的 eap 客户端</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT&#x3D;n #去除南工网络客户端</span><br><span class="line">CONFIG_FIRMWARE_INCLUDE_VLMCSD&#x3D;n #去除用于 KMS 的工具</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-2-修改-defaults-h"><a href="#2-2-修改-defaults-h" class="headerlink" title="2.2 修改 defaults.h"></a>2.2 修改 defaults.h</h3><p>修改备用 NTP 服务器地址为 time.nist.gov</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define DEF_NTP_SERVER1     &quot;time.nist.gov&quot;</span><br></pre></td></tr></table></figure>
-<p>是的，编译完之后才发现这个更改没有任何意义，就是想找点什么改一下(￣▽￣)”<br>修改完毕，保存</p>
-<h2 id="3-清理代码树并开始编译"><a href="#3-清理代码树并开始编译" class="headerlink" title="3. 清理代码树并开始编译"></a>3. 清理代码树并开始编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;opt&#x2F;rt-n56u&#x2F;trunk</span><br><span class="line">sudo .&#x2F;clear_tree</span><br><span class="line">sudo .&#x2F;build_firmware_modify PSG1218_nano</span><br></pre></td></tr></table></figure>
-<h2 id="4-编译完成保存固件"><a href="#4-编译完成保存固件" class="headerlink" title="4. 编译完成保存固件"></a>4. 编译完成保存固件</h2><p>固件编译耗时约为 10min，完成后的.trx 文件在/opt/rt-n56u/trunk/images 路径下找到，然后复制到其他地方保存，因为下次编译会覆盖。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="whatGUI">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="whatGUI">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/25/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-25 16:41:03" itemprop="dateCreated datePublished" datetime="2019-12-25T16:41:03+08:00">2019-12-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-06 21:43:40" itemprop="dateModified" datetime="2020-01-06T21:43:40+08:00">2020-01-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+          <h1 id="记录时间：2020-年-1-月-31-日"><a href="#记录时间：2020-年-1-月-31-日" class="headerlink" title="记录时间：2020 年 1 月 31 日"></a>记录时间：2020 年 1 月 31 日</h1><h2 id="关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2"><a href="#关键词：openwrt-19-07-ssmtp-邮件通知-IP变化-IPv6-PSG1218-K2" class="headerlink" title="关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2"></a>关键词：openwrt 19.07 ssmtp 邮件通知 IP变化 IPv6 PSG1218 K2</h2><h2 id="更换软件镜像源"><a href="#更换软件镜像源" class="headerlink" title="更换软件镜像源"></a>更换软件镜像源</h2><p>鉴于openwrt的官方软件源速度不太行，先换个清华的源。不过ssmtp体积很小，不换的话下载问题也不大。</p>
+<p><img src="https://uploader.shimo.im/f/rQGyF8v5Kg0Ex85v.png!thumbnail" alt="图片"></p>
+<p>复制类似下面的地址到<code>opkg/distfeeds.conf</code>并保存。这里以k2路由器的mt7620为例，其他类型或版本可以去<a href="https://mirrors.tuna.tsinghua.edu.cn/lede/" target="_blank" rel="noopener">清华的镜像源</a>查看，然后找到相对应的目录下复制url地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">src&#x2F;gz openwrt_core http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;targets&#x2F;ramips&#x2F;mt7620&#x2F;packages</span><br><span class="line">src&#x2F;gz openwrt_base http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;base</span><br><span class="line">src&#x2F;gz openwrt_luci http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;luci</span><br><span class="line">src&#x2F;gz openwrt_packages http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;packages</span><br><span class="line">src&#x2F;gz openwrt_routing http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;routing</span><br><span class="line">src&#x2F;gz openwrt_telephony http:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;lede&#x2F;releases&#x2F;19.07.0&#x2F;packages&#x2F;mipsel_24kc&#x2F;&#x2F;telephony</span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://uploader.shimo.im/f/CBzx0l9UVUMvVkTx.png!thumbnail" alt="图片"></h2><h2 id="安装ssmtp"><a href="#安装ssmtp" class="headerlink" title="安装ssmtp"></a>安装ssmtp</h2><p>关于ssmtp，体积小是选择这个的首要因素，下面两种方式都可以安装。</p>
+<ul>
+<li>luci管理界面安装</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/x1iti6bQqyo2CSw5.png!thumbnail" alt="图片"></p>
+<ul>
+<li>shell命令方式安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg install ssmtp</span><br></pre></td></tr></table></figure>
+<h2 id="配置ssmtp"><a href="#配置ssmtp" class="headerlink" title="配置ssmtp"></a>配置ssmtp</h2>ssh登录openwrt之后，修改并执行以下命令。这里的配置是以163邮箱举例的，如果使用其他的邮箱可能要稍作修改，一些SMTP服务器可能还需要指定具体的端口，详情可以参考ssmtp配置文件中的注释。</li>
+</ul>
+<p>编辑配置文件可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> vim &#x2F;etc&#x2F;ssmtp&#x2F;ssmtp.conf</span><br></pre></td></tr></table></figure>
+<p>也可以用winscp登录，打开<code>/etc/ssmtp/</code>目录下的<code>ssmtp.conf</code>文件修改<br>下面是需要修改的内容举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root&#x3D;xxx@163.com  #替换成自己的邮箱帐户</span><br><span class="line">mailhub&#x3D;smtp.163.com:994  #邮箱的smtp服务器+相应协议的端口号，不填端口则默认25</span><br><span class="line">rewriteDomain&#x3D;163.com</span><br><span class="line">hostname&#x3D;163.com</span><br><span class="line">FromLineOverride&#x3D;YES</span><br><span class="line">UseTLS&#x3D;YES  #启用TLS加密发送邮件</span><br><span class="line">AuthUser&#x3D;xxx@163.com  #替换为自己的邮箱帐户</span><br><span class="line">AuthPass&#x3D;xxx  #邮箱密码或者邮箱客户端授权码</span><br></pre></td></tr></table></figure>
+<p>关于端口号：网易163邮箱提供的SMTP服务器端口号</p>
+<p><img src="https://uploader.shimo.im/f/bgihCCFsvvEmk1NC.png!thumbnail" alt="图片"></p>
+<h2 id="创建获取IP并发送邮件的脚本"><a href="#创建获取IP并发送邮件的脚本" class="headerlink" title="创建获取IP并发送邮件的脚本"></a>创建获取IP并发送邮件的脚本</h2><p>其实就是把之前用于Padavan的脚本稍作修改之后得到的。另外除了<a href="https://github.com/whatGUI/openwrt-mail-u-ip" target="_blank" rel="noopener">下载</a>也可以直接复制脚本内容，手动新建一个脚本文件，或者保存修改后用winscp等等工具上传到openwrt等等，怎么方便怎么来。</p>
+<p>建立脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;sbin&#x2F;ipmail.sh</span><br><span class="line">vim &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<p>复制以下内容到ipmail.sh<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh -e</span><br><span class="line">#设置发件人地址，与ssmtp配置一致</span><br><span class="line">from&#x3D;FROM</span><br><span class="line">#设置收件人地址，多人用英文逗号隔开</span><br><span class="line">towho&#x3D;TOWHO</span><br><span class="line">#有必要的话更改网络接口名（网卡）</span><br><span class="line">interface&#x3D;pppoe-wan</span><br><span class="line">file&#x3D;$HOME&#x2F;.ipmail</span><br><span class="line">[ -e $file ] &amp;&amp; old&#x3D;&#96;cat $file&#96;</span><br><span class="line">#获取wan ip地址</span><br><span class="line">ipaddress&#x3D;$(ip -6 addr list scope global $interface | grep &quot;global&quot; | sed -n &#39;s&#x2F;.*inet6 \([0-9a-f:]\+\).*&#x2F;\1&#x2F;p&#39;)</span><br><span class="line">#判断ip地址是否存在</span><br><span class="line">if [ -z &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;no IPv6 address found&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line">#检查地址是否改变</span><br><span class="line">if [ &quot;$old&quot; &#x3D; &quot;$ipaddress&quot; ]; then</span><br><span class="line">  echo &quot;IPv6 address unchanged&quot;</span><br><span class="line">  exit</span><br><span class="line">fi</span><br><span class="line">mailtxt&#x3D;$HOME&#x2F;.ipmailtext</span><br><span class="line">#写好邮件</span><br><span class="line">cat &gt; $mailtxt &lt;&lt;EOF</span><br><span class="line">From:$&#123;from&#125;</span><br><span class="line">To:$&#123;towho&#125;</span><br><span class="line">Subject:IP发生变更，打开查看详情</span><br><span class="line"></span><br><span class="line">OpenWrt：检测到WAN IP发生变更！</span><br><span class="line">新的IP为  $&#123;ipaddress&#125;</span><br><span class="line">EOF</span><br><span class="line">#发送邮件</span><br><span class="line">ssmtp $towho &lt; $mailtxt</span><br><span class="line">#缓存当前ip地址到文件</span><br><span class="line">echo $ipaddress &gt; $file</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加发件人和收件人地址"><a href="#添加发件人和收件人地址" class="headerlink" title="添加发件人和收件人地址"></a>添加发件人和收件人地址</h2><p>务必修改脚本中的以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#设置发件人地址 与ssmtp配置一致</span><br><span class="line">from&#x3D;xxxx@163.com</span><br><span class="line">#设置收件人地址，多人用英文逗号隔开</span><br><span class="line">towho&#x3D;xxx@qq.com,xxxx@qq.com</span><br></pre></td></tr></table></figure>
+<h2 id="添加可执行权限"><a href="#添加可执行权限" class="headerlink" title="添加可执行权限"></a>添加可执行权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<h2 id="添加到计划任务"><a href="#添加到计划任务" class="headerlink" title="添加到计划任务"></a>添加到计划任务</h2><p>可以直接在管理界面添加，意思是每10分钟执行一次，另外第一次添加计划任务可能会不起作用，可以在<code>启动项</code>中找到<code>cron</code>重启一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;10 * * * * &#x2F;sbin&#x2F;ipmail.sh</span><br></pre></td></tr></table></figure>
+<p><img src="https://uploader.shimo.im/f/WS6skdAC1J8y2ALh.png!thumbnail" alt="图片"></p>
+<h2 id="关于脚本"><a href="#关于脚本" class="headerlink" title="关于脚本"></a>关于脚本</h2><p>修改自<a href="https://whatgui.github.io/2020/01/14/%E3%80%8C%E6%8D%AF%E9%A5%AC%E8%AE%B0%E5%BD%95%E3%80%8D%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%8BPadavan%E7%9A%84IPV6%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">上一篇</a>，与参考中的<a href="https://www.jianshu.com/p/5effa0c0aab3" target="_blank" rel="noopener">《Openwrt发邮件通知Wan口Ip变化》</a>相比，定时执行采用openwrt的计划任务，感觉可能会稍微灵活一些。另外本脚本会创建临时文件，而参考脚本不需要。其他的差别就不太清楚了，如果有人看到这篇并且知道差别请带带我！虽然只要达到目的就行。</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>其实对每10分钟检测一次这个操作来说，家庭宽带的IPv6地址变化并没有这么频繁，基本上只有重启路由器和IPv6地址租期到期两种情况才会导致IP变化，因此只需要添加到开机启动脚本和检测IPv6到期即可，但是检测地址到期这个还没有搜索到相关的内容，暂时先放放好了。不过运行这个脚本消耗不大，只有检查到ip变化才会发送邮件，所以基本没什么影响。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>OpenWrt - SMTP clients：<a href="https://openwrt.org/docs/guide-user/services/email/smtp.client?s[]=ssmtp" target="_blank" rel="noopener">https://openwrt.org/docs/guide-user/services/email/smtp.client?s[]=ssmtp</a></p>
+<p>openwrt使用ssmtp发邮件：<a href="https://www.openwrtdl.com/wordpress/%E6%95%99%E7%A8%8Bopenwrt%E4%BD%BF%E7%94%A8ssmtp%E5%8F%91%E9%82%AE%E4%BB%B6" target="_blank" rel="noopener">https://www.openwrtdl.com/wordpress/%E6%95%99%E7%A8%8Bopenwrt%E4%BD%BF%E7%94%A8ssmtp%E5%8F%91%E9%82%AE%E4%BB%B6</a></p>
+<p>Openwrt发邮件通知Wan口Ip变化：<a href="https://www.jianshu.com/p/5effa0c0aab3" target="_blank" rel="noopener">https://www.jianshu.com/p/5effa0c0aab3</a></p>
 
       
     </div>
@@ -444,7 +468,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -516,10 +540,17 @@
       </div>
   </nav>
 </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
 
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -545,10 +576,30 @@
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
   </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -571,10 +622,12 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
 
 
 
